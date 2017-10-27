@@ -18,13 +18,20 @@
 </head>
 
 <body>
-<nav class="navbar  navbar-static-top">
+
 <div class="container">
-<div class="nav navbar-nav yes">
-<button type="button" class="btn btn1 btn-circle btn-xl for">Cfdt:</button>
-<h3 class="one plus">
+    
+<div class=" row">
+    <div class="col-xs-3">
+        <img src="/img/logo.gif">
+<!--<button type="button" class="btn btn1 btn-circle btn-xl for">Cfdt:</button> -->
+</div>
+    <div class="col-xs-9">
+<h3 >
 MON ESPACE ADHERENT
 </h3>
+</div>
+
 </div>
 
 <!-- <div class="nav yo navbar-nav navbar-right">
@@ -34,21 +41,23 @@ MON ESPACE ADHERENT
  </div>
  <!-- /.navbar-collapse -->
  <!-- /.container-fluid -->
-</nav>
+
 
 
 <div class="container min">
 <div class="row">
-        <form role="form" action="/login" role="form" method="post" class="login-form">
-            <div class="form-group">
-                <label class="sr-only" for="form-username">Email</label>
-                <input type="text" name="email" required  placeholder="Email..." class="form-username form-control" id="email">
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="form-password">Password</label>
-                <input type="password" required name="password" placeholder="Password..." class="form-password form-control" id="password">
-            </div>
-            <button type="submit" class="btn">Sign in!</button>
+        <form role="form" action="/login" role="form" method="post" class="login-form col-md-12" align="center">
+            <input type="text" name="email" required  placeholder="Email..."  id="email">
+            <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
+            <br>
+            <br>
+            <input type="password" required name="password" placeholder="Password..."  id="password">
+            <br>
+            <br>
+            <a class="text-center" href="#"> J'ai perdu mon mot de passe ?</a>
+            <br>
+            <br>
+            <button class="btn1 btn-lg" type="submit">Se connecter</button>
         </form>
 </div>
     </div>
@@ -62,106 +71,6 @@ MON ESPACE ADHERENT
 
 
 
-<style>
-
-
-
-.btn1 {
-    background-color: #e75c21;
-    color: #ffffff;
-    border: none;
-}
-
-.btn-circle.btn-xl {
-    width: 70px;
-    height: 70px;
-    padding: 10px 12px;
-    font-size: 24px;
-    line-height: 1.33;
-    border-radius: 35px;
-}
-
-.yo {
-    padding: 55px;
-    padding-left: 390px;
-    color: #ffffff;
-    background: #e75c21;
-    margin-top: -15px;
-}
-
-.yes {
-    display: -webkit-inline-box;
-    margin-left: 290px;
-}
-
-.one {
-    margin-left: 50px;
-    margin-top: -15px;
-}
-
-.plus {
-    background: #e75c21;
-    padding: 40px;
-    color: #ffffff
-}
-
-.two {
-    padding: 40px;
-    color: #e75c21
-}
-
-.for {
-    margin-top: 20px;
-}
-
- /*.yo {
-    color: #e75c21;*/
-}
-
-.btn2 {
-    border: #000000;
-}
-
-a {
-    color: #e75c21;
-}
-
-.yaya {
-    border-style: solid;
-    border-color: #e75c21;
-    padding-left: 30px;
-    text-align: center;
-}
-
-ul {
-    list-style: none;
-}
-
-.min {
-    margin-top: 80px;
-}
-
-@media only screen and (max-width: 500px) {
-    .yes {
-        margin-left: 50px;
-    }
-    .plus {
-        background: #e75c21;
-        padding: 40px;
-        color: #ffffff
-    }
-    .one {
-        margin-left: 30px;
-        margin-top: -15px;
-    }
-    
-}
-
-@media only screen and (max-width: 989px) {
-    .yes {
-        margin-left: 80px;
-    }
-}
 
 
 
@@ -178,4 +87,5 @@ ul {
 
 
 
-</style>
+
+

@@ -37,7 +37,8 @@ h3 {
 	font-size: 22px;
     font-weight: 300;
     color: #555;
-    line-height: 30px;
+	line-height: 66px;
+	
 }
 
 img { max-width: 100%; }
@@ -191,3 +192,109 @@ img { max-width: 100%; }
 	h1, h2 { font-size: 32px; }
 
 }
+
+
+
+
+/* css adherant */
+
+
+.btn1 {
+    background-color: #e75c21;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 12px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+.yo {
+    padding: 55px;
+    padding-left: 390px;
+    color: #ffffff;
+    background: #e75c21;
+    margin-top: -15px;
+}
+
+.yes {
+    display: -webkit-inline-box;
+    margin-left: 290px;
+}
+
+.one {
+    margin-left: 50px;
+    margin-top: -15px;
+}
+
+.plus {
+    background: #e75c21;
+    padding: 40px;
+    color: #ffffff
+}
+
+.two {
+    padding: 40px;
+    color: #e75c21
+}
+
+.for {
+    margin-top: 20px;
+}
+
+ /*.yo {
+    color: #e75c21;*/
+}
+
+.btn2 {
+    border: #000000;
+}
+
+a {
+    color: #e75c21;
+}
+
+.yaya {
+    border-style: solid;
+    border-color: #e75c21;
+    padding-left: 30px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+.min {
+    margin-top: 80px;
+}
+
+@media only screen and (max-width: 500px) {
+    .yes {
+        margin-left: 50px;
+    }
+    .plus {
+        background: #e75c21;
+        padding: 40px;
+        color: #ffffff
+    }
+    .one {
+        margin-left: 30px;
+        margin-top: -15px;
+    }
+    
+}
+
+@media only screen and (max-width: 989px) {
+    .yes {
+        margin-left: 80px;
+    }
+}
+
+
+
