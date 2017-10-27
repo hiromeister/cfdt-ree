@@ -19,7 +19,7 @@ exports.loggedIn = function(req, res, next)
 exports.home = function(req, res) {
 	
 	
-	res.render('home.ejs', {
+	res.render('acceuil.ejs', {
 		error : req.flash("error"),
 		success: req.flash("success"),
 		session:req.session,
@@ -28,7 +28,7 @@ exports.home = function(req, res) {
 	 
 }
 
-
+// a enlever
 exports.signup = function(req, res) {
 
 	if (req.session.user) {
