@@ -17,26 +17,21 @@ exports.loggedIn = function(req, res, next)
 }
 
 exports.home = function(req, res) {
-	
-	
-	res.render('acceuil.ejs', {
+		
+	res.render('admin/menu.ejs', {
 		error : req.flash("error"),
 		success: req.flash("success"),
 		session:req.session,
-	
-	 });
-	 
+	});
 }
+
 
 // a enlever
 exports.signup = function(req, res) {
 
 	if (req.session.user) {
-
 		res.redirect('/home');
-
 	} else {
-
 		res.render('signup', {
 			error : req.flash("error"),
 			success: req.flash("success"),
@@ -48,15 +43,10 @@ exports.signup = function(req, res) {
 
 
 exports.login = function(req, res) {
-
-
 	
 	if (req.session.user) {
-
 		res.redirect('/home');
-
 	} else {
-
 		res.render('login', {
 			error : req.flash("error"),
 			success: req.flash("success"),

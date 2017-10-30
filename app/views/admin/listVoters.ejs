@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/votersList.css" />
+
+
+</head>
+<body>
+
+    
+
+        <div id="demo">
+            <h1>Liste des votants</h1>
+            <h2>*   Vous pouvez ici modifier et supprimer un votant.</h2>           
+            <!-- Responsive table starts here -->
+            <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+            <div class="table-responsive-vertical shadow-z-1">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-mc-light-blue">
+                <thead>
+                  <tr>
+                    <th>Syndicats</th>
+                    <th>Hors Pac</th>
+                    <th>Total</th>
+                    <th>Delegues</th>
+                    <th>Mandats</th>
+                    <th>Conseillers</th>
+                    <th>Editer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<profile.length; i++) {%>
+                        <tr>
+                                       <td><%= profile[i].Syndicats %></td>
+                                        <td><%= profile[i].HorsPac %></td>
+                                        <td><%= profile[i].Total %></td>
+                                        <td><%= profile[i].Delegues %></td>
+                                        <td><%= profile[i].Mandats %></td>
+                                        <td><%= profile[i].Conseillers %></td>
+                                        <td> <a href="/delete/<%= profile[i]._id %>"><i class="fa fa-pencil" aria-hidden="true"></i> </a> </td>
+                         </tr>                      
+                     <% } %>
+
+          
+                </tbody>
+              </table>
+              </div>
+              </div>
+            
+            
+          <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
+</body>
+</html>
+        
