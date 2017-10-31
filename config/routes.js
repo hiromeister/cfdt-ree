@@ -1,4 +1,4 @@
-var home = require('../app/controllers/home');
+var home = require('../app/controllers/homeController');
 
 var addVotant = require('../app/controllers/votersController');
 var listeVotant = require('../app/controllers/votersController');
