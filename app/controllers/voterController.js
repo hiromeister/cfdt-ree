@@ -6,11 +6,9 @@ const User = require('../models/user');
 class voterController {
 
     loggedIn(req, res, next){
-        if(req.session.user){
-            next();
-        }else{
-            res.redirect('./login');
-        }
+        
+		if(req.session.user){next(); }
+		else { res.redirect('/login'); }
     }
 
     add(req, res){

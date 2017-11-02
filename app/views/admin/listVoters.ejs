@@ -25,24 +25,22 @@
             <table id="table" class="table table-hover table-mc-light-blue">
                 <thead>
                   <tr>
-                    <th>Syndicats</th>
-                    <th>Hors Pac</th>
-                    <th>Total</th>
-                    <th>Delegues</th>
-                    <th>Mandats</th>
-                    <th>Conseillers</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Syndicat</th>
+                    <th>Nombre de mandats</th>
+                    <th>email</th>
                     <th>Editer</th>
                   </tr>
                 </thead>
                 <tbody>
                     <% for(var i=0; i<profile.length; i++) {%>
                         <tr>
-                                       <td><%= profile[i].Syndicats %></td>
-                                        <td><%= profile[i].HorsPac %></td>
-                                        <td><%= profile[i].Total %></td>
-                                        <td><%= profile[i].Delegues %></td>
-                                        <td><%= profile[i].Mandats %></td>
-                                        <td><%= profile[i].Conseillers %></td>
+                                       <td><%= profile[i].nom %></td>
+                                        <td><%= profile[i].prenom %></td>
+                                        <td><%= profile[i].syndicat %></td>
+                                        <td><%= profile[i].nbMandat %></td>
+                                        <td><%= profile[i].email %></td>
                                         <td> <a href="/delete/<%= profile[i]._id %>"><i class="fa fa-pencil" aria-hidden="true"></i> </a> </td>
                          </tr>                      
                      <% } %>
