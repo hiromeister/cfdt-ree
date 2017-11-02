@@ -1,6 +1,7 @@
 var numeral = require('numeral');
 var bcrypt = require('bcrypt-nodejs');
 var dateFormat = require('dateformat');
+const permissions = require('../../config/permissions')
 
 class homeController{
 
