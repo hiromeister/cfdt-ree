@@ -1,12 +1,12 @@
-var home = require('../app/controllers/homeController');
+var homeController = require('../app/controllers/homeController');
 
-var addVotant = require('../app/controllers/votersController');
-var listeVotant = require('../app/controllers/votersController');
-var addname = require('../app/controllers/votersController');
+var addVotant = require('../app/controllers/voterController');
+var listeVotant = require('../app/controllers/voterController');
+var addname = require('../app/controllers/voterController');
 
-var addVote = require('../app/controllers/votesController');
-var addVotePost = require('../app/controllers/votesController');
-var votesList = require('../app/controllers/votesController');
+var addVote = require('../app/controllers/voteController');
+var addVotePost = require('../app/controllers/voteController');
+var votesList = require('../app/controllers/voteController');
 
 
 //you can include all your controllers
@@ -14,11 +14,11 @@ var votesList = require('../app/controllers/votesController');
 
 module.exports = function (app, passport) {
 
-    app.get('/login', home.login);
-    app.get('/signup', home.signup);
+    app.get('/login', homeController.login);
+    app.get('/signup', homeController.signup);
 
-    app.get('/', home.loggedIn, home.home);//home
-    app.get('/home', home.loggedIn, home.home);//home
+    app.get('/', homeController.loggedIn, homeController.home);//home
+    app.get('/home', homeController.loggedIn, homeController.home);//home
 
     //Routes votants
     app.get('/ajouter-votants', addVotant.loggedIn, addVotant.addVotant);

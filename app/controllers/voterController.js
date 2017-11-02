@@ -1,7 +1,7 @@
 var numeral = require('numeral');
 var bcrypt = require('bcrypt-nodejs');
 var dateFormat = require('dateformat');
-const User = require('../models/voters');
+const User = require('../models/voter');
 
 exports.loggedIn = function(req, res, next)
 {

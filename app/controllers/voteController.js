@@ -1,7 +1,7 @@
 var numeral = require('numeral');
 var bcrypt = require('bcrypt-nodejs');
 var dateFormat = require('dateformat');
-const Votes = require('../models/votes');
+const Vote = require('../models/vote');
 
 exports.loggedIn = function(req, res, next)
 {
@@ -36,8 +36,8 @@ exports.addVotePost = function(req, res){
 
 
 exports.votesList = function(req, res){
-    Votes.find({}, function(err, votes){
-        res.render('admin/listVotes.ejs', { votes: votes});
+    Vote.find({}, function(err, votes){
+        res.render('admin/listVotes.ejs', { vote: vote});
     });
 }
 

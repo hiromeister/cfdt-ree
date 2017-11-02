@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let votersSchema = new mongoose.Schema({
+let VoterSchema = new mongoose.Schema({
     Syndicats: String,
     HorsPac: Number,
     Total: Number,
@@ -9,5 +9,5 @@ let votersSchema = new mongoose.Schema({
     Conseillers: Number
 });
 
-let User = mongoose.model("User", votersSchema);
+let User = mongoose.model("User", VoterSchema);
 module.exports = User;
