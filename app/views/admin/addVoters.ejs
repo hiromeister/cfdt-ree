@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ajouter un votant</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/addVoters.css" />
+    
+    </head>
+  <body>
+
+
+   <div id="main"> 
+
+
+                <div class="container">
+                  
+                  <div class="row">
+                    
+                    <div class="col-md-4">
+                      
+                    </div>
+                    <div class="col-md-4 content">  
+                        <h1>ajouter un votant</h1>
+                        <form method="post" action="/addname">
+                          <p> Entrez les informations nécessaire au votant. </p> </br>
+                            <input id="test" type="text" name="nom" placeholder="nom.."  required>
+                            <input type="text" name="prenom" placeholder="prenom..." required>
+                            <input type="text" name="syndicat" placeholder="syndicat..." required>        
+                            <input type="text" name="nbmandat" placeholder="nbmandat..." required>
+                            <input type="text" name="email" placeholder="email..." required>
+                            <input type="text" name="mdp" placeholder="mdp..." required>
+
+                 
+                               <button type="submit" value="ajouter vote" onClick="validationMessage()"> Ajouter </button>
+                           </form>
+                    </div>
+                    
+            
+                    <div class="col-md-4"></div> 
+                    
+                  </div>
+                </div>
+              </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajouter un votant</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/listVotes.css" />
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+        <div id="demo">
+            <h1>Liste des votes</h1>
+            <h2>*   Vous pouvez ici modifier, supprimer et défenir le status d'un vote. (ouvert/fermé)</h2>           
+            <!-- Responsive table starts here -->
+            <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+            <div class="table-responsive-vertical shadow-z-1">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-mc-light-blue">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Intitulé</th>
+                    <th>Type</th>
+                    <th>Editer</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<votes.length; i++) {%>
+                        <tr>
+                            <td data-title="Status"><i class="fa fa-circle" aria-hidden="true"></i></td>
+                            <td data-title= "Intitulé"><%= votes[i].Intitule %></td>
+                            <td data-title="Type"><%= votes[i].Type %></td>
+                            <td data-title="Editer"> <a href="/modifier-vote"><i class="fa fa-pencil" aria-hidden="true"></i> </a> </td>
+                            <td data-title="Action"><i class="fa fa-toggle-on" aria-hidden="true"></i></td>
+                         </tr>                      
+                     <% } %>
+
+          
+                </tbody>
+              </table>
+              </div>
+              </div>
+             
+        <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
+</body>
+</html>
