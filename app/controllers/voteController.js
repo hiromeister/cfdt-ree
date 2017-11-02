@@ -36,5 +36,3 @@ class voteController {
 }
 
 module.exports = new voteController();
-
-

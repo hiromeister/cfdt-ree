@@ -1,0 +1,204 @@
+/*
+Orange PRINCIPAL : #e75c21
+Orange secondaire : #fcd7ba (PS)
+Blanc : #fff
+Noir : #333 ou #343434
+Gris foncé : #757575
+Gris clair : #eaeaea
+
+Bleu pour les liens <a> : #337ab7
+
+Bleu logo UIR : #026E7A
+*/
+
+body{
+	font-family: "Helvetica";
+	color: #343434;
+	background: url("./../images/bg-body.png") repeat;
+	margin-top: 20px; 
+}
+
+h1, h4{
+	font-weight: bold;
+}
+
+p{
+	font-size: 18px;
+}
+
+code{
+	color: green;
+}
+.row{
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.col-xs-6{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+button{
+	width: 250px;
+    margin: 20px auto;
+    background: #e75c21;
+    color: white;
+    border-top: 1px #eaeaea solid;
+    border-left: 1px #eaeaea solid;
+    border-bottom: #eaeaea solid;
+    border-right: #eaeaea solid;
+    border-radius: 20px;
+}
+
+button:hover{
+	width: 250px;
+    margin: 20px auto;
+    background: white;
+    color: #e75c21;
+    border-top: 1px #e75c21 solid;
+    border-left: 1px #e75c21 solid;
+    border-bottom: #e75c21 solid;
+    border-right: #e75c21 solid;
+    border-radius: 20px;
+}
+
+.color-orange{
+	color: #e75c21;
+}
+
+.fond-blanc{
+	background: white;
+}
+
+input{
+	width: 100px;
+	border: 1px solid #e75c21;
+	margin: 20px auto;
+}
+
+/* HEADER*/
+
+header{
+	color: #e75c21;
+	background: url("./../images/bg-header.png") repeat;
+	padding: 10px 15px;
+	display: flex;
+}
+
+header p{
+	color: #343434;
+}
+
+.inner-header{
+	display: flex;
+	background: white;
+	width: 100%;
+}
+
+.row-inner-header{
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+}
+
+.col-inner-header{
+	height: 100%;
+	justify-content: center;
+	align-content: center;
+}
+
+.inner-header img{
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.inner-header h1{
+	width: 100%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+/* Media query */
+@media screen and (min-width: 318px) and (max-device-width: 800px) {
+	/* HEADER BANNIERE */
+	.col-inner-header{
+    	margin: 0px;
+    	padding: 0px;
+  	}
+
+  	#uir-logo{
+  		margin-top: 30px;
+  		margin-bottom: 30px;
+  	}
+
+  	#cfdt-logo{
+  		width: 60px;
+  		margin-top: 20px;
+  		margin-bottom: 20px;
+  		margin-right: -10px;
+   	}
+
+	.inner-header img{
+    	width: 100%;
+  	}
+
+	.inner-header h1{
+    	font-size: 14px;
+    	padding: none;
+  		margin-top: 20px;
+  		margin-bottom: 20px;
+   	}
+
+	/* BOUTON */
+  	.acces-vote{
+  		margin-left: 0px;
+  		margin-right: 0px;
+  	}
+}
+
+/* SECTION */
+
+section{
+	background: white;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.title{
+	color: #e75c21;	
+	background: url("./../images/bg-btn-orange.png") repeat;	
+}
+
+.titre{
+	height: 74px;
+	padding: 20px;
+}
+
+.statut-vote{
+	margin-top: 20px;
+}
+
+.acces-vote{
+	width: 250px;
+}
+
+.acces-vote:hover{
+	width: 250px;
+}
+
+/* IMAGE à voté! pour la confirmation */
+.avote{
+	width: 108px;
+	margin: 20px auto;
+}
+
+/* FOOTER */
+
+footer{
+	color: #757575;
+	background: #eaeaea;
+	padding: 20px 0 20px 0;	
+}

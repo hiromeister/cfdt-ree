@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CFDT Votant</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
+</head>
+  <body>
+    <div class="container text-center">
+    	<header>
+    		<div class="container-fluid inner-header">
+    			<div class="row row-inner-header">
+	    			<div class="col-xs-4 col-inner-header">
+	    			    <a href="#"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<a href="#"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
+	    			</div>
+    			</div>
+    		</div>
+    	</header>
+    	<section>
+		    <div class="row title">
+		        <h4>VOTE 
+		        	<%= vote[0].nom.toUpperCase() %>
+		    	</h4>
+		    </div>
+			<div class="fond-blanc">
+				<img class="avote" src="./images/avote.png" alt="A voté !">
+				<p>Nous vous remercions</p>
+				<p>Votre choix a bien été pris en compte</p>
+
+			    <div class="row">
+			     	<div class="col-lg-12">
+			        	<a href="http://localhost:8080/home">					
+			         		<button type="button">
+					         	<h4>Accueil</h4>
+							</button>
+						</a>
+			     	</div>
+			    </div>
+			</div>		    		
+       	</section>
+    </div>
+
+	<footer class="text-center">
+		<p>DW2 Simplon Réunion | 2017</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

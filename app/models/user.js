@@ -1,9 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 
-
 var userSchema = mongoose.Schema({	
-	
 	nom: String,
 	prenom: String,
 	syndicat: String,
@@ -15,7 +13,6 @@ var userSchema = mongoose.Schema({
 	password: { type: String, required: true }
 	
 });
-
 
 //methods ======================
 //generating a hash
@@ -30,6 +27,3 @@ userSchema.methods.validPassword = function(password) {
 
 //create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);
-
-
-
