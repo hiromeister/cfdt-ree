@@ -1,46 +1,36 @@
-var home = require('../app/controllers/homeController');
-
-var addVotant = require('../app/controllers/votersController');
-var listeVotant = require('../app/controllers/votersController');
-var addname = require('../app/controllers/votersController');
-
-var addVote = require('../app/controllers/votesController');
-var addVotePost = require('../app/controllers/votesController');
-var votesList = require('../app/controllers/votesController');
-
-
-//you can include all your controllers
-
+let homeController = require('../app/controllers/homeController');
+let voteController = require('../app/controllers/voteController');
+let voterController= require('../app/controllers/voterController');
 
 module.exports = function (app, passport) {
 
-    app.get('/login', home.login);
-    app.get('/signup', home.signup);
+    app.get('/login', homeController.login);
+    app.get('/signup', homeController.signup);
 
-    app.get('/', home.loggedIn, home.home);//home
-    app.get('/home', home.loggedIn, home.home);//home
+    app.get('/', homeController.loggedIn, homeController.home);
+    app.get('/home', homeController.loggedIn, homeController.home);
 
     //Routes votants
-    app.get('/ajouter-votants', addVotant.loggedIn, addVotant.addVotant);
-    app.get('/liste-votants', listeVotant.loggedIn, listeVotant.listeVotant);
-    app.post('/addname', addname.loggedIn, addname.addname);
+    app.get('/ajouter-votants', voterController.loggedIn, voterController.add);
+    app.get('/liste-votants', voterController.loggedIn, voterController.list);
+    app.post('/addname', voterController.loggedIn, voterController.addname);
 
     //Routes votes
-    app.get('/creer-vote', addVote.loggedIn, addVote.addVote);
-    app.get('/liste-votes', votesList.loggedIn, votesList.votesList);
-    app.post('/addvote', addVotePost.loggedIn, addVotePost.addVotePost);
+    app.get('/creer-vote', voteController.loggedIn, voteController.add);
+    app.get('/liste-votes', voteController.loggedIn, voteController.list);
+    app.post('/addvote', voteController.loggedIn, voteController.post);
     
 
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/home', // redirect to the secure profile section
-        failureRedirect: '/signup', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
+        successRedirect: '/home', 
+        failureRedirect: '/signup', 
+        failureFlash: true 
     }));
-    // process the login form
+
     app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/home', // redirect to the secure profile section
-        failureRedirect: '/login', // redirect back to the signup page if there is an error
-        failureFlash: true // allow flash messages
+        successRedirect: '/home',
+        failureRedirect: '/login', 
+        failureFlash: true 
     }));
 
 }

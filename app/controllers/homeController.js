@@ -2,60 +2,56 @@ var numeral = require('numeral');
 var bcrypt = require('bcrypt-nodejs');
 var dateFormat = require('dateformat');
 
-exports.loggedIn = function(req, res, next)
-{
-	if (req.session.user) { // req.session.passport._id
+class homeController{
 
-		next();
+	loggedIn(req, res, next){
 
-	} else {
-
-		res.redirect('/login');
-
+		if(req.session.user){
+			next();
+		}else {
+			res.redirect('/login');
+		}
 	}
 
-}
+	home(req, res){
 
-exports.home = function(req, res) {
-		
-	res.render('admin/menu.ejs', {
-		error : req.flash("error"),
-		success: req.flash("success"),
-		session:req.session,
-	});
-}
-
-
-// a enlever
-exports.signup = function(req, res) {
-
-	if (req.session.user) {
-		res.redirect('/home');
-	} else {
-		res.render('signup', {
+		res.render('admin/menu.ejs', {
 			error : req.flash("error"),
 			success: req.flash("success"),
-			session:req.session
-		});
-	}
-
-}
-
-
-exports.login = function(req, res) {
-	
-	if (req.session.user) {
-		res.redirect('/home');
-	} else {
-		res.render('login', {
-			error : req.flash("error"),
-			success: req.flash("success"),
-			session:req.session
+			session:req.session,
 		});
 
 	}
+
+	signup(req, res){
+
+		if (req.session.user) {
+			res.redirect('/home');
+		} else {
+			res.render('signup', {
+				error : req.flash("error"),
+				success: req.flash("success"),
+				session:req.session
+			});
+		}
+	}
+
+	login(req, res){
+
+		if (req.session.user) {
+			res.redirect('/home');
+		} else {
+			res.render('login', {
+				error : req.flash("error"),
+				success: req.flash("success"),
+				session:req.session
+			});
 	
+		}
+	}
 }
+
+module.exports = new homeController();
 
 
     
