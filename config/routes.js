@@ -19,7 +19,6 @@ module.exports = function (app, passport) {
     app.get('/creer-vote', voteController.loggedIn, voteController.add);
     app.get('/liste-votes', voteController.loggedIn, voteController.list);
     app.post('/addvote', voteController.loggedIn, voteController.post);
-    
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/home', 
@@ -34,6 +33,3 @@ module.exports = function (app, passport) {
     }));
 
 }
-
-
-

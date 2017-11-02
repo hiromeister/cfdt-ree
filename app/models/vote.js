@@ -4,8 +4,8 @@ let VoteSchema = new mongoose.Schema({
     intitule: String,
     type: String,
     statut: String,
-    r1: "Pour",
-    r2: "Contre"
+    r1: String,
+    r2: String
 
 });
 
