@@ -1,6 +1,6 @@
-var numeral = require('numeral');
-var bcrypt = require('bcrypt-nodejs');
-var dateFormat = require('dateformat');
+const numeral = require('numeral');
+const bcrypt = require('bcrypt-nodejs');
+const dateFormat = require('dateformat');
 const Vote = require('../models/vote');
 
 class voteController {
@@ -38,42 +38,3 @@ class voteController {
 module.exports = new voteController();
 
 
-
-
-// exports.loggedIn = function(req, res, next)
-// {
-// 	if (req.session.user) { // req.session.passport._id
-
-// 		next();
-
-// 	} else {
-
-// 		res.redirect('/login');
-
-// 	}
-
-// }
-
-// exports.addVote = function(req, res){
-//     res.render('admin/createVote.ejs');
-// };
-
-// exports.addVotePost = function(req, res){
-    
-//     let myData = new Votes(req.body);
-//     myData.save()
-//     .then(item => {
-//         res.redirect("/liste-votes"); 
-//     })
-//     .catch(err => {
-//         res.status(400).send("Impossible de sauvegarder dans la db");
-//     });  
-// }
-
-
-
-// exports.votesList = function(req, res){
-//     Votes.find({}, function(err, votes){
-//         res.render('admin/listVotes.ejs', { votes: votes});
-//     });
-// }

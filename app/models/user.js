@@ -13,6 +13,7 @@ var userSchema = mongoose.Schema({
 	updated_date: Date,
 	active_hash: String,
 	password: { type: String, required: true }
+	
 });
 
 
