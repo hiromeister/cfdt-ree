@@ -1,12 +1,14 @@
-var home = require('../app/controllers/homeController');
+var homeController = require('../app/controllers/homeController');
+let voteController = require('../app/controllers/voteController');
+let voterController= require('../app/controllers/voterController');
 
-var addVotant = require('../app/controllers/votersController');
-var listeVotant = require('../app/controllers/votersController');
-var addname = require('../app/controllers/votersController');
+// var addVotant = require('../app/controllers/voterController');
+// var listeVotant = require('../app/controllers/voterController');
+// var addname = require('../app/controllers/voterController');
 
-var addVote = require('../app/controllers/votesController');
-var addVotePost = require('../app/controllers/votesController');
-var votesList = require('../app/controllers/votesController');
+// var addVote = require('../app/controllers/voteController');
+// var addVotePost = require('../app/controllers/voteController');
+// var votesList = require('../app/controllers/voteController');
 
 
 //you can include all your controllers
@@ -14,21 +16,21 @@ var votesList = require('../app/controllers/votesController');
 
 module.exports = function (app, passport) {
 
-    app.get('/login', home.login);
-    app.get('/signup', home.signup);
+    app.get('/login', homeController.login);
+    app.get('/signup', homeController.signup);
 
-    app.get('/', home.loggedIn, home.home);//home
-    app.get('/home', home.loggedIn, home.home);//home
+    app.get('/', homeController.loggedIn, homeController.home);//home
+    app.get('/home', homeController.loggedIn, homeController.home);//home
 
     //Routes votants
-    app.get('/ajouter-votants', addVotant.loggedIn, addVotant.addVotant);
-    app.get('/liste-votants', listeVotant.loggedIn, listeVotant.listeVotant);
-    app.post('/addname', addname.loggedIn, addname.addname);
+    app.get('/ajouter-votants', voterController.loggedIn, voterController.add);
+    app.get('/liste-votants', voterController.loggedIn, voterController.list);
+    app.post('/addname', voterController.loggedIn, voterController.addname);
 
     //Routes votes
-    app.get('/creer-vote', addVote.loggedIn, addVote.addVote);
-    app.get('/liste-votes', votesList.loggedIn, votesList.votesList);
-    app.post('/addvote', addVotePost.loggedIn, addVotePost.addVotePost);
+    app.get('/creer-vote', voteController.loggedIn, voteController.add);
+    app.get('/liste-votes', voteController.loggedIn, voteController.list);
+    app.post('/addvote', voteController.loggedIn, voteController.post);
     
 
     app.post('/signup', passport.authenticate('local-signup', {
