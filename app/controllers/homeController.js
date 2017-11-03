@@ -12,17 +12,14 @@ class homeController{
 
 	loggedIn(req, res, next){
 
-		if(req.session.user){
-			next();
-		}else {
-			res.redirect('/login');
-		}
+		if(req.session.user){next(); }
+		else { res.redirect('/login'); }
 	}
 
 	home(req, res){
 		res.render('admin/menu.ejs', {
 			error : req.flash("error"),
-			success: req.flash("success"),
+			success: req.flash("success"), 
 			session:req.session,
 		});
 	}

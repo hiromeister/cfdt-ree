@@ -11,12 +11,11 @@ var userSchema = mongoose.Schema({
 	updated_date: Date,
 	active_hash: String,
 	password: { type: String, required: true },
-	role: {type:String, default: "member"},
+	role: {type:String, default: "user"},
 	//isAdmin: {type:Boolean, default: "false"}
 	
 });
 
-//methods ======================
 //generating a hash
 userSchema.methods.generateHash = function(password) {
  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
@@ -32,6 +31,14 @@ userSchema.methods.isMember = function() {
 userSchema.methods.isAdmin = function() {
     return (this.role === "admin");
 };
+
+//Called before each save for hashing the password
+userSchema.pre('save', function(next) {
+	//hash the password
+	this.password = this.generateHash(this.password);
+	next();
+  });
+
 
 //create the model for users and expose it to our app
 module.exports = mongoose.model('user', userSchema);
