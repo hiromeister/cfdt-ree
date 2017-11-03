@@ -57,7 +57,29 @@ class voterController {
                 vote: vote
             });
         });           
-    }    
+    }
+
+    confirmation(req,res){
+        console.log(req.user);
+
+        Vote.find({}, function (err, vote){
+            res.render('voter/confirmation.ejs', {
+                user: req.user,
+                vote: vote
+            });
+        });           
+    } 
+
+    avoter(req,res){
+        console.log(req.user);
+
+        Vote.find({}, function (err, vote){
+            res.render('voter/avoter.ejs', {
+                user: req.user,
+                vote: vote
+            });
+        });           
+    }     
 }
 
 module.exports = new voterController();

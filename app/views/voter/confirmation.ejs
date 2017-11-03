@@ -9,7 +9,7 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="./css/custom.css">
+	<link rel="stylesheet" type="text/css" href="./css/voter/custom.css">
 </head>
   <body>
     <div class="container text-center">
@@ -33,7 +33,7 @@
     	<section>
 		    <div class="row title">
 		        <h4>VOTE 
-		        	<%= vote[0].nom.toUpperCase() %>
+		        	<%= vote[0].intitule.toUpperCase() %>
 		    	</h4>
 		    </div>
 			<div class="fond-gris">
@@ -43,13 +43,13 @@
 			        	<div class="row">
 			        		<div class="col-lg-12 reponse">
 				        		<h4>« 
-									<%= vote[0].reponse1 %>
+									<%= vote[0].r1 %>
 								 »</h4>
 			        		</div>
 			        	</div>
 					    <div class="row">
 	    			        <div class="col-xs-12">
-	    			        	<input type="number" name="pour" placeholder="<%= vote[0].nbrR1 %>" class="text-center" disabled="">
+	    			        	<input type="number" name="pour" placeholder="0" class="text-center" disabled="">
 	    			        </div>
 						</div>
 			        </div>
@@ -58,13 +58,13 @@
 			        	<div class="row">
 			        		<div class="col-lg-12 reponse">
 				        		<h4>« 
-									<%= vote[0].reponse2 %>
+									<%= vote[0].r2 %>
 								 »</h4>
 			        		</div>
 			        	</div>
 					    <div class="row">
 	    			        <div class="col-xs-12">
-	    			        	<input type="number" name="contre" placeholder="<%= vote[0].nbrR2 %>" class="text-center" disabled="">
+	    			        	<input type="number" name="contre" placeholder="0" class="text-center" disabled="">
 	    			        </div>
 						</div>
 			        </div>					    			
@@ -72,14 +72,14 @@
 				<h2>Voulez-vous valider définitivement ?</h2>
 			    <div class="row">
 			     	<div class="col-sm-6">
-			        	<a href="http://localhost:8080/avoter">					
+			        	<a href="/avoter">					
 			         		<button class="btn-left" type="button">
 					         	<h4>« Je valide »</h4>
 							</button>
 						</a>
 			     	</div>
 					<div class="col-sm-6">
-			        	<a href="http://localhost:8080/choix">					
+			        	<a href="/choix">					
 			         		<button class="btn-right" type="button">
 					         	<h4>Annuler</h4>
 							</button>
