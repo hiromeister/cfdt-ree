@@ -24,7 +24,7 @@ class homeController{
 		});
 	}
 
-// ESSAI DE JOSEPHINE
+	// ESSAI DE JOSEPHINE
 	// home(req, res){
 	// 	User.find({}, function (err, user){
 	// 		Vote.find({}, function (err, vote){
