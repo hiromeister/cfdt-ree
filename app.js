@@ -45,10 +45,6 @@ app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 //app.set('view engine', 'ejs'); // set up ejs for templating
 
-
-//required for passport
-//app.use(session({ secret: 'iloveyoudear...' })); // session secret
-
 app.use(session({
     secret: 'I Love India...',
     resave: true,

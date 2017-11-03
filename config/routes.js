@@ -5,7 +5,6 @@ let voterController= require('../app/controllers/voterController');
 module.exports = function (app, passport) {
 
     app.get('/login', homeController.login);
-    app.get('/signup', homeController.signup);
 
     app.get('/', homeController.loggedIn, homeController.home);
     app.get('/home', homeController.loggedIn, homeController.home);
@@ -13,7 +12,8 @@ module.exports = function (app, passport) {
     //Routes votants
     app.get('/ajouter-votants', voterController.loggedIn, voterController.add);
     app.get('/liste-votants', voterController.loggedIn, voterController.list);
-    app.post('/addname', voterController.loggedIn, voterController.addname);
+    app.get('/signup', voterController.signup);
+    app.post('/voter/new', voterController.createNewVoter);
 
     //Routes votes
     app.get('/creer-vote', voteController.loggedIn, voteController.add);

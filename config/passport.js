@@ -79,7 +79,7 @@ module.exports = function(passport) {
                
                     newUser.email    = email;
                     newUser.password = newUser.generateHash(password);
-                    newUser.nom = req.body.username;
+                    newUser.username = req.body.username;
                     newUser.status = 'active'; //inactive for email actiavators
                     newUser.active_hash = active_code;
                    

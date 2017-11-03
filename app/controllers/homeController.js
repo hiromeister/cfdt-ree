@@ -20,18 +20,18 @@ class homeController{
 
 	}
 
-	signup(req, res){
-
-		if (req.session.user) {
-			res.redirect('/home');
-		} else {
-			res.render('signup', {
-				error : req.flash("error"),
-				success: req.flash("success"),
-				session:req.session
-			});
-		}
-	}
+    signup(req, res){
+        
+                if (req.session.user) {
+                    res.redirect('/home');
+                } else {
+                    res.render('signup', {
+                        error : req.flash("error"),
+                        success: req.flash("success"),
+                        session:req.session
+                    });
+                }
+            }
 
 	login(req, res){
 

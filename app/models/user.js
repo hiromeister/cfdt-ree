@@ -28,6 +28,14 @@ userSchema.methods.validPassword = function(password) {
  return bcrypt.compareSync(password, this.password);
 };
 
+//Called before each save for hashing the password
+userSchema.pre('save', function(next) {
+	//hash the password
+	this.password = this.generateHash(this.password);
+	next();
+  });
+
+
 //create the model for users and expose it to our app
 module.exports = mongoose.model('User', userSchema);
 

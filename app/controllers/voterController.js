@@ -21,16 +21,41 @@ class voterController {
         })
     }
 
-    addname(req, res){
-     let myData = new User(req.body);
-    myData.save()
-    .then(item => {
-        res.redirect("/ajouter-votants"); 
-    })
-    .catch(err => {
-        res.status(400).send("Impossible de sauvegarder dans la db");
-    });
+    createNewVoter(req,res){
+        
+        let myData = new User(req.body);
+       
+        myData.save()
+        .then(item => {
+            res.redirect("/ajouter-votants"); 
+        })
+        .catch(err => {
+            res.status(400).send("Impossible de sauvegarder dans la db");
+        });
     }
+
+
+    signup(req, res){
+
+        let myData = new User(req.body);
+        myData.save()
+        .then(item => {
+            res.redirect("/ajouter-votants"); 
+        })
+        .catch(err => {
+            res.status(400).send("Impossible de sauvegarder dans la db");
+        });
+        
+                if (req.session.user) {
+                    res.redirect('/home');
+                } else {
+                    res.render('signup', {
+                        error : req.flash("error"),
+                        success: req.flash("success"),
+                        session:req.session
+                    });
+                }
+            }
 }
 
 module.exports = new voterController();
