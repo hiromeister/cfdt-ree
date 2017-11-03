@@ -23,6 +23,10 @@ module.exports = function (app, passport) {
     app.post('/addvote', voteController.loggedIn, voteController.post);
     // VOTANT routes acceuil
     app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter);
+    app.get('/logout', function(req, res){
+      req.logout();
+      res.redirect('/login');
+  });
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/home', 
