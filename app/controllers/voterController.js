@@ -6,11 +6,9 @@ const User = require('../models/user');
 class voterController {
 
     loggedIn(req, res, next){
-        if(req.session.user){
-            next();
-        }else{
-            res.redirect('./login');
-        }
+        
+		if(req.session.user){next(); }
+		else { res.redirect('/login'); }
     }
 
     add(req, res){
@@ -18,13 +16,16 @@ class voterController {
     }
 
     list(req, res){
+
         User.find({}, function(err, profile){
             res.render('admin/listVoters', {profile: profile});
         })
     }
 
-    addname(req, res){
+    createNewVoter(req,res){
+        
         let myData = new User(req.body);
+       
         myData.save()
         .then(item => {
             res.redirect("/ajouter-votants"); 
@@ -33,6 +34,13 @@ class voterController {
             res.status(400).send("Impossible de sauvegarder dans la db");
         });
     }
+
+    homeVoter(req,res){
+        res.render('voter/choix.ejs');
+        
+    }
+
+
 }
 
 module.exports = new voterController();

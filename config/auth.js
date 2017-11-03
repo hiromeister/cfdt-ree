@@ -76,15 +76,18 @@ module.exports = function(passport) {
            	 
            	  var active_code=bcrypt.hashSync(Math.floor((Math.random() * 99999999) *54), null, null);
            	 
-               
+                    role:req.body.role;
+                    newUser.role = ['admin'];
+                    newUser.role = ['user'];
                     newUser.mail    = email;
                     newUser.password = newUser.generateHash(password);
-                    newUser.name = req.body.username;
+                    newUser.username = req.body.username;
                     newUser.created_date = day;
                     newUser.updated_date = day;
                     newUser.status = 'active'; //inactive for email actiavators
                     newUser.active_hash = active_code;
                     newUser._id = userdata[0]._id+1;
+                    
 
 
                 // save the user

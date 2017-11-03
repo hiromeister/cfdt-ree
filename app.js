@@ -4,7 +4,7 @@ var app = express();
 var multer = require('multer')
 var constants = require('constants');
 var constant = require('./config/constants');
-
+var permissions = require('./config/permissions');
 
 var port = process.env.PORT || 8042;
 var mongoose = require('mongoose');
@@ -44,10 +44,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 //app.set('view engine', 'ejs'); // set up ejs for templating
-
-
-//required for passport
-//app.use(session({ secret: 'iloveyoudear...' })); // session secret
 
 app.use(session({
     secret: 'I Love India...',
