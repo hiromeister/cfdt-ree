@@ -2,6 +2,7 @@ const numeral = require('numeral');
 const bcrypt = require('bcrypt-nodejs');
 const dateFormat = require('dateformat');
 const User = require('../models/user');
+const Vote = require('../models/vote.js')
 
 class voterController {
 
@@ -36,11 +37,27 @@ class voterController {
     }
 
     homeVoter(req,res){
-        res.render('voter/choix.ejs');
-        
+        //console.log(req.user);
+
+        Vote.find({}, function (err, vote){
+
+            res.render('voter/vote.ejs', {
+                user: req.user,
+                vote: vote
+            });
+        });           
     }
 
+    choice(req,res){
+        console.log(req.user);
 
+        Vote.find({}, function (err, vote){
+            res.render('voter/choix.ejs', {
+                user: req.user,
+                vote: vote
+            });
+        });           
+    }    
 }
 
 module.exports = new voterController();

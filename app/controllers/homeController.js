@@ -24,22 +24,6 @@ class homeController{
 		});
 	}
 
-	// ESSAI DE JOSEPHINE
-	// home(req, res){
-	// 	User.find({}, function (err, user){
-	// 		Vote.find({}, function (err, vote){
-
-	// 			res.render('voter/vote.ejs', {
-	// 				error : req.flash("error"),
-	// 				success: req.flash("success"),
-	// 				session:req.session,
-	// 	        	user: user,
-	// 	        	vote: vote
-	// 	        });
-	//     	});
-	// 	});
-	// }
-
 	signup(req, res){
 
 		if (req.session.user) {

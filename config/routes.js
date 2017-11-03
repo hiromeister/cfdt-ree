@@ -36,6 +36,8 @@ module.exports = function (app, passport) {
       res.redirect('/login');
     });
 
+    app.get('/choix', voterController.loggedIn, voterController.choice);
+
 
 
 
