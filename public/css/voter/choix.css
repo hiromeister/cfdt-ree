@@ -11,33 +11,6 @@ Bleu pour les liens <a> : #337ab7
 Bleu logo UIR : #026E7A
 */
 
-/*.titre{
-	margin: 40px auto;	
-}
-
-.fond-blanc{
-	background: white;
-	margin: 20px 30px;
-}
-
-.proposition{
-    border: 1px #e75c21 solid;
-    width: 300px;
-    margin: 0px 3%;
-}
-
-.reponse{
-    background: #e75c21;
-    color: white;
-}
-
-input{
-	width: -webkit-fill-available;	
-	margin-top: 20px;
-	margin-bottom: 20px;
-    border: 1px #e75c21 solid;
-}*/
-
 .btn-left, .btn-right{
     border: 1px white solid;
 	width: 30px;

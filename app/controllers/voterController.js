@@ -33,6 +33,9 @@ class voterController {
             res.status(400).send("Impossible de sauvegarder dans la db");
         });
     }
+    homeVoter(req,res){
+        res.render('voter/choix.ejs');
+    }
 }
 
 module.exports = new voterController();

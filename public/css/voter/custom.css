@@ -14,7 +14,7 @@ Bleu logo UIR : #026E7A
 body{
 	font-family: "Helvetica";
 	color: #343434;
-	background: url("./../images/bg-body.png") repeat;
+	background: url("./../../images/bg-body.png") repeat;
 	margin-top: 20px; 
 }
 
@@ -81,7 +81,7 @@ input{
 
 header{
 	color: #e75c21;
-	background: url("./../images/bg-header.png") repeat;
+	background: url("./../../images/bg-header.png") repeat;
 	padding: 10px 15px;
 	display: flex;
 }
@@ -169,7 +169,7 @@ section{
 
 .title{
 	color: #e75c21;	
-	background: url("./../images/bg-btn-orange.png") repeat;	
+	background: url("./../../images/bg-btn-orange.png") repeat;	
 }
 
 .titre{
