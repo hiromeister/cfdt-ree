@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Gotham";
+    src:url("../fonts/Gotham.otf");
+}
+@import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    background-color: #e75c21;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.content { 
+margin: 0 auto;
+height: 700px;width: 100%;
+background-color: #F7F7F7;
+border-radius:4.5px;
+margin-top: 125px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
