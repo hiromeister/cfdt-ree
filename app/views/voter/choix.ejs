@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CFDT Votant</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="./css/voter/custom.css">
+	<link rel="stylesheet" type="text/css" href="./css/voter/choix.css">
+</head>
+  <body>
+    <div class="container text-center">
+    	<header>
+    		<div class="container-fluid inner-header">
+    			<div class="row row-inner-header">
+	    			<div class="col-xs-4 col-inner-header">
+	    			    <a href="#"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<a href="#"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
+	    			</div>
+    			</div>
+    		</div>
+    	</header>
+    	<section>
+		    <div class="row title">
+		    	<div class="col-xs-9 titre">
+			        <h4>VOTE 
+			        	<%= vote[0].intitule.toUpperCase() %>
+			    	</h4>
+		    	</div>
+		    	<div class="col-xs-3 fond-blanc">
+		        	<h4>Mandats restant</h4>
+		        	<p>
+ 		        		<% for (let i=0; i<user.length; i++){ %>
+    						<%= user[i].nom %>
+    					<% } %>		        		
+		        	</p>	    		
+		    	</div>
+		    </div>
+	    		<div class="fond-blanc">
+				    <div class="row ">
+				        <div class="col-xs-6 proposition">
+				        	<div class="row">
+				        		<div class="col-xs-12 reponse">
+					        		<h4>« 
+										<%= vote[0].r1 %>
+									 »</h4>
+				        		</div>
+				        	</div>
+						    <div class="row">
+		    			        <div class="col-lg-4">
+		    			        	<button class="btn-left" type="button">
+		    			        		<p>+</p>    			        		
+		    			        	</button>
+		       			        </div>
+		    			        <div class="col-lg-4">
+		    			        	<input type="number" name="pour" placeholder="0" class="text-center" min="0" max="400">
+		    			        </div>
+		    			        <div class="col-lg-4">
+		    			        	<button class="btn-right" type="button">
+		    			        		<p>-</p>    			        		
+		    			        	</button>
+		    			        </div>
+							</div>
+				        </div>
+
+				        <div class="col-xs-6 proposition">
+				        	<div class="row">
+				        		<div class="col-xs-12 reponse">
+					        		<h4>« 
+										<%= vote[0].r2 %>
+									 »</h4>
+				        		</div>
+				        	</div>
+						    <div class="row">
+		    			        <div class="col-lg-4">
+		    			        	<button class="btn-left" type="button">
+		    			        		<p>+</p>    			        		
+		    			        	</button>
+		       			        </div>
+		    			        <div class="col-lg-4">
+		    			        	<input type="number" name="pour" placeholder="0" class="text-center" min="0" max="400">
+		    			        </div>
+		    			        <div class="col-lg-4">
+		    			        	<button class="btn-right" type="button">
+		    			        		<p>-</p>    			        		
+		    			        	</button>
+		       			        </div>
+							</div>
+				        </div>
+					</div>
+				    <div class="row">
+				     	<div class="col-lg-12">
+				        	<a href="http://localhost:8080/confirmation">					
+				         		<button type="button">
+						         	<h4>Valider</h4>
+								</button>
+							</a>
+				     	</div>
+				    </div>
+
+	    		</div>		    		
+       	</section>
+    </div>
+
+	<footer class="text-center">
+		<p>DW2 Simplon Réunion | 2017</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	</body>
+</html>

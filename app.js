@@ -4,7 +4,7 @@ var app = express();
 var multer = require('multer')
 var constants = require('constants');
 var constant = require('./config/constants');
-
+var permissions = require('./config/permissions');
 
 var port = process.env.PORT || 8042;
 var mongoose = require('mongoose');

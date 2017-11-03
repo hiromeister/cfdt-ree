@@ -24,17 +24,18 @@ class voterController {
     }
 
     addname(req, res){
-     let myData = new User(req.body);
-    myData.save()
-    .then(item => {
-        res.redirect("/ajouter-votants"); 
-    })
-    .catch(err => {
-        res.status(400).send("Impossible de sauvegarder dans la db");
-    });
+        let myData = new User(req.body);
+        myData.save()
+        .then(item => {
+            res.redirect("/ajouter-votants"); 
+        })
+        .catch(err => {
+            res.status(400).send("Impossible de sauvegarder dans la db");
+        });
+    }
+    homeVoter(req,res){
+        res.render('voter/choix.ejs');
     }
 }
 
 module.exports = new voterController();
-
-

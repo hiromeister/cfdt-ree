@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CFDT Votant</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
+</head>
+  <body>
+    <div class="container text-center">
+    	<header>
+    		<div class="container-fluid inner-header">
+    			<div class="row row-inner-header">
+	    			<div class="col-xs-4 col-inner-header">
+	    			    <a href="#"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+	    			</div>
+
+	    			<div class="col-xs-4 col-inner-header">
+		    			<a href="#"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
+	    			</div>
+    			</div>
+    		</div>
+    	</header>
+    	<section>
+    		<div id="bienvenue">
+	    		<p><span class="color-orange">M.
+	    			<% for (let i=0; i<user.length; i++){ %>
+    					<%= user[i].nom %>
+    					<%= user[i].prenom %>
+    				<% } %>
+    			</span>,
+    			 porteur de mandats du syndicat <span class="color-orange" style="text-transform: uppercase;">
+					<% for (let i=0; i<user.length; i++){ %>
+    					<%= user[i].syndicat %>
+    				<% } %>
+				</span>,</p>
+	    		<p>Bienvenue sur votre espace votant.</p>
+	    		<p>Veuillez sélectionner un vote <code>ouvert</code></p>
+	    	</div>
+		     <div class="row title">
+		        <h4>VOTES DÉCISIONNELS</h4>
+		     </div>
+
+		    <div class="row">
+		        <div class="col-lg-6 alaligne">
+		        	<div>
+			        	<a href="http://localhost:8080/choix">					
+				         	<button class="acces-vote" type="button">
+			          			<h4>VOTE 1</h4>
+			          			<p>
+			        				<%= vote[0].nom.toUpperCase() %>
+			          			</p>
+							</button>
+						</a>
+						<% if(vote[0].statut === "on"){ %>
+	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
+						<% } else { %>
+	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
+						<% } %>
+					</div>
+					
+					<div>
+			        	<a href="http://localhost:8080/choix">					
+				         	<button class="acces-vote" type="button">
+			          			<h4>VOTE 2</h4>
+			          			<p>
+			        				<%= vote[1].intitule.toUpperCase() %>
+			          			</p>
+							</button>
+						</a>
+						<% if(vote[1].statut === "on"){ %>
+	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
+						<% } else { %>
+	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
+						<% } %>
+					</div>
+		        </div>
+
+		        <div class="col-lg-6">
+		        	<div>
+			        	<a href="http://localhost:8080/choix">					
+				         	<button class="acces-vote" type="button">
+			          			<h4>VOTE 3</h4>
+			          			<p>
+			        				<%= vote[2].intitule.toUpperCase() %>
+			          			</p>
+							</button>
+						</a>
+						<% if(vote[2].statut === "on"){ %>
+	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
+						<% } else { %>
+	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
+						<% } %>
+					</div>
+
+		        	<div>
+			        	<a href="http://localhost:8080/choix">					
+				         	<button class="acces-vote" type="button">
+			          			<h4>VOTE 4</h4>
+			          			<p>
+			        				<%= vote[3].intitule.toUpperCase() %>
+			          			</p>
+							</button>
+						</a>
+						<% if(vote[3].statut === "on"){ %>
+	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
+						<% } else { %>
+	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
+						<% } %>
+					</div>
+		        </div>
+		     </div>
+
+		     <div class="row title">
+		     	<div class="col-lg-12">
+		         	<h4>ÉLECTION</h4>
+		     	</div>
+		     </div>
+
+		     <div class="row">
+		     	<div class="col-lg-12">
+		        	<a href="#">					
+			         	<button class="acces-vote" type="button">
+		          			<h4>VOTE 5</h4>
+		          			<p>Élection des représentants</p>
+						</button>
+					</a>
+	          		<img class="statut-vote" src="./images/padlock.png" alt="statut du vote">
+		     	</div>
+		     </div>
+       	</section>
+    </div>
+
+	<footer class="text-center">
+		<p>DW2 Simplon Réunion | 2017</p>
+	</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

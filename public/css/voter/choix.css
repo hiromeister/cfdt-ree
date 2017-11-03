@@ -1,0 +1,28 @@
+/*
+Orange PRINCIPAL : #e75c21
+Orange secondaire : #fcd7ba (PS)
+Blanc : #fff
+Noir : #333 ou #343434
+Gris foncé : #757575
+Gris clair : #eaeaea
+
+Bleu pour les liens <a> : #337ab7
+
+Bleu logo UIR : #026E7A
+*/
+
+.btn-left, .btn-right{
+    border: 1px white solid;
+	width: 30px;
+}
+
+.btn-left:hover, .btn-right:hover{
+    border: 1px #e75c21 solid;
+	background: none;
+	width: 30px;
+	color: #e75c21;
+}
+
+button p{
+	margin: 0 0;
+}
