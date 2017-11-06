@@ -12,6 +12,8 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var path = require('path');
 
+var url = process.env.MONGOLAB_URI;
+
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -28,7 +30,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 var mongoose = require('mongoose');
 var configDB = require('./config/database.js');
 //configuration ===============================================================
-mongoose.connect(configDB.url, { useMongoClient: true });
+mongoose.connect(url, { useMongoClient: true });
 mongoose.Promise = global.Promise;// connect to our database'
 
 
