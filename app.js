@@ -26,9 +26,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 /***************Mongodb configuratrion********************/
 var mongoose = require('mongoose');
-var configDB = require('./config/database.js');
+var configDB = MONGODB_URI;
 //configuration ===============================================================
-mongoose.connect(MONGODB_URI , { useMongoClient: true });
+mongoose.connect(configDB.url, { useMongoClient: true });
 mongoose.Promise = global.Promise;// connect to our database'
 
 
