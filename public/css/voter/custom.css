@@ -189,6 +189,15 @@ section{
 	width: 250px;
 }
 
+/* CHOIX.EJS*/
+.nbMandat{
+	font-size: 20px;
+	font-weight: bolder;
+	margin: 0px auto 20px auto;
+	width: 100%;
+	border: none;
+}
+
 /* IMAGE à voté! pour la confirmation */
 .avote{
 	width: 108px;
@@ -201,4 +210,26 @@ footer{
 	color: #757575;
 	background: #eaeaea;
 	padding: 20px 0 20px 0;	
+}
+
+/* DESACTIVER petites flèches incrémentant ou décrémentant la valeur */
+/*INPUT TYPE NUMBER*/
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
 }
