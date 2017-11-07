@@ -60,14 +60,15 @@ class voterController {
     }
 
     confirmation(req,res){
-        console.log(req.user);
-
+        console.log("Req" + req.body.pour);
         Vote.find({}, function (err, vote){
             res.render('voter/confirmation.ejs', {
                 user: req.user,
-                vote: vote
+                vote: vote,
+                pour: req.body.pour,
+                contre: req.body.contre
             });
-        });           
+        });         
     } 
 
     avoter(req,res){

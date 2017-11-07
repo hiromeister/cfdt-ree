@@ -37,7 +37,8 @@ module.exports = function (app, passport) {
     });
 
     app.get('/choix', voterController.loggedIn, voterController.choice);
-    app.get('/confirmation', voterController.loggedIn, voterController.confirmation);
+    // app.get('/confirmation', voterController.loggedIn, voterController.confirmation);
+    app.post('/confirmation', voterController.loggedIn, voterController.confirmation);
     app.get('/avoter', voterController.loggedIn, voterController.avoter);
 
 
