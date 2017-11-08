@@ -9,5 +9,5 @@ let VoteSchema = new mongoose.Schema({
 
 });
 
-let Vote = mongoose.model("Vote", VoteSchema);
+let Vote = mongoose.model("vote", VoteSchema);
 module.exports = Vote;
