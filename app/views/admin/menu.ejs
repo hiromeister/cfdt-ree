@@ -6,92 +6,73 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Administrateur - Menu</title>
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/menu.css" />
+        <link rel="stylesheet" type="text/css" href="/css/dashboard.css" />
 </head>
-<body>
-
-   
-
-    <!-- <div id="main">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-12 ">
-
-                    <div class="votersList box-shadow--6dp ">
-                        <h2><a href="/ajouter-votants">Ajouter un votant</a></br></h2>
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                    </div>
-
-
-                    <div class="votersList box-shadow--6dp">
-                        <h2><a href="/liste-votants"> Liste votants</a></br></h2>
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                    </div>
-
-                    <div class="createVote box-shadow--6dp">
-                        <h2><a href="/creer-vote"> Crée un vote </a></br></h2>
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        
-                    </div>
-
-
-                    <div class="listeVotes box-shadow--6dp">
-                            <h2> <a href="/liste-votes"> Liste des votes </a></br></h2>
-                            <i class="fa fa-list" aria-hidden="true"></i>
-                        </div>
-
-                    <div class="listeVotes box-shadow--6dp">
-                            <h2> <a href="/logout"> Deconnection </a></br></h2>
-                            <i class="fa fa-power-off" aria-hidden="true"></i>
-
-                        </div>
-                </div>
-            </div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<body class="home">
+    <span class="bckg"></span>
+    <header>
+      <h1>Dashboard</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="javascript:void(0);" data-title="Projects">Projects</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" data-title="Team">Team</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" data-title="Diary">Diary</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" data-title="Timeline">Timeline</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" data-title="Settings">Settings</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" data-title="Search">Search</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="title">
+        <h2>Projects</h2>
+        <a href="javascript:void(0);">Hello Bob !</a>
+      </div>
+    
+      <article class="larg">
+        <div>
+          <h3>Project 1 <span class="entypo-down-open"></span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus iste quia incidunt ad provident ullam quo assumenda expedita quae sapiente ipsa qui esse similique! Modi obcaecati natus sapiente quaerat omnis.</p>
         </div>
-    </div> -->
-
-    <div class="row demo-tiles">
-        <div class="col-xs-3">
-          <div class="tile">
-            <img src="./images/icons/adduser.svg" alt="Compas" class="tile-image big-illustration">
-            <h3 class="tile-title">Ajouter un votant</h3>
-            <p>100% convertable to HTML/CSS layout.</p>
-            <a class="btn btn-primary btn-large btn-block" href="/ajouter-votants">Ajouter</a>
-          </div>
+        <div>
+          <h3>Project 2 <span class="entypo-down-open"></span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus iste quia incidunt ad provident ullam quo assumenda expedita quae sapiente ipsa qui esse similique! Modi obcaecati natus sapiente quaerat omnis.</p>
         </div>
-
-        <div class="col-xs-3">
-          <div class="tile">
-            <img src="./images/icons/list.svg" alt="Infinity-Loop" class="tile-image">
-            <h3 class="tile-title">Liste des votants</h3>
-            <p>Vector-based shapes and minimum of layer styles.</p>
-            <a class="btn btn-primary btn-large btn-block" href="/liste-votants">Administrer</a>
-          </div>
+        <div>
+          <h3>Project 3 <span class="entypo-down-open"></span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus iste quia incidunt ad provident ullam quo assumenda expedita quae sapiente ipsa qui esse similique! Modi obcaecati natus sapiente quaerat omnis.</p>
         </div>
+      </article>
+    </main>
 
-        <div class="col-xs-3">
-          <div class="tile">
-            <img src="./images/icons/vote.svg" alt="Pensils" class="tile-image">
-            <h3 class="tile-title">Crée un vote</h3>
-            <p>Easy to add or change elements. </p>
-            <a class="btn btn-primary btn-large btn-block" href="/creer-vote">Crée</a>
-          </div>
-        </div>
 
-        <div class="col-xs-3">
-          <div class="tile tile-hot">
-         
-            <img src="./images/icons/list.svg" alt="Chat" class="tile-image">
-            <h3 class="tile-title">Liste des votes</h3>
-            <p>Your likes, shares and comments helps us.</p>
-            <a class="btn btn-primary btn-large btn-block" href="/liste-votes">Administrer</a>
-          </div>
 
-          
+      <script>
+      $(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
+        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
+    });
+    $('.side-nav .collapse').on("show.bs.collapse", function() {                        
+        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
+    });
+})    
+    
+    </script>
 
-        </div>
-      </div> <!-- /tiles -->
 
     <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
 </body>

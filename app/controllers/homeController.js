@@ -17,7 +17,7 @@ class homeController{
 	}
 
 	home(req, res){
-		res.render('admin/menu.ejs', {
+		res.render('admin/dashboard.ejs', {
 			error : req.flash("error"),
 			success: req.flash("success"), 
 			session:req.session,
