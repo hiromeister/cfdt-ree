@@ -61,8 +61,8 @@ class voterController {
 
     confirmation(req,res){
         console.log("Req" + req.body.pour);
-        console.log("Req" + req.user.vote[0].pour);
-        console.log("Req" + req.user.vote[0].contre);
+        console.log("Req" + req.user.vote);
+        console.log("Req" + req.user.vote);
         Vote.find({}, function (err, vote){
             res.render('voter/confirmation.ejs', {
                 user: req.user,
