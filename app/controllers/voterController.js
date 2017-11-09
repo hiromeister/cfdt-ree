@@ -92,7 +92,9 @@ class voterController {
                 vote: vote
             });
         });           
-    }  
+    }
+
+    
 }
 
 module.exports = new voterController();

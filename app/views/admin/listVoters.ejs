@@ -1,58 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/admin.css" />
-
-
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
 </head>
 <body id="ListVotersBody">
+  <div id="demo">
+    <h1>Liste des votants</h1>
+    <h2>*   Vous pouvez ici modifier et supprimer un votant.</h2>           
+    <!-- Responsive table starts here -->
+    <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+    <div class="table-responsive-vertical shadow-z-1">
+      <!-- Table starts here -->
+      <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Syndicat</th>
+            <th>Nombre de mandats</th>
+            <th>email</th>
+            <th>Editer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<profile.length; i++) {%>
+              <tr>
+                <td><%= profile[i].nom %></td>
+                <td><%= profile[i].prenom %></td>
+                <td><%= profile[i].syndicat %></td>
+                <td><%= profile[i].nbMandat %></td>
+                <td><%= profile[i].email %></td>
+                <td> 
+                  <a href="/delete/<%= profile[i]._id %>">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>                      
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    
-
-        <div id="demo">
-            <h1>Liste des votants</h1>
-            <h2>*   Vous pouvez ici modifier et supprimer un votant.</h2>           
-            <!-- Responsive table starts here -->
-            <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
-            <div class="table-responsive-vertical shadow-z-1">
-            <!-- Table starts here -->
-            <table id="table" class="table table-hover table-mc-light-blue">
-                <thead>
-                  <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Syndicat</th>
-                    <th>Nombre de mandats</th>
-                    <th>email</th>
-                    <th>Editer</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <% for(var i=0; i<profile.length; i++) {%>
-                        <tr>
-                                       <td><%= profile[i].nom %></td>
-                                        <td><%= profile[i].prenom %></td>
-                                        <td><%= profile[i].syndicat %></td>
-                                        <td><%= profile[i].nbMandat %></td>
-                                        <td><%= profile[i].email %></td>
-                                        <td> <a href="/delete/<%= profile[i]._id %>"><i class="fa fa-pencil" aria-hidden="true"></i> </a> </td>
-                         </tr>                      
-                     <% } %>
-
-          
-                </tbody>
-              </table>
-              </div>
-              </div>
-            
-            
-          <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
+  <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
 </body>
 </html>
         
