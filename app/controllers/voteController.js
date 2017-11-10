@@ -31,6 +31,14 @@ class voteController {
             res.status(400).send("Impossible de sauvegarder dans la db");
         });  
     }
+
+    delete(req, res){
+       Vote.remove({_id: req.params.id}, function (err, delData){
+            res.redirect("/liste-votes");
+        });
+    }
+
+
 }
 
 module.exports = new voteController();

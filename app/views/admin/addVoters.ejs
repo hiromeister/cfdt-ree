@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>Light Bootstrap Dashboard by Creative Tim</title>
+	<title>CFDT - Ajouter un votant </title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -65,10 +65,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
-                    <i class="fa fa-list" aria-hidden="true"></i>
-                        <p>Liste des votants</p>
-                    </a>
+                    <a href="/liste-votes">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                       <p>Liste des votes</p>
+                   </a>
                 </li>
                 <li>
                     <a href="icons.html">
@@ -94,66 +94,13 @@
                     <a class="navbar-brand" href="#">Ajouter un vontant</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
+                 
 
                     <ul class="nav navbar-nav navbar-right">
+                      
                         <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
+                            <a href="/logout">
+                                <p>Déconnexion</p>
                             </a>
                         </li>
 						<li class="separator hidden-lg hidden-md"></li>
@@ -172,20 +119,20 @@
                                 <h4 class="title">Ajouter un votant</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form method="post" action="/voter/new">
                                     
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Nom </label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <input type="text" name="nom" class="form-control" placeholder="Nom">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Prénom   </label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <input type="text" name="prenom" class="form-control" placeholder="Prenom" >
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +143,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Adresse mail</label>
-                                                <input type="email" class="form-control" placeholder="Adresse Mail" value="contact@contact.com">
+                                                <input type="email" name="email" class="form-control" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
@@ -206,14 +153,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Syndicat</label>
-                                                <input type="text" class="form-control" placeholder="Transport" value="Mike">
+                                                <input type="text" name="syndicat" class="form-control" placeholder="Syndicat">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Nombre de Mandat</label>
-                                                <input type="number" class="form-control" placeholder="nombre de mandat" value="175">
+                                                <input type="number" name="nbMandat" class="form-control" placeholder="Nombre de mandat">
                                             </div>
                                         </div>
 
@@ -223,14 +170,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mot de passe</label>
-                                                <input type="password" class="form-control" placeholder="City" value="Mike">
+                                                <input type="password" name="password" class="form-control" placeholder="Mot de passe">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Confirmation de mot de passe</label>
-                                                <input type="password" class="form-control" placeholder="re-taper le mot de passe" value="Andrew">
+                                                <input type="password" class="form-control" placeholder="Confirmation mot de passe">
                                             </div>
                                         </div>
 
@@ -240,6 +187,8 @@
                                     
 
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Ajouter le votant</button>
+                                    
+                                
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

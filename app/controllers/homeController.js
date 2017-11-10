@@ -44,6 +44,11 @@ class homeController{
 			session:req.session
 		});
 	}
+
+	logout(req, res){
+		req.logout();
+		res.redirect('/');
+	}
 }
 
 module.exports = new homeController();
