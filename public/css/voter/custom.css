@@ -119,6 +119,83 @@ header p{
 	margin-bottom: 10%;
 }
 
+/* SECTION */
+
+section{
+	background: white;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.title{
+	color: #e75c21;	
+	background: url("./../../images/bg-btn-orange.png") repeat;	
+}
+
+.titre{
+	height: 74px;
+	padding: 20px;
+}
+
+.statut-vote{
+	margin-top: 20px;
+}
+
+.acces-vote{
+	width: 250px;
+}
+
+.acces-vote:hover{
+	width: 250px;
+}
+
+/* CHOIX.EJS*/
+.nbMandat{
+	font-size: 20px;
+	font-weight: bolder;
+	margin: 0px auto 20px auto;
+	width: 100%;
+	border: none;
+}
+
+/* IMAGE à voté! pour la confirmation */
+.avote{
+	width: 108px;
+	margin: 20px auto;
+}
+
+/* FOOTER */
+
+footer{
+	color: #757575;
+	background: #eaeaea;
+	padding: 20px 0 20px 0;	
+}
+
+/* DESACTIVER petites flèches incrémentant ou décrémentant la valeur */
+/*INPUT TYPE NUMBER*/
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
+
 /* Media query */
 @media screen and (min-width: 318px) and (max-device-width: 800px) {
 	/* HEADER BANNIERE */
@@ -157,48 +234,37 @@ header p{
   	}
 }
 
-/* SECTION */
-
-section{
-	background: white;
-	margin-top: 30px;
-	margin-bottom: 10px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+@media screen and (min-width: 801px) and (max-device-width: 991px) {
+	#uir-logo{
+  		width: 200px;		
+  		margin-top: 30px;
+   	}
 }
 
-.title{
-	color: #e75c21;	
-	background: url("./../../images/bg-btn-orange.png") repeat;	
+@media screen and (min-width: 723px) and (max-device-width: 800px) {
+  	#cfdt-logo{
+  		width: 100px;
+  		margin-top: 30px;
+   	}
+
+   	.inner-header h1{
+    	font-size: 20px;
+  		margin-top: 50px;
+  	}
 }
 
-.titre{
-	height: 74px;
-	padding: 20px;
-}
+@media screen and (min-width: 478px) and (max-device-width: 722px) {
+	#uir-logo{
+  		margin-top: 40px;
+  	}
 
-.statut-vote{
-	margin-top: 20px;
-}
+  	#cfdt-logo{
+  		width: 100px;
+  		margin-top: 25px;
+   	}
 
-.acces-vote{
-	width: 250px;
-}
-
-.acces-vote:hover{
-	width: 250px;
-}
-
-/* IMAGE à voté! pour la confirmation */
-.avote{
-	width: 108px;
-	margin: 20px auto;
-}
-
-/* FOOTER */
-
-footer{
-	color: #757575;
-	background: #eaeaea;
-	padding: 20px 0 20px 0;	
+   	.inner-header h1{
+    	font-size: 20px;
+  		margin-top: 50px;
+   	}
 }

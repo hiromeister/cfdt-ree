@@ -7,6 +7,32 @@ var userSchema = mongoose.Schema({
 	syndicat: String,
 	email: String,
 	nbMandat : Number,
+	vote : [
+			{
+				_idVote : Object,
+				pour : Number,
+				contre : Number,
+				voteCreated : Date
+			},
+			{
+				_idVote : Object,
+				pour : Number,
+				contre : Number,
+				voteCreated : Date
+			},
+			{
+				_idVote : Object,
+				pour : Number,
+				contre : Number,
+				voteCreated : Date
+			},
+			{
+				_idVote : Object,
+				pour : Number,
+				contre : Number,
+				voteCreated : Date
+			},
+		],
 	created_date: Date,
 	updated_date: Date,
 	active_hash: String,

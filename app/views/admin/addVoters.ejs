@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -201,12 +202,41 @@
 
                 </div>
             </div>
+=======
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ajouter un votant</title>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+</head>
+<body id="addVoterBody">
+   <div id="main"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 content">  
+          <h1>ajouter un votant</h1>
+          <form method="post" method="post" action="/voter/new">
+            <p> Entrez les informations nécessaire au votant. </p> </br>
+            <input type="text" name="nom" placeholder="nom.."  required>
+            <input type="text" name="prenom" placeholder="prenom..." required>
+            <input type="text" name="syndicat" placeholder="syndicat..." required>        
+            <input type="text" name="nbMandat" placeholder="nbmandat..." required>
+				    <input type="email" name="email" id="email" class="form-control  form-username"  required placeholder="Email" />
+            <input type="password" name="password" id="password" class="form-control  form-username" ng-model="user.password" required  placeholder="Password"/>
+            <input type="text" name="username" id="username" class="form-control form-username"  required  placeholder="Name"/>
+
+            <button type="submit" value="ajouter vote" onClick="validationMessage()"> Ajouter </button>
+          </form>
+>>>>>>> ad32e74dc7d96c7e5ece31343b8c965f316cffdb
         </div>
 
 
        
 
     </div>
+<<<<<<< HEAD
 </div>
 
 
@@ -215,6 +245,13 @@
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+=======
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
+>>>>>>> ad32e74dc7d96c7e5ece31343b8c965f316cffdb
 
 	<!--  Charts Plugin -->
 	<script src="assets/js/chartist.min.js"></script>

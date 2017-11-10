@@ -37,55 +37,55 @@
 		    	</h4>
 		    </div>
 			<div class="fond-gris">
-				<h2>Confirmation de votre choix</h2>
-			    <div class="row ">
-			        <div class="col-xs-6 proposition">
-			        	<div class="row">
-			        		<div class="col-lg-12 reponse">
-				        		<h4>« 
-									<%= vote[0].r1 %>
-								 »</h4>
-			        		</div>
-			        	</div>
-					    <div class="row">
-	    			        <div class="col-xs-12">
-	    			        	<input type="number" name="pour" placeholder="0" class="text-center" disabled="">
-	    			        </div>
-						</div>
-			        </div>
+	    		<form action="/avoter" method="post">
+					<h2>Confirmation de votre choix</h2>
+				    <div class="row ">
+				        <div class="col-xs-6 proposition">
+				        	<div class="row">
+				        		<div class="col-lg-12 reponse">
+					        		<h4>« 
+										<%= vote[0].r1 %>
+									 »</h4>
+				        		</div>
+				        	</div>
+						    <div class="row">
+		    			        <div class="col-xs-12">
+		    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" disabled="" value="<%= pour %>" />
+		    			        </div>
+							</div>
+				        </div>
 
-			        <div class="col-xs-6 proposition">
-			        	<div class="row">
-			        		<div class="col-lg-12 reponse">
-				        		<h4>« 
-									<%= vote[0].r2 %>
-								 »</h4>
-			        		</div>
-			        	</div>
-					    <div class="row">
-	    			        <div class="col-xs-12">
-	    			        	<input type="number" name="contre" placeholder="0" class="text-center" disabled="">
-	    			        </div>
-						</div>
-			        </div>					    			
-				</div>
-				<h2>Voulez-vous valider définitivement ?</h2>
-			    <div class="row">
-			     	<div class="col-sm-6">
-			        	<a href="/avoter">					
-			         		<button class="btn-left" type="button">
+				        <div class="col-xs-6 proposition">
+				        	<div class="row">
+				        		<div class="col-lg-12 reponse">
+					        		<h4>« 
+										<%= vote[0].r2 %>
+									 »</h4>
+				        		</div>
+				        	</div>
+						    <div class="row">
+		    			        <div class="col-xs-12">
+		    			        	<input type="number" name="contre" placeholder="0" class="text-center R2" disabled="" value="<%= contre %>" />
+		    			        </div>
+							</div>
+				        </div>					    			
+					</div>
+					<h2>Voulez-vous valider définitivement ?</h2>
+				    <div class="row">
+				     	<div class="col-sm-6">
+			         		<button type="submit" class="btn-left">
 					         	<h4>« Je valide »</h4>
 							</button>
-						</a>
-			     	</div>
-					<div class="col-sm-6">
-			        	<a href="/choix">					
-			         		<button class="btn-right" type="button">
-					         	<h4>Annuler</h4>
-							</button>
-						</a>
-			     	</div>
-			    </div>
+				     	</div>
+						<div class="col-sm-6">
+				        	<a href="/choix">					
+				         		<button type="button" class="btn-right">
+						         	<h4>Annuler</h4>
+								</button>
+							</a>
+				     	</div>
+				    </div>
+				</form>
 			</div>		    		
        	</section>
     </div>
@@ -96,7 +96,6 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/voter.js" ></script>
   </body>
 </html>

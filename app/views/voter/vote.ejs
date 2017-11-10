@@ -11,7 +11,7 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/voter/custom.css">
 </head>
-  <body>
+<body>
     <div class="container text-center">
     	<header>
     		<div class="container-fluid inner-header">
@@ -83,15 +83,15 @@
 
 		        <div class="col-lg-6">
 		        	<div>
-			        	<a href="http://localhost:8080/choix">					
+			        	<a href="/choix">					
 				         	<button class="acces-vote" type="button">
 			          			<h4>VOTE 3</h4>
 			          			<p>
-			        				<%= vote[0].intitule.toUpperCase() %>
+			        				<%= vote[2].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[0].statut === "on"){ %>
+						<% if(vote[2].statut === "on"){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -99,15 +99,15 @@
 					</div>
 
 		        	<div>
-			        	<a href="http://localhost:8080/choix">					
+			        	<a href="/choix">					
 				         	<button class="acces-vote" type="button">
 			          			<h4>VOTE 4</h4>
 			          			<p>
-			        				<%= vote[0].intitule.toUpperCase() %>
+			        				<%= vote[3].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[0].statut === "on"){ %>
+						<% if(vote[3].statut === "on"){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -142,7 +142,5 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

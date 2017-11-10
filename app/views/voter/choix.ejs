@@ -12,8 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="./css/voter/custom.css">
 	<link rel="stylesheet" type="text/css" href="./css/voter/choix.css">
 </head>
-  <body>
-    <div class="container text-center">
+<body>
+	<div class="container text-center">
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -37,76 +37,54 @@
 			        <h4>VOTE 
 			        	<%= vote[0].intitule.toUpperCase() %>
 			    	</h4>
+					<p>Dispersez vos mandats</p>
 		    	</div>
 		    	<div class="col-xs-3 fond-blanc">
 		        	<h4>Mandats restant</h4>
-		        	<p>
-    					<%= user.nbMandat %>
-		        	</p>	    		
+		    		<input type="number" class="text-center nbMandat" value="<%= user.nbMandat %>" disabled="" />
 		    	</div>
 		    </div>
 	    		<div class="fond-blanc">
-				    <div class="row ">
-				        <div class="col-xs-6 proposition">
-				        	<div class="row">
-				        		<div class="col-xs-12 reponse">
-					        		<h4>« 
-										<%= vote[0].r1 %>
-									 »</h4>
-				        		</div>
-				        	</div>
-						    <div class="row">
-		    			        <div class="col-lg-4">
-		    			        	<button class="btn-left" type="button">
-		    			        		<p>+</p>    			        		
-		    			        	</button>
-		       			        </div>
-		    			        <div class="col-lg-4">
-		    			        	<input type="number" name="pour" placeholder="0" class="text-center" min="0" max="400">
-		    			        </div>
-		    			        <div class="col-lg-4">
-		    			        	<button class="btn-right" type="button">
-		    			        		<p>-</p>    			        		
-		    			        	</button>
-		    			        </div>
-							</div>
-				        </div>
+	    			<form action="/confirmation" method="post">
+					    <div class="row ">
+					        <div class="col-xs-6 proposition">
+					        	<div class="row">
+					        		<div class="col-xs-12 reponse">
+						        		<h4>« 
+											<%= vote[0].r1 %>
+										 »</h4>
+					        		</div>
+					        	</div>
+							    <div class="row">
+			    			        <div class="col-lg-12">
+			    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" min="0" max="22" value="" />
+			    			        </div>
+								</div>
+					        </div>
 
-				        <div class="col-xs-6 proposition">
-				        	<div class="row">
-				        		<div class="col-xs-12 reponse">
-					        		<h4>« 
-										<%= vote[0].r2 %>
-									 »</h4>
-				        		</div>
-				        	</div>
-						    <div class="row">
-		    			        <div class="col-lg-4">
-		    			        	<button class="btn-left" type="button">
-		    			        		<p>+</p>    			        		
-		    			        	</button>
-		       			        </div>
-		    			        <div class="col-lg-4">
-		    			        	<input type="number" name="pour" placeholder="0" class="text-center" min="0" max="400">
-		    			        </div>
-		    			        <div class="col-lg-4">
-		    			        	<button class="btn-right" type="button">
-		    			        		<p>-</p>    			        		
-		    			        	</button>
-		       			        </div>
-							</div>
-				        </div>
-					</div>
-				    <div class="row">
-				     	<div class="col-lg-12">
-				        	<a href="/confirmation">					
-				         		<button type="button">
+					        <div class="col-xs-6 proposition">
+					        	<div class="row">
+					        		<div class="col-xs-12 reponse">
+						        		<h4>« 
+											<%= vote[0].r2 %>
+										 »</h4>
+					        		</div>
+					        	</div>
+							    <div class="row">
+			    			        <div class="col-lg-12">
+			    			        	<input type="number" name="contre" placeholder="0" class="text-center R2" min="0" max="<%= user.nbMandat %>" value="" />
+			    			        </div>
+								</div>
+					        </div>
+						</div>
+					    <div class="row">
+					     	<div class="col-lg-12">
+				         		<button type="submit" class="valider-choix">
 						         	<h4>Valider</h4>
 								</button>
-							</a>
-				     	</div>
-				    </div>
-
+					     	</div>
+					    </div>
+					</form>
 	    		</div>		    		
        	</section>
     </div>
@@ -118,6 +96,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	</body>
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+	<script type="text/javascript" src="./js/voter.js" ></script>
+</body>
 </html>

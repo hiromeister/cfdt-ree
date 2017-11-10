@@ -21,6 +21,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
+<<<<<<< HEAD
 <body>
 
 <div class="wrapper">
@@ -161,6 +162,48 @@
 </div>
 
 
+=======
+<body id="ListVotesBody">
+    <div id="demo">
+        <h1>Liste des votes</h1>
+        <h2>*   Vous pouvez ici modifier, supprimer et défenir le status d'un vote. (ouvert/fermé)</h2>           
+        <!-- Responsive table starts here -->
+        <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+        <div class="table-responsive-vertical shadow-z-1">
+            <!-- Table starts here -->
+            <table id="table" class="table table-hover table-mc-light-blue">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Intitulé</th>
+                    <th>Type</th>
+                    <th>Editer</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<votes.length; i++) {%>
+                        <tr>
+                            <td data-title="Status"><i class="fa fa-circle" aria-hidden="true"></i></td>
+                            <td data-title= "Intitulé"><%= votes[i].intitule %></td>
+                            <td data-title="Type"><%= votes[i].type %></td>
+                            <td data-title="Editer">
+                                <a href="/modifier-vote">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>
+                            </td>
+                            <td data-title="Action">
+                                <i class="fa fa-toggle-on" aria-hidden="true"></i>
+                            </td>
+                         </tr>                      
+                     <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+         
+    <script src="https://use.fontawesome.com/cdb0e95dfa.js"></script>  
+>>>>>>> ad32e74dc7d96c7e5ece31343b8c965f316cffdb
 </body>
 
     <!--   Core JS Files   -->

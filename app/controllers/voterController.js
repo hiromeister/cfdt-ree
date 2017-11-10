@@ -60,26 +60,41 @@ class voterController {
     }
 
     confirmation(req,res){
-        console.log(req.user);
-
+        console.log("Req" + req.body.pour);
+        console.log("Req" + req.user.vote);
+        console.log("Req" + req.user.vote);
         Vote.find({}, function (err, vote){
             res.render('voter/confirmation.ejs', {
                 user: req.user,
-                vote: vote
+                vote: vote,
+                pour: req.body.pour,
+                contre: req.body.contre
             });
-        });           
+        });         
     } 
 
     avoter(req,res){
         console.log(req.user);
+        console.log("Req" + req.body.contre);
+
+        // user.findByIdAndUpdate(req.params.id,{
+        //     $set : {
+        //         pour : req.body.pour,
+        //         contre : req.body.contre 
+        //     },
+        // });
 
         Vote.find({}, function (err, vote){
             res.render('voter/avoter.ejs', {
                 user: req.user,
+                pour: req.body.pour,
+                contre: req.body.contre,
                 vote: vote
             });
         });           
-    }     
+    }
+
+    
 }
 
 module.exports = new voterController();
