@@ -69,11 +69,11 @@
 				         	<button class="acces-vote" type="button">
 			          			<h4>VOTE 2</h4>
 			          			<p>
-			        				<%= vote[0].intitule.toUpperCase() %>
+			        				<%= vote[1].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[0].statut === "on"){ %>
+						<% if(vote[1].statut === "on"){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
