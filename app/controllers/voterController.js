@@ -41,7 +41,7 @@ class voterController {
 
         Vote.find({}, function (err, vote){
 
-            res.render('voter/vote.ejs', {
+            res.render('voter/vote', {
                 user: req.user,
                 vote: vote
             });
@@ -49,33 +49,57 @@ class voterController {
     }
 
     choice(req,res){
-        console.log(req.user);
+        // console.log("choice(req.user) " + req.user);
+        // console.log("choice(req.params.id) " + req.params.id);
+        Vote.find({}, function (err, votes){
+            // console.log("Vote.find(votes) " + votes);
+            votes.filter((votefiltered) => {
+                // console.log("votes.find(votefiltered) " + votefiltered);
+                // console.log("votes.find(votefiltered._id) " + votefiltered._id);
+                if(votefiltered._id == req.params.id){
+                    // console.log("votes.find(votefiltered) APRES FILTER " + votefiltered);
 
-        Vote.find({}, function (err, vote){
-            res.render('voter/choix.ejs', {
-                user: req.user,
-                vote: vote
+                    res.render('voter/choix', {
+                        user: req.user,
+                        vote: votefiltered
+                    });
+                }
             });
-        });           
+        });         
     }
 
     confirmation(req,res){
-        console.log("Req" + req.body.pour);
-        console.log("Req" + req.user.vote[0].pour);
-        console.log("Req" + req.user.vote[0].contre);
-        Vote.find({}, function (err, vote){
-            res.render('voter/confirmation.ejs', {
-                user: req.user,
-                vote: vote,
-                pour: req.body.pour,
-                contre: req.body.contre
+        // console.log("confimation : Req body 'pour' : " + req.body.pour);
+        // console.log("confimation : Req body 'contre' : " + req.body.contre);
+        // console.log("confirmation : Req user 'pour' : " + req.user.vote[0].pour);
+        // console.log("confirmation : Req user 'contre' : " + req.user.vote[0].contre);        
+        // console.log("choice(req.user) " + req.user);
+        // console.log("choice(req.params.id) " + req.params.id);
+        Vote.find({}, function (err, votes){
+            // console.log("Vote.find(votes) " + votes);
+            votes.filter((votefiltered) => {
+                // console.log("votes.find(votefiltered) " + votefiltered);
+                // console.log("votes.find(votefiltered._id) " + votefiltered._id);
+                if(votefiltered._id == req.params.id){
+                    // console.log("votes.find(votefiltered) APRES FILTER " + votefiltered);
+
+                    res.render('voter/confirmation', {
+                        user: req.user,
+                        vote: votefiltered,
+                        pour: req.body.pour,
+                        contre: req.body.contre
+                    });
+                }
             });
         });         
     } 
 
     avoter(req,res){
-        console.log(req.user);
-        console.log("Req" + req.body.contre);
+        console.log("avoter : Req body 'pour' : " + req.body.reponseOne);
+        console.log("avoter : Req body : " + req.body);
+        console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);
+        console.log("avoter : Req user 'pour' : " + req.user.vote[0].pour);
+        console.log("avoter : Req user 'contre' : " + req.user.vote[0].contre);
 
         // user.findByIdAndUpdate(req.params.id,{
         //     $set : {
@@ -83,18 +107,27 @@ class voterController {
         //         contre : req.body.contre 
         //     },
         // });
+  
+        Vote.find({}, function (err, votes){
+            // console.log("Vote.find(votes) " + votes);
+            votes.filter((votefiltered) => {
+                // console.log("votes.find(votefiltered) " + votefiltered);
+                // console.log("votes.find(votefiltered._id) " + votefiltered._id);
+                if(votefiltered._id == req.params.id){
+                    // console.log("votes.find(votefiltered) APRES FILTER " + votefiltered);
 
-        Vote.find({}, function (err, vote){
-            res.render('voter/avoter.ejs', {
-                user: req.user,
-                pour: req.body.pour,
-                contre: req.body.contre,
-                vote: vote
+                    res.render('voter/avoter', {
+                        user: req.user,
+                        vote: votefiltered,
+                        // pour: req.body.pour,
+                        // contre: req.body.contre,
+                        reponseOne: req.body.reponseOne,
+                        reponseTwo: req.body.reponseTwo
+                    });
+                }
             });
-        });           
+        });         
     }
-
-    
 }
 
 module.exports = new voterController();

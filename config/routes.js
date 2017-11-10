@@ -36,11 +36,11 @@ module.exports = function (app, passport) {
       res.redirect('/login');
     });
 
-    app.get('/choix', voterController.loggedIn, voterController.choice);
+    app.get('/choix/vote/:id', voterController.loggedIn, voterController.choice);
     // app.get('/confirmation', voterController.loggedIn, voterController.confirmation);
-    app.post('/confirmation', voterController.loggedIn, voterController.confirmation);
+    app.post('/confirmation/vote/:id', voterController.loggedIn, voterController.confirmation);
     // app.get('/avoter', voterController.loggedIn, voterController.avoter);
-    app.post('/avoter', voterController.loggedIn, voterController.avoter);
+    app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
 
 
 
