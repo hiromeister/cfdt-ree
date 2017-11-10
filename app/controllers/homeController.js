@@ -17,7 +17,7 @@ class homeController{
 	}
 
 	home(req, res){
-		res.render('admin/menu.ejs', {
+		res.render('admin/dashboard.ejs', {
 			error : req.flash("error"),
 			success: req.flash("success"), 
 			session:req.session,
@@ -43,6 +43,11 @@ class homeController{
 			success: req.flash("success"),
 			session:req.session
 		});
+	}
+
+	logout(req, res){
+		req.logout();
+		res.redirect('/');
 	}
 }
 

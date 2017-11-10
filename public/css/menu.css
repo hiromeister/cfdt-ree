@@ -72,3 +72,32 @@ h2{
 
 /* REPONSIVE  */
 
+div.row.demo-tiles{
+    display:block;
+}
+
+div.col-xs-3{
+    display:inline-block;
+    background-color: #fff;
+    height: 300px;
+    width: 230px;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+img{
+    height: 100px;
+    width:100px;
+    padding-top: 20px;
+}
+
+a{
+    text-transform: uppercase;
+    color:#e75c21;
+    text-decoration: none;
+    font-weight: bold;
+    text
+
+
+}
