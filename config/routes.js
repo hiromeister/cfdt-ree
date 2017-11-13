@@ -1,6 +1,7 @@
 let homeController = require('../app/controllers/homeController');
 let voteController = require('../app/controllers/voteController');
 let voterController= require('../app/controllers/voterController');
+
 const permissions = require('./permissions')
 
 module.exports = function (app, passport) {
@@ -52,6 +53,7 @@ module.exports = function (app, passport) {
     }));
 
     app.post('/login', passport.authenticate('local-login', {
+         successFlash: 'Welcome!',
         successRedirect: '/home',
         failureRedirect: '/login', 
         failureFlash: true 

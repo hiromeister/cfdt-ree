@@ -31,6 +31,14 @@
     </div>
     <div class="container min">
         <div class="row">
+
+            <% if (error.length > 0) { %>
+                          <div class="alert alert-danger"><%- error %></div>
+                          <% } %>
+
+                           <% if (success.length > 0) { %>
+                          <div class="alert alert-success"><%- success %></div>
+                          <% } %>
             <form role="form" action="/login" role="form" method="post" class="login-form col-md-12" align="center">
                 <input type="text" name="email" required  placeholder="Email..."  id="email">
                 <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
