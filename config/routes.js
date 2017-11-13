@@ -8,6 +8,7 @@ module.exports = function (app, passport) {
 
     app.get('/login', homeController.login);
     app.get('/',permissions.can('access admin page'),homeController.loggedIn, homeController.login);
+    app.get('/logout', homeController.logout);
 
 
     /* ********** ADMIN ********** */
@@ -18,14 +19,15 @@ module.exports = function (app, passport) {
     // ADMIN Routes votants
     app.get('/ajouter-votants',permissions.can('access admin page'), voterController.loggedIn, voterController.add);
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
-
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
+    
+
 
     // ADMIN Routes votes
     app.get('/creer-vote', permissions.can('access admin page'),voteController.loggedIn, voteController.add);
     app.get('/liste-votes',permissions.can('access admin page'), voteController.loggedIn, voteController.list);
     app.post('/addvote', permissions.can('access admin page'),voteController.loggedIn, voteController.post);
-    
+    app.get('/supprimer/vote/:id', permissions.can('access admin page'), voteController.loggedIn, voteController.delete);
 
     /* ********** VOTANT ********** */
 
@@ -37,11 +39,11 @@ module.exports = function (app, passport) {
       res.redirect('/login');
     });
 
-    app.get('/choix', voterController.loggedIn, voterController.choice);
+    app.get('/choix/vote/:id', voterController.loggedIn, voterController.choice);
     // app.get('/confirmation', voterController.loggedIn, voterController.confirmation);
-    app.post('/confirmation', voterController.loggedIn, voterController.confirmation);
+    app.post('/confirmation/vote/:id', voterController.loggedIn, voterController.confirmation);
     // app.get('/avoter', voterController.loggedIn, voterController.avoter);
-    app.post('/avoter', voterController.loggedIn, voterController.avoter);
+    app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
 
 
 

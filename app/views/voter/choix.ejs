@@ -9,8 +9,7 @@
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="./css/voter/custom.css">
-	<link rel="stylesheet" type="text/css" href="./css/voter/choix.css">
+	<link rel="stylesheet" type="text/css" href="./../../css/voter/custom.css">
 </head>
 <body>
 	<div class="container text-center">
@@ -18,7 +17,7 @@
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
 	    			<div class="col-xs-4 col-inner-header">
-	    			    <a href="#"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
+	    			    <a href="#"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
@@ -26,7 +25,7 @@
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<a href="#"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
+		    			<a href="#"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
 	    			</div>
     			</div>
     		</div>
@@ -35,29 +34,29 @@
 		    <div class="row title">
 		    	<div class="col-xs-9 titre">
 			        <h4>VOTE 
-			        	<%= vote[0].intitule.toUpperCase() %>
+			        	<%= vote.intitule.toUpperCase() %>
 			    	</h4>
 					<p>Dispersez vos mandats</p>
 		    	</div>
 		    	<div class="col-xs-3 fond-blanc">
 		        	<h4>Mandats restant</h4>
-		    		<input type="number" class="text-center nbMandat" value="<%= user.nbMandat %>" disabled="" />
+		    		<input type="number" class="text-center nbMandat" min="0" value="<%= user.nbMandat %>" disabled="" />
 		    	</div>
 		    </div>
 	    		<div class="fond-blanc">
-	    			<form action="/confirmation" method="post">
+	    			<form action="/confirmation/vote/<%= vote._id %>" method="post">
 					    <div class="row ">
 					        <div class="col-xs-6 proposition">
 					        	<div class="row">
 					        		<div class="col-xs-12 reponse">
 						        		<h4>« 
-											<%= vote[0].r1 %>
+											<%= vote.r1 %>
 										 »</h4>
 					        		</div>
 					        	</div>
 							    <div class="row">
 			    			        <div class="col-lg-12">
-			    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" min="0" max="22" value="" />
+			    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" min="0" max="<%= user.nbMandat %>" value="" />
 			    			        </div>
 								</div>
 					        </div>
@@ -66,7 +65,7 @@
 					        	<div class="row">
 					        		<div class="col-xs-12 reponse">
 						        		<h4>« 
-											<%= vote[0].r2 %>
+											<%= vote.r2 %>
 										 »</h4>
 					        		</div>
 					        	</div>
@@ -97,6 +96,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-	<script type="text/javascript" src="./js/voter.js" ></script>
+	<script type="text/javascript" src="./../../js/voter.js" ></script>
+	<script type="text/javascript">
+		// document.onkeydown = function (event) {
+		//     event = event || window.event;
+		//     if (event.keyCode == 38 ) {
+		//     	console.log("OK HAUT");
+		//     } else if (event.keyCode == 40) {
+		//     	console.log("OK BAS");
+		//     }
+		// }
+
+	</script>
 </body>
 </html>

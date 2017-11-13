@@ -6,8 +6,7 @@ const Vote = require('../models/vote.js')
 
 class voterController {
 
-    loggedIn(req, res, next){
-        
+    loggedIn(req, res, next){        
 		if(req.session.user){next(); }
 		else { res.redirect('/login'); }
     }
@@ -17,31 +16,27 @@ class voterController {
     }
 
     list(req, res){
-
         User.find({}, function(err, profile){
             res.render('admin/listVoters', {profile: profile});
         })
     }
 
-    createNewVoter(req,res){
-        
+    createNewVoter(req,res){        
         let myData = new User(req.body);
        
         myData.save()
         .then(item => {
             res.redirect("/ajouter-votants"); 
         })
+        
         .catch(err => {
             res.status(400).send("Impossible de sauvegarder dans la db");
         });
     }
 
     homeVoter(req,res){
-        //console.log(req.user);
-
         Vote.find({}, function (err, vote){
-
-            res.render('voter/vote.ejs', {
+            res.render('voter/vote', {
                 user: req.user,
                 vote: vote
             });
@@ -49,33 +44,40 @@ class voterController {
     }
 
     choice(req,res){
-        console.log(req.user);
-
-        Vote.find({}, function (err, vote){
-            res.render('voter/choix.ejs', {
-                user: req.user,
-                vote: vote
+        Vote.find({}, function (err, votes){
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/choix', {
+                        user: req.user,
+                        vote: votefiltered
+                    });
+                }
             });
-        });           
+        });         
     }
 
     confirmation(req,res){
-        console.log("Req" + req.body.pour);
-        console.log("Req" + req.user.vote);
-        console.log("Req" + req.user.vote);
-        Vote.find({}, function (err, vote){
-            res.render('voter/confirmation.ejs', {
-                user: req.user,
-                vote: vote,
-                pour: req.body.pour,
-                contre: req.body.contre
+        Vote.find({}, function (err, votes){
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/confirmation', {
+                        user: req.user,
+                        vote: votefiltered,
+                        pour: req.body.pour,
+                        contre: req.body.contre
+                    });
+                }
             });
         });         
     } 
 
     avoter(req,res){
-        console.log(req.user);
-        console.log("Req" + req.body.contre);
+
+        console.log("avoter : Req body 'pour' : " + req.body.reponseOne);
+        console.log("avoter : Req body : " + req.body);
+        console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);
+        console.log("avoter : Req user 'pour' : " + req.user.vote[0].pour);
+        console.log("avoter : Req user 'contre' : " + req.user.vote[0].contre);
 
         // user.findByIdAndUpdate(req.params.id,{
         //     $set : {
@@ -83,18 +85,20 @@ class voterController {
         //         contre : req.body.contre 
         //     },
         // });
-
-        Vote.find({}, function (err, vote){
-            res.render('voter/avoter.ejs', {
-                user: req.user,
-                pour: req.body.pour,
-                contre: req.body.contre,
-                vote: vote
+  
+        Vote.find({}, function (err, votes){
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/avoter', {
+                        user: req.user,
+                        vote: votefiltered,
+                        reponseOne: req.body.reponseOne,
+                        reponseTwo: req.body.reponseTwo
+                    });
+                }
             });
-        });           
+        });         
     }
-
-    
 }
 
 module.exports = new voterController();

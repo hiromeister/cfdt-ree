@@ -27,6 +27,19 @@ function AlwaysRight(e){
 	}
 }
 
+	// document.onkeydown = function (event) {
+	//     event = event || window.event;
+	//     if (event.keyCode === 38 ) {
+	//     	console.log("OK HAUT");
+	//     } else if (event.keyCode === 40) {
+	//     	console.log("OK BAS");
+	//     }
+	// }
+
+// R1.addEventListener("focus", (e) => {
+
+// });
+
 R1.addEventListener("change", (e) => {
 	if(nbMandat.value > 0){
 		nbMandat.value -= R1.value;
