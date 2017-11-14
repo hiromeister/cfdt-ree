@@ -56,6 +56,19 @@ class voterController {
         });         
     }
 
+    choiceE(req,res){
+        Vote.find({}, function (err, votes){
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/choixE', {
+                        user: req.user,
+                        vote: votefiltered
+                    });
+                }
+            });
+        });         
+    }    
+
     confirmation(req,res){
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
@@ -70,6 +83,20 @@ class voterController {
             });
         });         
     } 
+
+    confirmationE(req,res){
+        Vote.find({}, function (err, votes){
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/confirmationE', {
+                        user: req.user,
+                        vote: votefiltered,
+                        choix: req.body.choix,
+                    });
+                }
+            });
+        });         
+    }     
 
     avoter(req,res){
 
@@ -89,6 +116,12 @@ class voterController {
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
+                    let votant = req.user;
+                    console.log(votant)
+                    votant.update({}, { pour : req.body.reponseOne }, function(error) {
+                    });
+                    votant.update({}, { contre : req.body.reponseTwo }, function(error) {
+                    });
                     res.render('voter/avoter', {
                         user: req.user,
                         vote: votefiltered,
