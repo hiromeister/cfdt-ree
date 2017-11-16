@@ -5,7 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>CFDT Votant</title>
-
+	<link rel="shortcut icon" href="./../../images/logo.gif" type="image/x-icon">
+	<link rel="icon" href="./../../images/logo.gif" type="image/x-icon">
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -124,14 +125,20 @@
 
 		     <div class="row">
 		     	<div class="col-lg-12">
-		        	<a href="#">					
-			         	<button class="acces-vote" type="button">
-		          			<h4>VOTE 5</h4>
-		          			<p>Élection des représentants</p>
-						</button>
-					</a>
-	          		<img class="statut-vote" src="./images/padlock.png" alt="statut du vote">
-		     	</div>
+		     		<div>
+				        <a href="/choixE/vote/<%= vote[4]._id %>">					
+				         	<button class="acces-vote" type="button">
+			          			<h4>VOTE 5</h4>
+			          			<p>Élection des représentants</p>
+							</button>
+						</a>
+							<% if(vote[4].statut === "on"){ %>
+		          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
+							<% } else { %>
+		          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
+							<% } %>
+					</div>
+			   	</div>
 		     </div>
        	</section>
     </div>

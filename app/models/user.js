@@ -7,45 +7,12 @@ var userSchema = mongoose.Schema({
 	syndicat: String,
 	email: String,
 	nbMandat : Number,
-	vote : [
-			{
-				_idVote : Object,
-				pour : Number,
-				contre : Number,
-				voteCreated : Date
-			},
-			{
-				_idVote : Object,
-				pour : Number,
-				contre : Number,
-				voteCreated : Date
-			},
-			{
-				_idVote : Object,
-				pour : Number,
-				contre : Number,
-				voteCreated : Date
-			},
-			{
-				_idVote : Object,
-				pour : Number,
-				contre : Number,
-				voteCreated : Date
-			},
-			{
-				_idVote : Object,
-				voteCreated : Date,
-				choix:[{Number}]
-
-			}
-		],
+	vote : [ mongoose.Schema.Types.Mixed ],
 	created_date: Date,
 	updated_date: Date,
 	active_hash: String,
 	password: { type: String, required: true },
-	role: {type:String, default: "user"},
-	//isAdmin: {type:Boolean, default: "false"}
-	
+	role: {type:String, default: "user"},	
 });
 
 //generating a hash
