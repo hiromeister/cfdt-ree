@@ -32,6 +32,12 @@ var userSchema = mongoose.Schema({
 				contre : Number,
 				voteCreated : Date
 			},
+			{
+				_idVote : Object,
+				voteCreated : Date,
+				choix:[{Number}]
+
+			}
 		],
 	created_date: Date,
 	updated_date: Date,

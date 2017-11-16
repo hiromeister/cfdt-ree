@@ -16,8 +16,9 @@ class voteController {
     };
 
     list(req, res){
+       
         Vote.find({}, function(err, vote){
-            res.render('admin/listVotes', {vote: vote});
+            res.render('admin/listVotes', {vote: vote });
         })
     }
 
