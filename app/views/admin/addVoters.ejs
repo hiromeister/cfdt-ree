@@ -165,14 +165,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Mot de passe</label>
-                                                <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+                                                <input type="password" name="password" class="form-control" placeholder="Mot de passe" id="password">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Confirmation de mot de passe</label>
-                                                <input type="password" class="form-control" placeholder="Confirmation mot de passe">
+                                                <input type="password" class="form-control" placeholder="Confirmation mot de passe" id="confirmPassword">
                                             </div>
                                         </div>
 
@@ -204,6 +204,28 @@
     </div>
 </div>
 
+<script>
+    
+
+let password = document.getElementById('password');
+let confirmPassword = document.getElementById('confirmPassword');
+
+validatePassword = () =>{
+    if(password.value != confirmPassword.value){
+        confirmPassword.setCustomValidity("Les mots de passe ne sont pas pareil");
+    } else{
+        confirmPassword.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirmPassword.onkeyup = validatePassword;
+
+
+
+
+
+</script>
 
 </body>
 
