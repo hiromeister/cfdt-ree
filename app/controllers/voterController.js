@@ -99,7 +99,7 @@ class voterController {
     }     
 
     avoter(req,res){
-
+        
         console.log("avoter : Req body 'pour' : " + req.body.reponseOne);
         console.log("avoter : Req body : " + req.body);
         console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);

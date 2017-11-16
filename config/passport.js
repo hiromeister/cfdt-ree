@@ -129,7 +129,8 @@ module.exports = function(passport) {
     },
     function(req, email, password, done) { // callback with email and password from our form
 
-    	
+    	// if (req.body.email == 'jean')
+           // return done(null, false, req.flash('error', 'balek'));
     	
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
