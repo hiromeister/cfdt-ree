@@ -88,46 +88,44 @@ class voterController {
         console.log(req.body.choix);
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
-                if(votefiltered._id == req.params.id){
-                    res.render('voter/confirmationE', {
-                        user: req.user,
-                        vote: votefiltered,
-                        choix: req.body.choix,
-                    });
-                }
+                res.render('voter/confirmationE', {
+                    user: req.user,
+                    vote: votefiltered,
+                    choix: req.body.choix,
+                });
             });
         });         
     }     
 
     avoter(req,res){
 
-        console.log("avoter : Req body 'pour' : " + req.body.reponseOne);
-        console.log("avoter : Req body : " + req.body);
-        console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);
-        console.log("avoter : Req user 'pour' : " + req.user.vote[0].pour);
-        console.log("avoter : Req user 'contre' : " + req.user.vote[0].contre);
-
-        // user.findByIdAndUpdate(req.params.id,{
-        //     $set : {
-        //         pour : req.body.pour,
-        //         contre : req.body.contre 
-        //     },
-        // });
-  
+        //Récupérer tous les votes
         Vote.find({}, function (err, votes){
+
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
-                    let votant = req.user;
-                    console.log(votant)
-                    votant.update({}, { pour : req.body.reponseOne }, function(error) {
+                    //récupérer l'utilisateur connecté
+                    let userLogged = req.user;
+                    
+                    
+                    //Récupérer les votes de l'utilisateur connecté
+                    User.findOne({_id:userLogged._id}, function(err, currentVotant){
+
+                        let currentUserVotes = currentVotant.vote;
+                        //Ajouter le nouveau vote aux votes précédemment enregistré 
+                        currentUserVotes.push({idVote:req.params.id, choix: req.body.choix});
+                        
+                        //Sauvegarder le vote en écrant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                        User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                            if (err) return handleError(err);
+    
+                        });
                     });
-                    votant.update({}, { contre : req.body.reponseTwo }, function(error) {
-                    });
+              
                     res.render('voter/avoter', {
                         user: req.user,
                         vote: votefiltered,
-                        reponseOne: req.body.reponseOne,
-                        reponseTwo: req.body.reponseTwo
+                        choix: req.body.choix,
                     });
                 }
             });

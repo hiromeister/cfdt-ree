@@ -19,6 +19,7 @@
 </head>
   <body>
     <div class="container text-center">
+    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -63,9 +64,9 @@
 														<%= i+1 %>
 													</td>												
 													<td class="choice-selected">
-														<h4>
-															<%= choix[i] %>
-														</h4>
+														<input class="input-choice" name="choix[]"
+															value="<%= choix[i] %>"" readonly
+														/>
 													</td>
 												</tr>
 					        				<% } %>

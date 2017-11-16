@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div class="container text-center">
+    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -41,7 +42,7 @@
 		    	</div>
 		    	<div class="col-xs-3 fond-blanc">
 		        	<h4>MANDATS</h4>
-		    		<input type="number" class="text-center nbMandat" min="0" value="<%= user.nbMandat %>" disabled="" />
+		    		<input type="number" class="text-center nbMandat" min="0" value="<%= user.nbMandat %>" readonly />
 		    	</div>
 		    </div>
 	    		<div class="fond-blanc">
@@ -116,36 +117,56 @@
 		let candidat = document.querySelectorAll(".choice-to-select");
 		let tabchoices = document.querySelector('.tab-choices');
 
-		console.log("tabchoices = " + tabchoices.length)
+		function Remy(){
+			// Change le CSS
+			$(this).removeClass('choice-to-select').addClass('choice-unable');
+
+			// Ajout la ROW
+			let tr = document.createElement("tr");
+			$(tr).addClass("tr-choice");
+			tabchoices.append(tr);
+
+			// Ajout des colonnes (input + rang)
+			let tdChoiceSelected = document.createElement("td");
+			let tdRang = document.createElement("td");
+
+			tr.append(tdChoiceSelected);
+			$(tdChoiceSelected).addClass("choice-selected");
+
+			// Ajout INPUT
+			let input = document.createElement("input");
+			$(input).addClass("input-choice");
+			$(input).attr("name");
+			input.name = "choix";
+			$(input).prop("readonly", true);
+
+			tdChoiceSelected.append(input);
+			input.value += this.innerText;
+
+			// Ajout RANG
+			tr.append(tdRang);
+			$(tdRang).addClass("rang-selection");
+
+			let remy = document.querySelectorAll(".choice-selected");
+			// let last = remy.pop()
+			// console.log(last);
+
+			// for(let i = 0; i < remy.length; i++){
+				// tdRang.innerHTML = remy.indexOf(remy.pop());
+			// }
+			$(this).removeEventListener("click");
+
+		};
+
 		for(let i = 0; i < candidat.length; i++){
-			candidat[i].addEventListener("click", (e) => {
-				$(candidat[i]).removeClass('choice-to-select').addClass('choice-unable');
+			candidat[i].addEventListener("click", Remy);
 
-				let tr = document.createElement("tr");
-				$(tr).addClass("tr-choice");
-				tabchoices.append(tr);
-
-				let tdChoiceSelected = document.createElement("td");
-				let tdRang = document.createElement("td");
-
-				tr.append(tdChoiceSelected);
-				$(tdChoiceSelected).addClass("choice-selected");
-
-				let input = document.createElement("input");
-				$(input).addClass("input-choice");
-				$(input).attr("name");
-				input.name = "choix";
-				$(input).prop("readonly", true);
-
-				tdChoiceSelected.append(input);
-				input.value += candidat[i].innerText;
-
-				tr.append(tdRang);
-				$(tdRang).addClass("rang-selection");
-				tdRang.innerHTML = i+1;
-
-			});
 		}
+
+		// let unable = document.querySelectorAll(".choice-unable");
+		// for(let i = 0; i < unable.length; i++){
+		// 	unable[i].removeEventListener("click", Remy);
+		// }		
 
 		let selection = document.querySelectorAll(".input-choice");
 		let tr = document.querySelectorAll('.tr-choice');
@@ -156,6 +177,7 @@
 				tabchoices.removeChild(tr);
 			});
 		}
+
 
 
 		// candidat.addEventListener("click", (e) => {
