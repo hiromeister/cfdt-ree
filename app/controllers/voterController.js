@@ -85,6 +85,7 @@ class voterController {
     } 
 
     confirmationE(req,res){
+        console.log(req.body.choix);
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
