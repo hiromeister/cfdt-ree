@@ -14,10 +14,10 @@ let R2tokeep = 0;
 
 // console.log(confirmationR1);
 // console.log(confirmationR2);
-console.log(R1tokeep);
-console.log(R2tokeep);
-console.log(nbMandat.value);
-console.log(nbMandatMax);
+// console.log(R1tokeep);
+// console.log(R2tokeep);
+// console.log(nbMandat.value);
+// console.log(nbMandatMax);
 
 function AlwaysRight(e){
 	if((R1.value + R2.value + nbMandat.value) >= nbMandatMax){
