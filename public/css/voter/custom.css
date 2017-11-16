@@ -77,6 +77,10 @@ input{
 	margin: 20px auto;
 }
 
+table{
+	margin-top: 30px;
+}
+
 /* HEADER*/
 
 header{
@@ -136,7 +140,7 @@ section{
 
 .titre{
 	height: 74px;
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 }
 
 .statut-vote{
@@ -158,6 +162,61 @@ section{
 	margin: 0px auto 20px auto;
 	width: 100%;
 	border: none;
+}
+
+table{
+	border: 1px solid #eaeaea;
+}
+
+.tab-list{
+	margin-top: 10px;
+}
+
+.list-election{
+	height: 300px !important;
+	overflow-y: auto !important;
+}
+
+th{
+	color: white;
+	text-align: center;
+	background: #e75c21;
+}
+
+td{
+	color: #343434;
+}
+
+.choice-to-select:hover{
+	background: #fcd7ba !important;
+}
+
+.choice-unable{
+	text-decoration: line-through;
+	color: #757575;
+}
+
+.choice-unable:hover{
+ 	background: none;
+}
+
+.choice-selected{
+	color: #757575;
+}
+
+.choice-selected:hover{
+	background: #eaeaea;
+}
+
+.rang{
+	color: white;
+	background: #e75c21;
+	padding-top: 15px !important;	
+}
+
+.rang-selection{
+	color: #757575;
+	padding-top: 15px !important;
 }
 
 /* IMAGE à voté! pour la confirmation */
@@ -198,6 +257,13 @@ input::-o-outer-spin-button {
 
 /* Media query */
 @media screen and (min-width: 318px) and (max-device-width: 800px) {
+	p{
+		font-size: 14px;
+	}
+
+	h4{
+		font-size: 14px;
+	}
 	/* HEADER BANNIERE */
 	.col-inner-header{
     	margin: 0px;
@@ -231,6 +297,10 @@ input::-o-outer-spin-button {
   	.acces-vote{
   		margin-left: 0px;
   		margin-right: 0px;
+  	}
+
+  	.fond-blanc{
+  		padding: 0px;
   	}
 }
 

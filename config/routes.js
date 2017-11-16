@@ -40,8 +40,10 @@ module.exports = function (app, passport) {
     });
 
     app.get('/choix/vote/:id', voterController.loggedIn, voterController.choice);
+    app.get('/choixE/vote/:id', voterController.loggedIn, voterController.choiceE);
     // app.get('/confirmation', voterController.loggedIn, voterController.confirmation);
     app.post('/confirmation/vote/:id', voterController.loggedIn, voterController.confirmation);
+    app.post('/confirmationE/vote/:id', voterController.loggedIn, voterController.confirmationE);
     // app.get('/avoter', voterController.loggedIn, voterController.avoter);
     app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
 

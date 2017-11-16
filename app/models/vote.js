@@ -4,9 +4,7 @@ let VoteSchema = new mongoose.Schema({
     intitule: String,
     type: String,
     statut: String,
-    r1: {type: String, default: "Pour"},
-    r2: {type: String, default: "Contre"}
-
+    choix : [String]
 });
 
 let Vote = mongoose.model("vote", VoteSchema);
