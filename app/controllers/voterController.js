@@ -105,14 +105,8 @@ class voterController {
         console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);
         console.log("avoter : Req user 'pour' : " + req.user.vote[0].pour);
         console.log("avoter : Req user 'contre' : " + req.user.vote[0].contre);
+        
 
-        // user.findByIdAndUpdate(req.params.id,{
-        //     $set : {
-        //         pour : req.body.pour,
-        //         contre : req.body.contre 
-        //     },
-        // });
-  
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){

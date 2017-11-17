@@ -34,9 +34,11 @@ class voteController {
     }
 
     delete(req, res){
-       Vote.remove({_id: req.params.id}, function (err, delData){
-            res.redirect("/liste-votes");
-        });
+        let voteId = req.params._id;
+        Vote.findByIdAndRemove(voteId, function(err){
+            if(err){ throw err}
+            res.redirect('/liste-votes');
+        })
     }
 
 
