@@ -46,6 +46,7 @@ module.exports = function (app, passport) {
     app.post('/confirmationE/vote/:id', voterController.loggedIn, voterController.confirmationE);
     // app.get('/avoter', voterController.loggedIn, voterController.avoter);
     app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
+    app.post('/avoterE/vote/:id', voterController.loggedIn, voterController.avoterE);
 
 
 
