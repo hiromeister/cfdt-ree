@@ -18,7 +18,7 @@ class homeController{
 
 	home(req, res){
 		// Recuperer tous les votes
-		Vote[4].find({}, function (err, election){
+		Vote.find({}, function (err, election){
 
 		    let sumMandat;
 		    // Recuperer tous les users

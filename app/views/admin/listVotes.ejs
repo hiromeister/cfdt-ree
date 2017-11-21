@@ -196,13 +196,17 @@
 
                             </thead>
                              <tbody>
-
-                                <% for(var i=0; i<vote[4].choix.length; i++)  {%>
+                                 
+                                <% for(var i=0; i<vote.length; i++)  {%>
+                                <% if (vote[i].type == 'electoral') { %>
                                 <% let bing = 1; %>
+                                <% for(var j=0; j<vote[i].choix.length; j++)  {%>
                                 <tr>
-                                   <td> <%= i  + 1  %> </td>
-                                   <td> <%= vote[4].choix[i] %> </td>
+                                   <td> <%= j  + 1  %> </td>
+                                   <td> <%= vote[i].choix[j] %> </td>
                                </tr>
+                               <% } %>
+                               <% } %>
                                <% } %>
                            </tbody>
                        </table>
