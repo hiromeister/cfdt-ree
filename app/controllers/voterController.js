@@ -88,22 +88,24 @@ class voterController {
         console.log(req.body.choix);
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
-                res.render('voter/confirmationE', {
-                    user: req.user,
-                    vote: votefiltered,
-                    choix: req.body.choix,
-                });
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/confirmationE', {
+                        user: req.user,
+                        vote: votefiltered,
+                        choix: req.body.choix,
+                    });
+                }
             });
         });         
     }     
 
     avoter(req,res){
-
         //Récupérer tous les votes
         Vote.find({}, function (err, votes){
 
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
+
                     //récupérer l'utilisateur connecté
                     let userLogged = req.user;
                     let date = Date();
@@ -118,7 +120,8 @@ class voterController {
                         
                         //Sauvegarder le vote en écrasannt le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
                         User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                            if (err) return handleError(err);
+                                if (err) return handleError(err);
+                            
                         });
                     });
               
@@ -140,6 +143,7 @@ class voterController {
 
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
+
                     //récupérer l'utilisateur connecté
                     let userLogged = req.user;
                     let date = Date();                    
@@ -151,10 +155,10 @@ class voterController {
                         //Ajouter le nouveau vote aux votes précédemment enregistré 
                         currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
                         
-                        //Sauvegarder le vote en écrant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                        //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
                         User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                            if (err) return handleError(err);
-    
+                                if (err) return handleError(err);
+                            
                         });
                     });
               

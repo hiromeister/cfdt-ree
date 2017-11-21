@@ -4,7 +4,7 @@ let VoteSchema = new mongoose.Schema({
     intitule: String,
     type: String,
     statut: String,
-    choix: [String]
+    choix: [mongoose.Schema.Types.Mixed]
         
 
 });
