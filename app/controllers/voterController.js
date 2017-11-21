@@ -85,10 +85,80 @@ class voterController {
     } 
 
     confirmationE(req,res){
+        console.log(req.body.choix);
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
+                res.render('voter/confirmationE', {
+                    user: req.user,
+                    vote: votefiltered,
+                    choix: req.body.choix,
+                });
+            });
+        });         
+    }     
+
+    avoter(req,res){
+
+        //Récupérer tous les votes
+        Vote.find({}, function (err, votes){
+
+            votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
-                    res.render('voter/confirmationE', {
+                    //récupérer l'utilisateur connecté
+                    let userLogged = req.user;
+                    let date = Date();
+                    
+                    
+                    //Récupérer les votes de l'utilisateur connecté
+                    User.findOne({_id:userLogged._id}, function(err, currentVotant){
+
+                        let currentUserVotes = currentVotant.vote;
+                        //Ajouter le nouveau vote aux votes précédemment enregistré 
+                        currentUserVotes.push({idVote:req.params.id, pour: req.body.pour, contre: req.body.contre, createdAt: date});
+                        
+                        //Sauvegarder le vote en écrasannt le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                        User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                            if (err) return handleError(err);
+                        });
+                    });
+              
+                    res.render('voter/avoter', {
+                        user: req.user,
+                        vote: votefiltered,
+                        pour: req.body.pour,
+                        contre: req.body.contre
+                    });
+                }
+            });
+        });         
+    }
+
+    avoterE(req,res){
+
+        //Récupérer tous les votes
+        Vote.find({}, function (err, votes){
+
+            votes.filter((votefiltered) => {
+                if(votefiltered._id == req.params.id){
+                    //récupérer l'utilisateur connecté
+                    let userLogged = req.user;
+                    let date = Date();                    
+                    
+                    //Récupérer les votes de l'utilisateur connecté
+                    User.findOne({_id:userLogged._id}, function(err, currentVotant){
+
+                        let currentUserVotes = currentVotant.vote;
+                        //Ajouter le nouveau vote aux votes précédemment enregistré 
+                        currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
+                        
+                        //Sauvegarder le vote en écrant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                        User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                            if (err) return handleError(err);
+    
+                        });
+                    });
+              
+                    res.render('voter/avoter', {
                         user: req.user,
                         vote: votefiltered,
                         choix: req.body.choix,
@@ -96,36 +166,7 @@ class voterController {
                 }
             });
         });         
-    }     
-
-    avoter(req,res){
-
-        console.log("avoter : Req body 'pour' : " + req.body.reponseOne);
-        console.log("avoter : Req body : " + req.body);
-        console.log("avoter : Req body 'contre' : " + req.body.reponseTwo);
-        console.log("avoter : Req user 'pour' : " + req.user.vote[0].pour);
-        console.log("avoter : Req user 'contre' : " + req.user.vote[0].contre);
-        
-
-        Vote.find({}, function (err, votes){
-            votes.filter((votefiltered) => {
-                if(votefiltered._id == req.params.id){
-                    let votant = req.user;
-                    console.log(votant)
-                    votant.update({}, { pour : req.body.reponseOne }, function(error) {
-                    });
-                    votant.update({}, { contre : req.body.reponseTwo }, function(error) {
-                    });
-                    res.render('voter/avoter', {
-                        user: req.user,
-                        vote: votefiltered,
-                        reponseOne: req.body.reponseOne,
-                        reponseTwo: req.body.reponseTwo
-                    });
-                }
-            });
-        });         
-    }
+    }    
 }
 
 module.exports = new voterController();

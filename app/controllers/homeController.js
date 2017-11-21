@@ -17,11 +17,10 @@ class homeController{
 	}
 
 	home(req, res){
-		res.render('admin/dashboard.ejs', {
-			error : req.flash("error"),
-			success: req.flash("success"), 
-			session:req.session,
-		});
+		
+		User.find({}, function (err, dataVotant){
+			res.render('admin/dashboard.ejs', {dataVotant: dataVotant});
+		})
 	}
 
 	signup(req, res){
@@ -49,6 +48,9 @@ class homeController{
 		req.logout();
 		res.redirect('/');
 	}
+	
+
+	
 }
 
 module.exports = new homeController();

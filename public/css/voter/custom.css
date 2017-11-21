@@ -164,12 +164,16 @@ section{
 	border: none;
 }
 
+.tab-selection{
+	margin-bottom: 30px;
+}
+
 table{
 	border: 1px solid #eaeaea;
 }
 
 .tab-list{
-	margin-top: 10px;
+	margin: 0px;
 }
 
 .list-election{
@@ -187,25 +191,34 @@ td{
 	color: #343434;
 }
 
+.choice-to-select{
+	color: #aaa;
+}
+
 .choice-to-select:hover{
 	background: #fcd7ba !important;
 }
 
 .choice-unable{
-	text-decoration: line-through;
-	color: #757575;
+	color: #343434;
 }
 
 .choice-unable:hover{
  	background: none;
 }
 
-.choice-selected{
-	color: #757575;
-}
-
 .choice-selected:hover{
 	background: #eaeaea;
+}
+
+.input-choice{
+	font-size: 18px;
+	font-weight: bold;
+	border: none;
+	background: none;
+	width: 100%;
+	text-align: center;
+	margin: 10px auto;
 }
 
 .rang{

@@ -19,6 +19,7 @@
 </head>
   <body>
     <div class="container text-center">
+    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -43,13 +44,12 @@
 		    	</h4>
 		    </div>
 			<div class="fond-gris">
-	    		<form action="/avoter/vote/<%= vote._id %>" method="post">
+	    		<form action="/avoterE/vote/<%= vote._id %>" method="post">
 					<h2>Confirmation de votre choix</h2>
 				    <div class="row ">
 				        <div class="col-xs-12 proposition">
 				        	<div class="row">
 				        		<div class="col-xs-0 col-md-3 reponse"></div>
-
 				        		<div class="col-xs-12 col-md-6 reponse">
 				        			<table class="table table-striped table-responsive">
 				        				<tr>
@@ -58,15 +58,15 @@
 				        			</table>
 				        			<div class="text-center">
 					        			<table class="table table-striped table-responsive">
-							        		<% for (let i = 0; i < user.vote[4].choix.length; i++){ %>
+							        		<% for (let i = 0; i < choix.length; i++){ %>
 												<tr>
-													<td class="choice-selected">
-														<h4>
-															<%= user.vote[4].choix[i] %>
-														</h4>
-													</td>
 													<td class="rang-selection">
 														<%= i+1 %>
+													</td>												
+													<td class="choice-selected">
+														<input class="input-choice" name="choix[]"
+															value="<%= choix[i] %>"" readonly
+														/>
 													</td>
 												</tr>
 					        				<% } %>

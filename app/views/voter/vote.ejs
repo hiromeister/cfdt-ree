@@ -14,6 +14,7 @@
 </head>
 <body>
     <div class="container text-center">
+    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -48,7 +49,7 @@
 		     </div>
 
 		    <div class="row">
-		        <div class="col-lg-6 alaligne">
+		        <div class="col-sm-6">
 		        	<div>
 			        	<a href="/choix/vote/<%= vote[0]._id %>">					
 				         	<button class="acces-vote" type="button">
@@ -129,7 +130,7 @@
 				        <a href="/choixE/vote/<%= vote[4]._id %>">					
 				         	<button class="acces-vote" type="button">
 			          			<h4>VOTE 5</h4>
-			          			<p>Élection des représentants</p>
+			          			<p><%= vote[4].intitule.toUpperCase() %></p>
 							</button>
 						</a>
 							<% if(vote[4].statut === "on"){ %>

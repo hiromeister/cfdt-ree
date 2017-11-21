@@ -1,6 +1,7 @@
 let homeController = require('../app/controllers/homeController');
 let voteController = require('../app/controllers/voteController');
 let voterController= require('../app/controllers/voterController');
+
 const permissions = require('./permissions')
 
 module.exports = function (app, passport) {
@@ -8,6 +9,7 @@ module.exports = function (app, passport) {
     app.get('/login', homeController.login);
     app.get('/',permissions.can('access admin page'),homeController.loggedIn, homeController.login);
     app.get('/logout', homeController.logout);
+        app.get('/home',permissions.can('access admin page'), homeController.loggedIn, homeController.home);
 
 
     /* ********** ADMIN ********** */
@@ -45,6 +47,7 @@ module.exports = function (app, passport) {
     app.post('/confirmationE/vote/:id', voterController.loggedIn, voterController.confirmationE);
     // app.get('/avoter', voterController.loggedIn, voterController.avoter);
     app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
+    app.post('/avoterE/vote/:id', voterController.loggedIn, voterController.avoterE);
 
 
 
@@ -56,6 +59,7 @@ module.exports = function (app, passport) {
     }));
 
     app.post('/login', passport.authenticate('local-login', {
+         successFlash: 'Welcome!',
         successRedirect: '/home',
         failureRedirect: '/login', 
         failureFlash: true 
