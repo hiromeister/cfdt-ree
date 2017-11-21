@@ -663,6 +663,7 @@ fieldset[disabled] .btn-primary.active {
 .btn-success {
     border-color: #87CB16;
     color: #87CB16;
+    background-color: rgba(135, 203, 22,0.2) ;
 }
 
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active,
@@ -3894,6 +3895,3 @@ div.toggle.btn.btn-xs.btn-primary{
 }
 
 
-i.fa.fa-circle{
-    color:#87CB16;
-}
