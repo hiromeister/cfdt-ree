@@ -19,6 +19,7 @@ class voteController {
        
         Vote.find({}, function(err, vote){
             res.render('admin/listVotes', {vote: vote });
+            
         })
     }
 
