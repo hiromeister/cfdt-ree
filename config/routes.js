@@ -20,7 +20,7 @@ module.exports = function (app, passport) {
     app.get('/ajouter-votants',permissions.can('access admin page'), voterController.loggedIn, voterController.add);
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
-   
+
     
 
 
@@ -28,8 +28,8 @@ module.exports = function (app, passport) {
     app.get('/creer-vote', permissions.can('access admin page'),voteController.loggedIn, voteController.add);
     app.get('/liste-votes',permissions.can('access admin page'), voteController.loggedIn, voteController.list);
     app.post('/addvote', permissions.can('access admin page'),voteController.loggedIn, voteController.post);
-    app.get('/supprimer/vote/:id', permissions.can('access admin page'), voteController.loggedIn, voteController.delete);
-
+    app.get('/supprimer/:id', permissions.can('access admin page'), voteController.loggedIn, voteController.delete);
+    app.get('/status/:id',permissions.can('access admin page'),voteController.loggedIn,voteController.on);
     /* ********** VOTANT ********** */
 
     // VOTANT routes acceuil
