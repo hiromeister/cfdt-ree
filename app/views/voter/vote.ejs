@@ -23,7 +23,9 @@
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+		    			<h1>XVIIème CONGRES
+		    				<br/>
+		    				UIR-CFDT</h1>    				
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
@@ -34,7 +36,7 @@
     	</header>
     	<section>
     		<div id="bienvenue">
-	    		<p><span class="color-orange">M.
+	    		<p><span class="color-orange">Mme./M.
     					<%= user.nom %>
     					<%= user.prenom %>
     			</span>,
@@ -49,7 +51,7 @@
 		     </div>
 
 		    <div class="row">
-		        <div class="col-sm-6">
+		        <div class="col-md-6">
 		        	<div>
 						<% if(vote[0].statut === true){ %>
 							<% let vote1visited = user.vote.filter( function(element){ %>
@@ -118,7 +120,7 @@
 					</div>
 		        </div>
 
-		        <div class="col-lg-6">
+		        <div class="col-md-6">
 		        	<div>
 						<% if(vote[2].statut === true){ %>
 							<% let vote3visited = user.vote.filter( function(element){ %>

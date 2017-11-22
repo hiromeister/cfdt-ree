@@ -5,6 +5,7 @@ var userSchema = mongoose.Schema({
 	nom: String,
 	prenom: String,
 	syndicat: String,
+    statut: {type:Boolean, default:false},
 	email: String,
 	nbMandat : Number,
 	vote : [ mongoose.Schema.Types.Mixed ],
