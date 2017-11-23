@@ -2,8 +2,10 @@ const numeral = require('numeral');
 const bcrypt = require('bcrypt-nodejs');
 const dateFormat = require('dateformat');
 const Vote = require('../models/vote');
+const User = require('../models/user');
 
 class voteController {
+
 
     loggedIn(req, res , next){
 

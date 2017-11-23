@@ -7,6 +7,7 @@ const permissions = require('../../config/permissions');
 var User = require('../models/user.js')
 var Vote = require('../models/vote.js')
 
+const request = require('request');
 
 class homeController{
 
@@ -52,13 +53,22 @@ class homeController{
   //       	});
     	// });
 
-		res.render('admin/dashboard.ejs', {
-			error : req.flash("error"),
-			success: req.flash("success"), 
-			session:req.session,
-		});
-	}
+	
+	
 
+		Vote.find({}, function (err, dataVotant){
+			res.render('admin/dashboard.ejs', {
+				error : req.flash("error"),
+				success: req.flash("success"), 
+				session:req.session,
+			});
+		})
+	}
+				
+		
+	
+
+	
 	signup(req, res){
 
 		if (req.session.user) {
@@ -84,6 +94,22 @@ class homeController{
 		req.logout();
 		res.redirect('/');
 	}
+
+	localApi(req, res){
+		let sortVote = User.find({}).select('vote');
+		sortVote.exec(function(err, users){
+			if(err){throw err}
+			else{  return res.json(users) }
+		})
+	}
+		
+
+		
+	
+
+
+
+	
 }
 
 module.exports = new homeController();
