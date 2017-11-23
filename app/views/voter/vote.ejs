@@ -23,7 +23,9 @@
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+		    			<h1>XVIIème CONGRES
+		    				<br/>
+		    				UIR-CFDT</h1>    				
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
@@ -34,7 +36,7 @@
     	</header>
     	<section>
     		<div id="bienvenue">
-	    		<p><span class="color-orange">M.
+	    		<p><span class="color-orange">Mme./M.
     					<%= user.nom %>
     					<%= user.prenom %>
     			</span>,
@@ -49,17 +51,35 @@
 		     </div>
 
 		    <div class="row">
-		        <div class="col-sm-6">
+		        <div class="col-md-6">
 		        	<div>
-			        	<a href="/choix/vote/<%= vote[0]._id %>">					
-				         	<button class="acces-vote" type="button">
+						<% if(vote[0].statut === true){ %>
+							<% let vote1visited = user.vote.filter( function(element){ %>
+								<% if(element.idVote == vote[0]._id){ %>
+									<% return element%>
+								<% } %>
+							<% }) %>
+							<% if(vote1visited == 0){ %>
+								<a href="/choix/vote/<%= vote[0]._id %>">
+				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
+							<% } else {%>
+								<a href="/homeVoter">
+				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button">
+								<% console.log("Vous avez déjà voté.")%>								
+							<% } %>
+						<% } else {%>
+							<% console.log("Le vote 1 est fermé.")%>
+							<a href="/homeVoter">
+			         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
+
+						<% } %>
 			          			<h4>VOTE 1</h4>
 			          			<p>
 			        				<%= vote[0].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[0].statut === "on"){ %>
+						<% if(vote[0].statut === true){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -67,15 +87,32 @@
 					</div>
 					
 					<div>
-			        	<a href="/choix/vote/<%= vote[1]._id %>">					
-				         	<button class="acces-vote" type="button">
+						<% if(vote[1].statut === true){ %>
+							<% let vote2visited = user.vote.filter( function(element){ %>
+								<% if(element.idVote == vote[1]._id){ %>
+									<% return element%>
+								<% } %>
+							<% }) %>
+							<% if(vote2visited == 0){ %>
+								<a href="/choix/vote/<%= vote[1]._id %>">
+				         		<button class="acces-vote" id="<%= vote[1]._id %>" type="button">
+							<% } else {%>
+								<a href="/homeVoter">
+				         		<button class="unable-vote" id="<%= vote[1]._id %>" type="button">
+								<% console.log("Vous avez déjà voté.")%>								
+							<% } %>
+						<% } else {%>
+							<% console.log("Le vote 2 est fermé.")%>
+							<a href="/homeVoter">
+			         		<button class="acces-vote" id="<%= vote[1]._id %>" type="button">
+						<% } %>
 			          			<h4>VOTE 2</h4>
 			          			<p>
 			        				<%= vote[1].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[1].statut === "on"){ %>
+						<% if(vote[1].statut === true){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -83,17 +120,34 @@
 					</div>
 		        </div>
 
-		        <div class="col-lg-6">
+		        <div class="col-md-6">
 		        	<div>
-			        	<a href="/choix/vote/<%= vote[2]._id %>">					
-				         	<button class="acces-vote" type="button">
+						<% if(vote[2].statut === true){ %>
+							<% let vote3visited = user.vote.filter( function(element){ %>
+								<% if(element.idVote == vote[2]._id){ %>
+									<% return element%>
+								<% } %>
+							<% }) %>
+							<% if(vote3visited == 0){ %>
+								<a href="/choix/vote/<%= vote[2]._id %>">
+				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
+							<% } else {%>
+								<a href="/homeVoter">
+				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button">
+								<% console.log("Vous avez déjà voté.")%>								
+							<% } %>
+						<% } else {%>
+							<% console.log("Le vote 3 est fermé.")%>
+							<a href="/homeVoter">
+			         		<button class="acces-vote" id="<%= vote[2]._id %>" type="button">
+						<% } %>
 			          			<h4>VOTE 3</h4>
 			          			<p>
 			        				<%= vote[2].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[2].statut === "on"){ %>
+						<% if(vote[2].statut === true){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -101,15 +155,32 @@
 					</div>
 
 		        	<div>
-			        	<a href="/choix/vote/<%= vote[3]._id %>">					
-				         	<button class="acces-vote" type="button">
+						<% if(vote[3].statut === true){ %>
+							<% let vote4visited = user.vote.filter( function(element){ %>
+								<% if(element.idVote == vote[3]._id){ %>
+									<% return element%>
+								<% } %>
+							<% }) %>
+							<% if(vote4visited == 0){ %>
+								<a href="/choix/vote/<%= vote[3]._id %>">
+				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
+							<% } else {%>
+								<a href="/homeVoter">
+				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button">
+								<% console.log("Vous avez déjà voté.")%>								
+							<% } %>
+						<% } else {%>
+							<% console.log("Le vote 4 est fermé.")%>
+							<a href="/homeVoter">
+			         		<button class="acces-vote" id="<%= vote[3]._id %>" type="button">
+						<% } %>
 			          			<h4>VOTE 4</h4>
 			          			<p>
 			        				<%= vote[3].intitule.toUpperCase() %>
 			          			</p>
 							</button>
 						</a>
-						<% if(vote[3].statut === "on"){ %>
+						<% if(vote[3].statut === true){ %>
 	          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 						<% } else { %>
 	          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">
@@ -127,13 +198,30 @@
 		     <div class="row">
 		     	<div class="col-lg-12">
 		     		<div>
-				        <a href="/choixE/vote/<%= vote[4]._id %>">					
-				         	<button class="acces-vote" type="button">
+						<% if(vote[4].statut === true){ %>
+							<% let vote5visited = user.vote.filter( function(element){ %>
+								<% if(element.idVote == vote[4]._id){ %>
+									<% return element%>
+								<% } %>
+							<% }) %>
+							<% if(vote5visited == 0){ %>
+								<a href="/choixE/vote/<%= vote[4]._id %>">
+					         	<button class="acces-vote" id="<%= vote[4]._id %>" type="button">
+							<% } else {%>
+								<a href="/homeVoter">
+					         	<button class="unable-vote" id="<%= vote[4]._id %>" type="button">
+								<% console.log("Vous avez déjà voté.")%>								
+							<% } %>
+						<% } else {%>
+							<% console.log("Le vote 5 est fermé.")%>
+							<a href="/homeVoter">
+			         		<button class="acces-vote" id="<%= vote[4]._id %>" type="button">
+						<% } %>
 			          			<h4>VOTE 5</h4>
 			          			<p><%= vote[4].intitule.toUpperCase() %></p>
 							</button>
 						</a>
-							<% if(vote[4].statut === "on"){ %>
+							<% if(vote[4].statut === true){ %>
 		          				<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert">
 							<% } else { %>
 		          				<img class="statut-vote" src="./images/padlock.png" alt="Vote fermé">

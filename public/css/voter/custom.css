@@ -155,6 +155,23 @@ section{
 	width: 250px;
 }
 
+/* VOTE MENU*/
+
+.unable-vote{
+	background: url("./../../images/bg-header.png") repeat;	
+	color: #343434;
+}
+
+.unable-vote:hover{
+	background: url("./../../images/bg-header.png") repeat;	
+	color: #343434;
+    border-top: 1px #eaeaea solid;
+    border-left: 1px #eaeaea solid;
+    border-bottom: #eaeaea solid;
+    border-right: #eaeaea solid;
+    cursor: default;
+}
+
 /* CHOIX.EJS*/
 .nbMandat{
 	font-size: 20px;
@@ -191,6 +208,14 @@ td{
 	color: #343434;
 }
 
+.tr-choice{
+	border: 1px #ddd solid;
+}
+
+.choice-to-select, .choice-unable, .choice-selected{
+	padding: 0px !important;
+}
+
 .choice-to-select{
 	color: #aaa;
 }
@@ -211,14 +236,16 @@ td{
 	background: #eaeaea;
 }
 
-.input-choice{
+.input-choice, .input-list{
 	font-size: 18px;
 	font-weight: bold;
 	border: none;
 	background: none;
 	width: 100%;
+	height: 50px;
 	text-align: center;
-	margin: 10px auto;
+	margin: 0px auto;
+	padding: 10px;
 }
 
 .rang{
