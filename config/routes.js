@@ -4,13 +4,27 @@ let voterController= require('../app/controllers/voterController');
 
 const permissions = require('./permissions')
 
+const request = require('request');
+
+var User = require('../app/models/user.js')
+
+
 module.exports = function (app, passport) {
 
     app.get('/login', homeController.login);
     app.get('/',permissions.can('access admin page'),homeController.loggedIn, homeController.login);
     app.get('/logout', homeController.logout);
-        app.get('/home',permissions.can('access admin page'), homeController.loggedIn, homeController.home);
+    app.get('/home',permissions.can('access admin page'), homeController.loggedIn, homeController.home);
 
+    //LOCAL API
+
+
+    app.get('/api/stats', homeController.localApi);
+    
+      
+
+   
+   
 
     /* ********** ADMIN ********** */
     

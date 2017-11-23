@@ -23,7 +23,7 @@
     "http-proxy": "latest",
     "md5": "latest",
     "mime": "latest",
-    "mongoose": "latest",
+    "mongoose": "^4.13.4",
     "morgan": "~1.6.1",
     "multer": "latest",
     "mysql": "latest",
@@ -35,7 +35,7 @@
     "passport": "latest",
     "passport-local": "latest",
     "pm2": "latest",
-    "request": "latest",
+    "request": "^2.83.0",
     "serve-favicon": "~2.3.0",
     "simple-encryptor": "latest",
     "underscore": "latest"
