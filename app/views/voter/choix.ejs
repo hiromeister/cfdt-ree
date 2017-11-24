@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -23,7 +24,9 @@
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+		    			<h1>XVIIème CONGRES
+		    				<br/>
+		    				UIR-CFDT</h1>    				
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
@@ -58,7 +61,7 @@
 					        	</div>
 							    <div class="row">
 			    			        <div class="col-lg-12">
-			    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" min="0" max="<%= user.nbMandat %>" value="" />
+			    			        	<input type="number" name="pour" placeholder="0" class="text-center reponse1" min="0" max="<%= user.nbMandat %>" value="" />
 			    			        </div>
 								</div>
 					        </div>
@@ -73,16 +76,17 @@
 					        	</div>
 							    <div class="row">
 			    			        <div class="col-lg-12">
-			    			        	<input type="number" name="contre" placeholder="0" class="text-center R2" min="0" max="<%= user.nbMandat %>" value="" />
+			    			        	<input type="number" name="contre" placeholder="0" class="text-center reponse2" min="0" max="<%= user.nbMandat %>" value="" />
 			    			        </div>
 								</div>
 					        </div>
 						</div>
 					    <div class="row">
 					     	<div class="col-lg-12">
-				         		<button type="submit" class="valider-choix">
+				         		<button type="submit" class="valider-choix-unable" onclick= submit() disabled>
 						         	<h4>Valider</h4>
 								</button>
+								
 					     	</div>
 					    </div>
 					</form>
@@ -98,17 +102,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-	<script type="text/javascript" src="./../../js/voter.js" ></script>
 	<script type="text/javascript">
-		// document.onkeydown = function (event) {
-		//     event = event || window.event;
-		//     if (event.keyCode == 38 ) {
-		//     	console.log("OK HAUT");
-		//     } else if (event.keyCode == 40) {
-		//     	console.log("OK BAS");
-		//     }
-		// }
-
+		// DOM : Récupérer l'emplacement du nombre de mandat
+		let nbMandat = document.querySelector(".nbMandat");
+		// Sauvegarder le  nombre de mandats de début dans une constante afin de simplifier les manipulations
+		const nbMandatMax = parseInt(nbMandat.value);
+		// DOM : Récupérer les emplacement des inputs pour la Réponse 1 et 2 et bouton submit
+		let reponse1 = document.querySelector(".reponse1");
+		let reponse2 = document.querySelector(".reponse2");
+		let toSubmit = document.querySelector(".valider-choix-unable");
+		function repartitionAuto(elementClique, autre){
+			if(parseInt(elementClique.value) <= nbMandatMax){
+				nbMandat.value = nbMandatMax;
+				autre.value = parseInt(nbMandat.value - elementClique.value);
+				nbMandat.value = 0;
+				$(toSubmit).prop('disabled', false);
+				$(toSubmit).removeClass('valider-choix-unable').addClass('valider-choix');
+			} else {
+				elementClique.value = null;
+				autre.value = null;
+				nbMandat.value = nbMandatMax;
+				alert("Vous avez inscrit plus que vos mandats disponibles ou vous ne les avez pas tous épuisés.");
+				$(toSubmit).removeClass('valider-choix').addClass('valider-choix-unable');				
+				$(toSubmit).prop('disabled', true);
+			}
+		};
+		// Input de gauche : Ajout d'un évènement à chaque changement de valeur 
+		reponse1.addEventListener("change", () => {repartitionAuto(reponse1, reponse2);});
+		// Input de droite : Ajout d'un évènement à chaque changement de valeur 
+		reponse2.addEventListener("change", () => {repartitionAuto(reponse2, reponse1);});
 	</script>
 </body>
 </html>

@@ -19,7 +19,7 @@ class homeController{
 	home(req, res){
 		// Recuperer tous les votes
 
-		Vote.find({}, function (err, election){
+		//Vote.find({}, function (err, election){
 
 		// Vote.find({}, function (err, election){
 
