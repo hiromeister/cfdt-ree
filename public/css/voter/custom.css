@@ -18,6 +18,75 @@ body{
 	margin-top: 20px; 
 }
 
+nav{
+}
+
+/* Form Progress */
+.progress {
+  height: 70px;
+  margin: 5px auto;
+  padding-top: 10px;
+  text-align: center;
+  background: #fff;
+}
+.progress .circle{
+  display: inline-block;
+  width: 40px; height: 40px;
+  border-radius: 40px;
+}
+
+.progress .bar {
+  display: inline-block;
+  width: 40px; height: 40px;
+  border-radius: 40px;
+}
+
+.progress .bar {
+  position: relative;
+  width: 80px;
+  height: 6px;
+  top: -33px;
+  margin-left: -5px;
+  margin-right: -5px;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+.progress .circle .label {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 32px;
+  margin-top: 3px;
+  font-size: 17px;
+}
+.label{
+	padding: 0px;
+}
+
+#nav-title-confirmation{
+	margin-left: -25px;
+}
+.progress .circle .nav-title {
+  color: #b5b5ba;
+  font-size: 13px;
+  line-height: 30px;
+  margin-left: -5px;
+}
+
+.done{
+	background: #e75c21;
+	color: #fff;
+	border: 1px solid #e75c21;
+}
+
+.wait{
+	background: #fff;
+	color: #b5b5ba;	
+	border: 1px solid #b5b5ba;
+}
+
 h1, h4{
 	font-weight: bold;
 }
@@ -205,10 +274,23 @@ section{
 	border: none;
 }
 
-.tab-selection{
-/*	margin-bottom: 30px;
-*/}
+.reponse1, .reponse2{
+	height: 50px;
+	font-size: 20px;
+}
 
+.reponse-confirmation{
+	border: 0px white solid;
+	color: #e75c21;
+	font-size: 30px;
+}
+
+.tab-selection{
+}
+
+#compteur{
+	font-size: 20px;
+}
 table{
 	border: 1px solid #eaeaea;
 }
@@ -241,16 +323,24 @@ td{
 	padding: 0px !important;
 }
 
-.choice-to-select{
+.choice-to-select, .choice-unable{
+	font-weight: bold;
+	padding-top: 15px !important;
+	height: 50px;
+}
+
+.choice-to-select a{
 	color: #aaa;
+	text-decoration: none;
 }
 
 .choice-to-select:hover{
 	background: #fcd7ba !important;
 }
 
-.choice-unable{
+.choice-unable a{
 	color: #e75c21;
+	text-decoration: none;
 }
 
 .choice-unable:hover{
@@ -261,7 +351,7 @@ td{
 	background: #eaeaea;
 }
 
-.input-choice, .input-list{
+.input-choice{
 	font-size: 14px;
 	font-weight: bold;
 	border: none;
@@ -331,10 +421,15 @@ input::-o-outer-spin-button {
 @media screen and (min-width: 318px) and (max-device-width: 800px) {
 	p{
 		font-size: 12px;
+		margin-bottom: 0px;
 	}
 
 	h4{
 		font-size: 14px;
+	}
+
+	h2{
+		font-size: 20px;
 	}
 	/* HEADER BANNIERE */
 	.col-inner-header{
@@ -364,8 +459,13 @@ input::-o-outer-spin-button {
   		margin-top: 20px;
   		margin-bottom: 20px;
    	}
+
+   	.bar{
+   		width: 50px !important;
+   	}
+
 	.statut-vote{
-		margin-top: 0px;
+		margin-top: 2px;
 	}
 
 	/* RANG*/
@@ -378,8 +478,10 @@ input::-o-outer-spin-button {
 		font-size: 13px;
 	}
 
+	
+
 	/* BOUTON */
-  	.acces-vote, .acces-vote-unable{
+  	.acces-vote, .acces-vote:hover, .acces-vote-unable, .acces-vote-unable:hover, .unable-vote, .unable-vote:hover{
   		margin-left: 0px;
   		margin-right: 0px;
 		margin-bottom: 0px;

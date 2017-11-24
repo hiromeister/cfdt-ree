@@ -14,7 +14,14 @@
 </head>
 <body>
 	<div class="container text-center">
-    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+		<div class="row">
+			<div class="col-xs-6">
+				<p style="text-align: left;">Connecté(e) : <span class="color-orange"><%= user.nom.toUpperCase() %> <%= user.prenom.toUpperCase() %></span></p>
+		    </div>
+		    <div class="col-xs-6">
+		    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+	    	</div>
+	    </div>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -34,6 +41,28 @@
     			</div>
     		</div>
     	</header>
+    	<nav>
+    		<div class="row">
+    			<div class="col-xs-12">
+					<div class="progress">
+						<div class="circle done">
+					    	<span class="label done">1</span>
+					    	<span class="nav-title">CHOIX</span>
+					  	</div>
+						<span class="bar wait"></span>
+						<div class="circle wait">
+					    	<span class="label wait">2</span>
+					    	<span class="nav-title" id="nav-title-confirmation">CONFIRMATION</span>
+					  	</div>
+					  	<span class="bar wait"></span>
+					  	<div class="circle wait">
+					    	<span class="label wait">3</span>
+					    	<span class="nav-title">FIN</span>
+					  	</div>
+					</div>
+				</div>
+			</div>
+    	</nav>
     	<section>
 		    <div class="row title">
 		    	<div class="col-xs-9 titre">
@@ -82,7 +111,7 @@
 						</div>
 					    <div class="row">
 					     	<div class="col-lg-12">
-				         		<button type="submit" class="valider-choix-unable" onclick= submit() disabled>
+				         		<button type="submit" class="valider-choix-unable" disabled>
 						         	<h4>Valider</h4>
 								</button>
 					     	</div>
