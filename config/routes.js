@@ -36,7 +36,7 @@ module.exports = function (app, passport) {
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
 
-    
+    app.get('/test', homeController.test);
 
 
     // ADMIN Routes votes

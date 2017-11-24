@@ -12,12 +12,12 @@ const request = require('request');
 class homeController{
 
 	loggedIn(req, res, next){
-
 		if(req.session.user){next(); }
 		else { res.redirect('/login'); }
 	}
 
-	home(req, res){
+
+
 		// Recuperer tous les votes
 		// Vote.find({}, function (err, election){
 
@@ -55,25 +55,36 @@ class homeController{
 
 	
 	
-
-		Vote.find({}, function (err, dataVotant){
-			res.render('admin/dashboard.ejs', {
-				error : req.flash("error"),
-				success: req.flash("success"), 
-				session:req.session,
-			});
-		})
+	home(req, res){
+		/*request('http://localhost:5000/api/stats', function(error, response, body){
+			if(!error && response.statusCode == 200){
+				var stats = JSON.parse(body);
+				res.render('admin/dashboard.ejs', {yo: stats});
+			}
+		})*/
+		/** Get all votes for stats */
+		let sortVote = User.find({}).select('vote');
+		sortVote.exec(function(err, users){
+			if(err){throw err}
+			else{ 
+				res.render('admin/dashboard.ejs', {yo: users})
+			}
+		});
 	}
+			
 				
-		
-	
+				
 
+	// res.render('admin/dashboard.ejs', {
+	// 	error : req.flash("error"),
+	// 	success: req.flash("success"), 
+	// 	session:req.session,
+	// 	dataVotant: dataVotant
+	// });
 	
 	signup(req, res){
-
-		if (req.session.user) {
-			res.redirect('/home');
-		} else {
+		if (req.session.user) { res.redirect('/home'); } 
+		else {
 			res.render('signup', {
 				error : req.flash("error"),
 				success: req.flash("success"),
@@ -81,6 +92,7 @@ class homeController{
 			});
 		}
 	}
+
 
 	login(req, res){
 		res.render('login', {
@@ -99,17 +111,22 @@ class homeController{
 		let sortVote = User.find({}).select('vote');
 		sortVote.exec(function(err, users){
 			if(err){throw err}
-			else{  return res.json(users) }
+			else{ return res.json(users) }
+		});
+	}
+	
+	test(req, res){
+		request('http://localhost:5000/api/stats', function(error, response, body){
+			if(!error && response.statusCode == 200){
+				var info = JSON.parse(body);
+				res.send(info[15].vote[0]);
+			}
 		})
 	}
-		
 
-		
-	
-
-
-
-	
 }
 
 module.exports = new homeController();
+		
+	
+
