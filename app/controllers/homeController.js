@@ -65,6 +65,7 @@ class homeController{
 				error : req.flash("error"),
 				success: req.flash("success"), 
 				session:req.session,
+				dataVotant:dataVotant
 			});
 		})
 	}
