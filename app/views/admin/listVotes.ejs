@@ -147,10 +147,12 @@
 
 
 
+
 <td>
 <% if (vote[i].statut === false) { %>
 <a class="btn btn-success"  href="status/<%= vote[i]._id %>" role="button">ACTIVER</a>
 <% } %>
+
 
 <% if (vote[i].statut === true) { %>
 <a class="btn btn-danger" class="reversible" href="status/<%= vote[i]._id %>" role="button">DESACTIVER</a>
@@ -194,10 +196,7 @@
 <th>ID </th>
 <th>Prénom et Nom</th>
 
-
 </thead>
-
-
 <tbody>        
        <% for(var i=0; i<vote.length; i++)  {%>
        <% if (vote[i].type == 'electoral') { %>

@@ -103,14 +103,20 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 	<script type="text/javascript">
+
+
 		// DOM : Récupérer l'emplacement du nombre de mandat
 		let nbMandat = document.querySelector(".nbMandat");
+
 		// Sauvegarder le  nombre de mandats de début dans une constante afin de simplifier les manipulations
 		const nbMandatMax = parseInt(nbMandat.value);
+
+
 		// DOM : Récupérer les emplacement des inputs pour la Réponse 1 et 2 et bouton submit
 		let reponse1 = document.querySelector(".reponse1");
 		let reponse2 = document.querySelector(".reponse2");
 		let toSubmit = document.querySelector(".valider-choix-unable");
+
 		function repartitionAuto(elementClique, autre){
 			if(parseInt(elementClique.value) <= nbMandatMax){
 				nbMandat.value = nbMandatMax;
@@ -127,10 +133,14 @@
 				$(toSubmit).prop('disabled', true);
 			}
 		};
+
 		// Input de gauche : Ajout d'un évènement à chaque changement de valeur 
 		reponse1.addEventListener("change", () => {repartitionAuto(reponse1, reponse2);});
+
 		// Input de droite : Ajout d'un évènement à chaque changement de valeur 
 		reponse2.addEventListener("change", () => {repartitionAuto(reponse2, reponse1);});
+
+
 	</script>
 </body>
 </html>

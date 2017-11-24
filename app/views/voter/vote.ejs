@@ -19,37 +19,43 @@
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
 	    			<div class="col-xs-4 col-inner-header">
-	    			    <a href="#"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
+	    			    <a href="/homeVoter"><img id="uir-logo" src="./images/uir.png" alt="UIR logo"></a>
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>VOTE ASSEMBLÉE GÉNÉRALE</h1>    				
+		    			<h1>XVIIème CONGRES
+		    				<br/>
+		    				UIR-CFDT</h1>    				
 	    			</div>
 
 	    			<div class="col-xs-4 col-inner-header">
-		    			<a href="#"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
+		    			<a href="/homeVoter"><img id="cfdt-logo" src="./images/logo.gif" alt="CFDT logo"></a>    			    				
 	    			</div>
     			</div>
     		</div>
     	</header>
     	<section>
     		<div id="bienvenue">
-	    		<p><span class="color-orange">M.
-    					<%= user.nom %>
-    					<%= user.prenom %>
+	    		<p><span class="color-orange">Mme./M.
+    					<%= user.nom.toUpperCase() %>
+    					<%= user.prenom.toUpperCase() %>
     			</span>,
-    			 porteur de mandats du syndicat <span class="color-orange" style="text-transform: uppercase;">
+    			 porteur de <span class="color-orange">
+    					<%= user.nbMandat %>
+    			</span> mandats du syndicat <span class="color-orange" style="text-transform: uppercase;">
     				<%= user.syndicat %>
 				</span>,</p>
-	    		<p>Bienvenue sur votre espace votant.</p>
-	    		<p>Veuillez sélectionner un vote <code>ouvert</code></p>
+	    		<p>Bienvenue sur votre espace de vote.</p>
+	    		<p>Veuillez sélectionner un vote <code>ouvert</code>
+	          	<img class="statut-vote" src="./images/unlock.png" alt="Vote ouvert"></p>
+
 	    	</div>
 		     <div class="row title">
 		        <h4>VOTES DÉCISIONNELS</h4>
 		     </div>
 
 		    <div class="row">
-		        <div class="col-sm-6">
+		        <div class="col-md-6">
 		        	<div>
 						<% if(vote[0].statut === true){ %>
 							<% let vote1visited = user.vote.filter( function(element){ %>
@@ -68,7 +74,7 @@
 						<% } else {%>
 							<% console.log("Le vote 1 est fermé.")%>
 							<a href="/homeVoter">
-			         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
+			         		<button class="acces-vote-unable" id="<%= vote[0]._id %>" type="button">
 
 						<% } %>
 			          			<h4>VOTE 1</h4>
@@ -102,7 +108,7 @@
 						<% } else {%>
 							<% console.log("Le vote 2 est fermé.")%>
 							<a href="/homeVoter">
-			         		<button class="acces-vote" id="<%= vote[1]._id %>" type="button">
+			         		<button class="acces-vote-unable" id="<%= vote[1]._id %>" type="button">
 						<% } %>
 			          			<h4>VOTE 2</h4>
 			          			<p>
@@ -118,7 +124,7 @@
 					</div>
 		        </div>
 
-		        <div class="col-lg-6">
+		        <div class="col-md-6">
 		        	<div>
 						<% if(vote[2].statut === true){ %>
 							<% let vote3visited = user.vote.filter( function(element){ %>
@@ -137,7 +143,7 @@
 						<% } else {%>
 							<% console.log("Le vote 3 est fermé.")%>
 							<a href="/homeVoter">
-			         		<button class="acces-vote" id="<%= vote[2]._id %>" type="button">
+			         		<button class="acces-vote-unable" id="<%= vote[2]._id %>" type="button">
 						<% } %>
 			          			<h4>VOTE 3</h4>
 			          			<p>
@@ -170,7 +176,7 @@
 						<% } else {%>
 							<% console.log("Le vote 4 est fermé.")%>
 							<a href="/homeVoter">
-			         		<button class="acces-vote" id="<%= vote[3]._id %>" type="button">
+			         		<button class="acces-vote-unable" id="<%= vote[3]._id %>" type="button">
 						<% } %>
 			          			<h4>VOTE 4</h4>
 			          			<p>
@@ -213,7 +219,7 @@
 						<% } else {%>
 							<% console.log("Le vote 5 est fermé.")%>
 							<a href="/homeVoter">
-			         		<button class="acces-vote" id="<%= vote[4]._id %>" type="button">
+			         		<button class="acces-vote-unable" id="<%= vote[4]._id %>" type="button">
 						<% } %>
 			          			<h4>VOTE 5</h4>
 			          			<p><%= vote[4].intitule.toUpperCase() %></p>
