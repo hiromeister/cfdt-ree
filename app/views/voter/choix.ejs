@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -82,9 +83,10 @@
 						</div>
 					    <div class="row">
 					     	<div class="col-lg-12">
-				         		<button type=none class="valider-choix" onclick= submit()>
+				         		<button type="submit" class="valider-choix-unable" onclick= submit() disabled>
 						         	<h4>Valider</h4>
 								</button>
+								
 					     	</div>
 					    </div>
 					</form>
@@ -102,25 +104,33 @@
 	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 	<script type="text/javascript">
 
+
 		// DOM : Récupérer l'emplacement du nombre de mandat
 		let nbMandat = document.querySelector(".nbMandat");
 
 		// Sauvegarder le  nombre de mandats de début dans une constante afin de simplifier les manipulations
 		const nbMandatMax = parseInt(nbMandat.value);
 
-		// DOM : Récupérer les emplacement des inputs pour la Réponse 1 et 2
+
+		// DOM : Récupérer les emplacement des inputs pour la Réponse 1 et 2 et bouton submit
 		let reponse1 = document.querySelector(".reponse1");
 		let reponse2 = document.querySelector(".reponse2");
+		let toSubmit = document.querySelector(".valider-choix-unable");
 
 		function repartitionAuto(elementClique, autre){
 			if(parseInt(elementClique.value) <= nbMandatMax){
 				nbMandat.value = nbMandatMax;
 				autre.value = parseInt(nbMandat.value - elementClique.value);
-				nbMandat.value = 0;		
+				nbMandat.value = 0;
+				$(toSubmit).prop('disabled', false);
+				$(toSubmit).removeClass('valider-choix-unable').addClass('valider-choix');
 			} else {
 				elementClique.value = null;
 				autre.value = null;
 				nbMandat.value = nbMandatMax;
+				alert("Vous avez inscrit plus que vos mandats disponibles ou vous ne les avez pas tous épuisés.");
+				$(toSubmit).removeClass('valider-choix').addClass('valider-choix-unable');				
+				$(toSubmit).prop('disabled', true);
 			}
 		};
 
@@ -130,17 +140,6 @@
 		// Input de droite : Ajout d'un évènement à chaque changement de valeur 
 		reponse2.addEventListener("change", () => {repartitionAuto(reponse2, reponse1);});
 
-		let toSubmit = document.querySelector(".valider-choix");
-		let inputMandat = document.querySelector(".nbMandat");
-
-		toSubmit.addEventListener("click", function(){
-			console.log(inputMandat.value)
-			if(parseInt(inputMandat.value) === 0){
-				$(toSubmit).prop('disabled', false);
-			} else {
-				$(toSubmit).prop('disabled', true);
-			}
-		});
 
 	</script>
 </body>

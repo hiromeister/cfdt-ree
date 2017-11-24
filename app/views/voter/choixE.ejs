@@ -40,7 +40,7 @@
 			        <h4> 
 			        	<%= vote.intitule.toUpperCase() %>
 			    	</h4>
-					<p>Sélectionnez vos conseillers</p>
+					<p>Sélectionnez vos 24 conseillers</p>
 		    	</div>
 		    	<div class="col-xs-3 fond-blanc">
 		        	<h4>MANDATS</h4>
@@ -85,15 +85,17 @@
 					        					<td>Cliquez pour retirer le représentant</td>
 					        				</tr>
 					        			</table>
-					        			<table class="table table-striped table-responsive tab-choices">
-										</table>
+					        			<div class="list-choices">
+						        			<table class="table table-striped table-responsive tab-choices">
+											</table>
+										</div>
 					        		</div>
 					        	</div>
 					        </div>
 						</div>
 					    <div class="row">
 					     	<div class="col-lg-12">
-				         		<button type="submit" class="valider-choix">
+				         		<button type="submit" class="valider-choix-unable" disabled>
 						         	<h4>Valider</h4>
 								</button>
 					     	</div>
@@ -116,6 +118,7 @@
 		let candidat = document.querySelectorAll(".choice-to-select");
 		let tabchoices = document.querySelector(".tab-choices");
 		let inputList = document.querySelectorAll(".input-list");
+		let toSubmit = document.querySelector(".valider-choix-unable");
 
 		function addRow(){
 			// AJOUTER UN CHOIX
@@ -128,12 +131,27 @@
 			$(tr).addClass("tr-choice");
 			tabchoices.append(tr);
 
-			// Ajout des colonnes (input + rang)
-			let tdChoiceSelected = document.createElement("td");
+			// Ajout des colonnes (rang + input)
 			let tdRang = document.createElement("td");
+			let tdChoiceSelected = document.createElement("td");
+
+			// Ajout RANG
+			tr.append(tdRang);
+			$(tdRang).addClass("rang-selection");
+			let nbTdRang = document.querySelectorAll(".rang-selection");
+			tdRang.innerText = nbTdRang.length;
 
 			tr.append(tdChoiceSelected);
 			$(tdChoiceSelected).addClass("choice-selected");
+
+			// Ajout INPUT
+			// let rangSelection = document.createElement("input");
+			// tdRang.append(rangSelection);
+
+			// $(rangSelection).attr("value");
+			// $(rangSelection).prop("readonly", true);
+
+			// tdRang.append(rangSelection);
 
 			// Ajout INPUT
 			let input = document.createElement("input");
@@ -145,22 +163,15 @@
 			tdChoiceSelected.append(input);
 			input.value = this.value;
 
-			// // Ajout RANG
-			// tr.append(tdRang);
-			// $(tdRang).addClass("rang-selection");
+			let inputChoice = document.querySelectorAll(".input-choice");
 
-			// // Ajout INPUT
-			// let rangSelection = document.createElement("input");
-			// $(rangSelection).attr("value");
-			// $(rangSelection).prop("readonly", true);
+			valideOrNot(inputChoice, 24, toSubmit, 0);
 
-			// // tdRang.append(rangSelection);
-			// tdRang.value = 1;
 
 			// Une fois créer il est possible d'enlever de la liste
 
 			// DOM sur les input et le ligne TR à supprimer
-			let selection = document.querySelectorAll(".input-choice");
+			// let selection = document.querySelectorAll(".input-choice");
 			let trToDelete = document.querySelectorAll('.tr-choice');
 
 			let unable = document.querySelectorAll(".input-list");
@@ -168,12 +179,12 @@
 
 			// SUPPRIMER UN CHOIX
 			// A chaque clique on supprime le TR du Tableau
-			for(let j = 0; j < selection.length; j++){
-				selection[j].addEventListener("click", (e) => {
+			for(let j = 0; j < inputChoice.length; j++){
+				inputChoice[j].addEventListener("click", (e) => {
 
 					// Comparer avec le liste de gauche pour changer le CSS 
 					unable.forEach( (element) => {
-						if(selection[j].value == element.value){
+						if(inputChoice[j].value == element.value){
 							let tdParent =  element.parentNode;
 							$(tdParent).removeClass('choice-unable').addClass('choice-to-select');
 							$(element).prop('disabled', false);
@@ -182,10 +193,34 @@
 					
 					// Supprimer la ligne
 					$(trToDelete[j]).remove();
-				});
-			}			
+					valideOrNot(inputChoice, 24, toSubmit, 1);
+		
+				});				
+			}
 
 		};
+
+		function valideOrNot (tab, lengthMax, button, num){
+			console.log("longueur du tableau ", tab.length);
+			if((tab.length-num) === lengthMax){
+				$(button).prop('disabled', false);
+				$(button).removeClass('valider-choix-unable').addClass('valider-choix');
+			} else {
+				$(button).prop('disabled', true);
+				$(button).removeClass('valider-choix').addClass('valider-choix-unable');
+			}
+		}
+
+		toSubmit.addEventListener("click", function(){
+			let inputChoice = document.querySelectorAll(".input-choice");
+			if(inputChoice.length < 24){
+				alert("Vous avez sélectionné moins de 24 noms");
+				// $(toSubmit).prop('disabled', false);
+			} else if (inputChoice.length > 24){
+				// $(toSubmit).prop('disabled', true);
+				alert("Vous avez sélectionné plus de 24 noms");
+			}
+		});
 
 		for(let i = 0; i < inputList.length; i++){
 			inputList[i].addEventListener("click", addRow);

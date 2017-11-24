@@ -19,7 +19,11 @@ class homeController{
 
 
 		// Recuperer tous les votes
+
+		//Vote.find({}, function (err, election){
+
 		// Vote.find({}, function (err, election){
+
 
 		//     let sumMandat;
 		//     // Recuperer tous les users
