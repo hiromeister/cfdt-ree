@@ -30,13 +30,6 @@
 <div class="wrapper">
     <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
 
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
@@ -205,7 +198,7 @@
                                     <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
                                 </div>
                                 <div class="content">
-                                    <div class="footer">
+                                 <div class="footer">
                                     </div>
                                 </div>
                             </div>
@@ -221,75 +214,11 @@
 </body>
 
     <!--   Core JS Files   -->
-  
-    
-   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-   
-
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
 <script type="text/javascript">
-
-/**
- $.get('/api/stats', function (data) {
-     
-        test = data;
-
-        var dataPreferences = {
-            series: [
-                [25, 30, 20, 25]
-            ]
-        };
-
-        var optionsPreferences = {
-            donut: true,
-            donutWidth: 40,
-            startAngle: 0,
-            total: 1500,
-            showLabel: false,
-            axisX: {
-                showGrid: false
-            }
-        };
-        var result;
-        for (let i = 0; i < test.length; i++) {
-            result = test[i].vote[0].pour;
-        }
-
-        console.log(result);
-        // Vote 1 statistics 
-        Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
-
-        Chartist.Pie('#chartVote1', {
-            labels: ['33%', '77%'],
-            series: [test[15].vote[0].pour, test[15].vote[0].contre]
-        });
-
-        Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
-
-        Chartist.Pie('#chartVote2', {
-            labels: ['90%', '10%'],
-            series: [90, 10]
-        });
-
-        Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
-
-        Chartist.Pie('#chartVote3', {
-            labels: ['40%', '60%'],
-            series: [40, 60]
-        });
-
-        Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
-
-        Chartist.Pie('#chartVote4', {
-            labels: ['99%', '1%'],
-            series: [99, 1]
-        });
-    }); 
- */
 
 var test = <%- JSON.stringify(yo) %>;
 console.log(test);
@@ -373,49 +302,41 @@ for (let i = 0; i < test.length; i++){
 
 }
 
-console.log("Vote 2 Pour Resultat = " + Vote2PourResult);
-console.log("Vote 2 Contre Resultat = " + Vote2ContreResult);
-console.log("Vote 2 total = " + Vote2Total);
-console.log("Vote 2 Pour Pourcentage = " + Vote2PourPourcentage );
-console.log("Vote 2 Contre Pourcentage = " + Vote2ContrePourcentage );
-
-console.log("****** Vote 4 *******")
-console.log("Vote 4 Pour Resultat = " + Vote4PourResult);
-console.log("Vote 4 Contre Resultat = " + Vote4ContreResult);
-console.log("Vote 4 total = " + Vote4Total);
-console.log("Vote 4 Pour Pourcentage = " + Vote4PourPourcentage );
-console.log("Vote 4 Contre Pourcentage = " + Vote4ContrePourcentage );
-
-// console.log(Vote1ContrePourcentage);
-
 // Vote 1 statistics 
 Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
-
 Chartist.Pie('#chartVote1', {
   labels: [Math.round(Vote1PourPourcentage)+ "%",Math.round(Vote1ContrePourcentage)+ "%"],
   series: [Vote1PourPourcentage, Vote1ContrePourcentage ]
 });
 
-Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
 
+// Vote 2 statistics 
+Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
 Chartist.Pie('#chartVote2', {
   labels: [Math.round(Vote2PourPourcentage) + "%" ,Math.round(Vote2ContrePourcentage) + "%"],
   series: [Vote2PourPourcentage, Vote2ContrePourcentage ]
 });
 
+// Vote 3 statistics 
 Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
-
 Chartist.Pie('#chartVote3', {
   labels: [Math.round(Vote3PourPourcentage) + "%" ,Math.round(Vote3ContrePourcentage) + "%"],
   series: [Vote3PourPourcentage, Vote3ContrePourcentage ]
 });
 
+// Vote 4 statistics 
 Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
-
 Chartist.Pie('#chartVote4', {
   labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
   series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
 });
+
+
+
 	</script>
 
 </html>
+    
+   
+   
+

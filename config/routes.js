@@ -38,6 +38,9 @@ module.exports = function (app, passport) {
     app.post('/addvote', permissions.can('access admin page'),voteController.loggedIn, voteController.post);
     app.get('/supprimer/:id', permissions.can('access admin page'), voteController.loggedIn, voteController.delete);
     app.get('/status/:id',permissions.can('access admin page'),voteController.loggedIn,voteController.on);
+
+
+    
     /* ********** VOTANT ********** */
 
     // VOTANT routes acceuil

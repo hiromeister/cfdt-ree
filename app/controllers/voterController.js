@@ -7,8 +7,8 @@ const Vote = require('../models/vote.js')
 class voterController {
 
     loggedIn(req, res, next){        
-      if(req.session.user){next(); }
-      else { res.redirect('/login'); }
+        if(req.session.user){next(); }
+        else { res.redirect('/login'); }
     }
 
     add(req, res){
@@ -18,7 +18,7 @@ class voterController {
     list(req, res){
         User.find({}, function(err, profile){
             res.render('admin/listVoters', {profile: profile});
-        })
+        });
     }
 
     createNewVoter(req,res){        
@@ -85,7 +85,7 @@ class voterController {
                     });
                 }); 
             } else {
-                    res.redirect("/homeVoter");
+                res.redirect("/homeVoter");
             }
         });
     } 
@@ -103,10 +103,12 @@ class voterController {
                             });
                         }
                     });
-                });
+                }); 
+            } else {
+                res.redirect("/homeVoter");
             }
         });
-    }     
+    }    
 
     avoter(req,res){
         //Récupérer tous les votes
@@ -150,50 +152,54 @@ class voterController {
     }
 
     avoterE(req,res){
-
         //Récupérer tous les votes
-        Vote.find({}, function (err, votes){
+        User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
+       
+            if(dejavoter.length == 0){
+                //Récupérer tous les votes
+                Vote.find({}, function (err, votes){
 
-            votes.filter((votefiltered) => {
-                if(votefiltered._id == req.params.id){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
 
-                    //récupérer l'utilisateur connecté
-                    let userLogged = req.user;
-                    let date = Date();                    
-                    
-                    //Récupérer les votes de l'utilisateur connecté
-                    User.findOne({_id:userLogged._id}, function(err, currentVotant){
-
-                        let currentUserVotes = currentVotant.vote;
-                        //Ajouter le nouveau vote aux votes précédemment enregistré 
-                        currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
-                        
-                        //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
-                        User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                            if (err) return handleError(err);
+                            //récupérer l'utilisateur connecté
+                            let userLogged = req.user;
+                            let date = Date();                    
                             
-                        });
-                    });
+                            //Récupérer les votes de l'utilisateur connecté
+                            User.findOne({_id:userLogged._id}, function(err, currentVotant){
 
-                    res.render('voter/avoter', {
-                        user: req.user,
-                        vote: votefiltered,
-                        choix: req.body.choix,
+                                let currentUserVotes = currentVotant.vote;
+                                //Ajouter le nouveau vote aux votes précédemment enregistré 
+                                currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
+                                
+                                //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                                User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                                    if (err) return handleError(err);
+                                    
+                                });
+                            });
+
+                            res.render('voter/avoter', {
+                                user: req.user,
+                                vote: votefiltered,
+                                choix: req.body.choix,
+                            });
+                        }
                     });
-                }
-            });
-        });         
-    } 
+                });         
+            } else res.redirect("/homeVoter"); 
+        });       
+    }
     
     delete(req, res){
         User.find({}, function (err, users){
-
             users.filter((userfiltered) => {
                 if(userfiltered._id == req.params.id){
                     //récupérer l'utilisateur connecté
-                    
                     User.findByIdAndRemove(userfiltered._id,function (err,user) {
                         if (err) return err;
+
                     });
                 } 
             });
@@ -226,5 +232,5 @@ class voterController {
         });
     }   
 }
-
+      
 module.exports = new voterController();
