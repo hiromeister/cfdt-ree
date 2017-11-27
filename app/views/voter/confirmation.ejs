@@ -14,7 +14,14 @@
 </head>
   <body>
     <div class="container text-center">
-    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+		<div class="row">
+			<div class="col-xs-6">
+				<p style="text-align: left;">Connecté(e) : <span class="color-orange"><%= user.nom.toUpperCase() %> <%= user.prenom.toUpperCase() %></span></p>
+		    </div>
+		    <div class="col-xs-6">
+		    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+	    	</div>
+	    </div>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -34,6 +41,28 @@
     			</div>
     		</div>
     	</header>
+    	<nav>
+    		<div class="row">
+    			<div class="col-xs-12">
+					<div class="progress">
+						<div class="circle done">
+					    	<span class="label done">1</span>
+					    	<span class="nav-title">CHOIX</span>
+					  	</div>
+						<span class="bar done"></span>
+						<div class="circle done">
+					    	<span class="label done">2</span>
+					    	<span class="nav-title" id="nav-title-confirmation">CONFIRMATION</span>
+					  	</div>
+					  	<span class="bar wait"></span>
+					  	<div class="circle wait">
+					    	<span class="label wait">3</span>
+					    	<span class="nav-title">FIN</span>
+					  	</div>
+					</div>
+				</div>
+			</div>
+    	</nav>
     	<section>
 		    <div class="row title">
 		        <h4>VOTE 
@@ -42,7 +71,7 @@
 		    </div>
 			<div class="fond-gris">
 	    		<form action="/avoter/vote/<%= vote._id %>" method="post">
-					<h2>Confirmation de votre choix</h2>
+					<h2>Confirmation de vos choix :</h2>
 				    <div class="row ">
 				        <div class="col-xs-6 proposition">
 				        	<div class="row">
@@ -54,7 +83,7 @@
 				        	</div>
 						    <div class="row">
 		    			        <div class="col-xs-12">
-		    			        	<input type="number" name="pour" placeholder="0" class="text-center R1" value="<%= pour %>" readonly />
+		    			        	<input type="number" name="pour" placeholder="0" class="text-center reponse1 reponse-confirmation" value="<%= pour %>" readonly />
 		    			        </div>
 							</div>
 				        </div>
@@ -69,7 +98,7 @@
 				        	</div>
 						    <div class="row">
 		    			        <div class="col-xs-12">
-		    			        	<input type="number" name="contre" placeholder="0" class="text-center R2"  value="<%= contre %>" readonly />
+		    			        	<input type="number" name="contre" placeholder="0" class="text-center reponse2 reponse-confirmation"  value="<%= contre %>" readonly />
 		    			        </div>
 							</div>
 				        </div>					    			

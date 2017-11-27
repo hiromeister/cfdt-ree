@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>CFDT - Tableau de bord</title>
- <meta name="viewport" content="width=device-width , initial-scale=1" />
+    <meta name="viewport" content="width=device-width , initial-scale=1" />
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
  
@@ -205,14 +205,8 @@
                         </div>
                     </div> 
                 </div>
-
-
-
             </div>
         </div>
-
-
-
     </div>
 </div>
 
@@ -311,7 +305,7 @@ for (let i = 0; i < test.length; i++){
 // Vote 1 statistics 
 Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
 Chartist.Pie('#chartVote1', {
-  labels: [Vote1PourPourcentage+ "%",Vote1ContrePourcentage+ "%"],
+  labels: [Math.round(Vote1PourPourcentage)+ "%",Math.round(Vote1ContrePourcentage)+ "%"],
   series: [Vote1PourPourcentage, Vote1ContrePourcentage ]
 });
 
@@ -319,21 +313,21 @@ Chartist.Pie('#chartVote1', {
 // Vote 2 statistics 
 Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
 Chartist.Pie('#chartVote2', {
-  labels: [Vote2PourPourcentage + "%" ,Vote2ContrePourcentage + "%"],
+  labels: [Math.round(Vote2PourPourcentage) + "%" ,Math.round(Vote2ContrePourcentage) + "%"],
   series: [Vote2PourPourcentage, Vote2ContrePourcentage ]
 });
 
 // Vote 3 statistics 
 Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
 Chartist.Pie('#chartVote3', {
-  labels: [Vote3PourPourcentage + "%" ,Vote3ContrePourcentage + "%"],
+  labels: [Math.round(Vote3PourPourcentage) + "%" ,Math.round(Vote3ContrePourcentage) + "%"],
   series: [Vote3PourPourcentage, Vote3ContrePourcentage ]
 });
 
 // Vote 4 statistics 
 Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
 Chartist.Pie('#chartVote4', {
-  labels: [Vote4PourPourcentage + "%" ,Vote4ContrePourcentage + "%"],
+  labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
   series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
 });
 

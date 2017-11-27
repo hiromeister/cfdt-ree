@@ -24,13 +24,18 @@ class homeController{
 			}
 		})*/
 		/** Get all votes for stats */
-		let sortVote = User.find({}).select('vote');
+		//User.find({statut:true},function(err,stat){
+		
+		
+		let sortVote = User.find({statut:true}).select('vote');
+
 		sortVote.exec(function(err, users){
 			if(err){throw err}
 			else{ 
 				res.render('admin/dashboard.ejs', {yo: users})
 			}
 		});
+		//});
 	}
 
 	signup(req, res){

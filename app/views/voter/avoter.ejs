@@ -14,7 +14,14 @@
 </head>
   <body>
     <div class="container text-center">
-    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>    	
+		<div class="row">
+			<div class="col-xs-6">
+				<p style="text-align: left;">Connecté(e) : <span class="color-orange"><%= user.nom.toUpperCase() %> <%= user.prenom.toUpperCase() %></span></p>
+		    </div>
+		    <div class="col-xs-6">
+		    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+	    	</div>
+	    </div>
     	<header>
     		<div class="container-fluid inner-header">
     			<div class="row row-inner-header">
@@ -34,6 +41,28 @@
     			</div>
     		</div>
     	</header>
+    	<nav>
+    		<div class="row">
+    			<div class="col-xs-12">
+					<div class="progress">
+						<div class="circle done">
+					    	<span class="label done">1</span>
+					    	<span class="nav-title">CHOIX</span>
+					  	</div>
+						<span class="bar done"></span>
+						<div class="circle done">
+					    	<span class="label done">2</span>
+					    	<span class="nav-title" id="nav-title-confirmation">CONFIRMATION</span>
+					  	</div>
+					  	<span class="bar done"></span>
+					  	<div class="circle done">
+					    	<span class="label done">3</span>
+					    	<span class="nav-title">FIN</span>
+					  	</div>
+					</div>
+				</div>
+			</div>
+    	</nav>
     	<section>
 		    <div class="row title">
 		        <h4>VOTE : 
@@ -42,8 +71,8 @@
 		    </div>
 			<div class="fond-blanc">
 				<img class="avote" src="./../../images/avote.png" alt="A voté !">
-				<p>Nous vous remercions</p>
-				<p>Votre choix a bien été pris en compte</p>
+				<p>Nous vous remercions !</p>
+				<p>Votre choix a bien été pris en compte pour ce vote.</p>
 
 			    <div class="row">
 			     	<div class="col-lg-12">
