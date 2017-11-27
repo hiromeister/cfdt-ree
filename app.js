@@ -61,11 +61,10 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 
-//launch ======================================================================
+
 app.listen(port);
 console.log('The magic happens on port ' + port);
 
-//catch 404 and forward to error handler
 app.use(function (req, res, next) {
     res.status(404).render('404', {title: "Sorry, page not found", session: req.sessionbo});
 });
