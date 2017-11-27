@@ -197,8 +197,44 @@
                                     <h4 class="title">Vote 5 </h4>
                                     <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
                                 </div>
-                                <div class="content">
-                                 <div class="footer">
+                                  <div class="content">
+
+                                        <div class="content table-responsive table-full-width">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <th>ID </th>
+                                                        <th>Prénom et Nom</th>
+                                                        <th>Total vote</th>
+                                                        <th>Total Mandats</th>
+                                                        <th>Resultat % </th>
+                    
+                                                    </thead>
+                                                    <tbody>
+                    
+                                                        <% for(var i=0; i<vote[4].choix.length; i++)  {%>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= i + 1 %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= vote[4].choix[i].nom %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= vote[4].choix[i].mandatRecu %>
+                                                                </td>
+                                                            </tr>
+
+                                                            <% } %>
+                    
+                                                    </tbody>
+                    
+                    
+                                                </table>
+                    
+                                            </div>
+          
+                                                                
+                                    <div class="footer">
                                     </div>
                                 </div>
                             </div>
@@ -222,6 +258,12 @@
 
 var test = <%- JSON.stringify(yo) %>;
 console.log(test);
+
+var test2 =  <%- JSON.stringify(vote) %>;
+
+// total vote = nombre de mandat recu
+// total mandats = total de mandats des personnes présent
+
 
     
 var dataPreferences = {

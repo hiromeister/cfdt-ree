@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,210 +29,211 @@
 
 <body>
 
-<div class="wrapper">
-<div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
+    <div class="wrapper">
+        <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
 
             <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
-<div class="sidebar-wrapper">
-<div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text">CFDT Vote</a>
-</div>
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="http://www.creative-tim.com" class="simple-text">CFDT Vote</a>
+                </div>
 
-<ul class="nav">
-<li>
-    <a href="/home">
-    <i class="fa fa-tachometer" aria-hidden="true"></i>
-    <p>Tableau de bord</p>
-    </a>
-</li>
+                <ul class="nav">
+                    <li>
+                        <a href="/home">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            <p>Tableau de bord</p>
+                        </a>
+                    </li>
 
-<li>
-    <a href="/ajouter-votants">
-    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-    <p>Ajouter un votant</p>
-    </a>
-</li>
-<li>
-    <a href="/liste-votants">
-    <i class="fa fa-users" aria-hidden="true"></i>
-    <p>Liste des votants</p>
-    </a>
-</li>
-<li><a href="/creer-vote">
-    <i class="fa fa-plus-circle" aria-hidden="true">
-    </i><p>Crée un vote</p>
-     </a>
-</li>
-<li class="active">
-    <a href="/liste-votes">
-    <i class="fa fa-list" aria-hidden="true"></i>
-    <p>Liste des votes</p>
-    </a>
-</li>
+                    <li>
+                        <a href="/ajouter-votants">
+                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <p>Ajouter un votant</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/liste-votants">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <p>Liste des votants</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/creer-vote">
+                            <i class="fa fa-plus-circle" aria-hidden="true">
+                            </i>
+                            <p>Crée un vote</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="/liste-votes">
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                            <p>Liste des votes</p>
+                        </a>
+                    </li>
 
-</ul>
-</div>
-</div>
+                </ul>
+            </div>
+        </div>
 
-<div class="main-panel">
-<nav class="navbar navbar-default navbar-fixed">
-<div class="container-fluid">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="#">Liste des votes</a>
-</div>
-<div class="collapse navbar-collapse">
-
-
-<ul class="nav navbar-nav navbar-right">
-<li><a href="/logout"><p>Déconnexion</p></a></li>
-<li class="separator hidden-lg hidden-md"></li>
-</ul>
-
-</div>
-</div>
-</nav>
-
-    
-<div class="content">
-<div class="container-fluid">
-<div class="row">
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Liste des votes</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
 
 
-<div class="col-md-12">
-<div class="card card-plain">
-<div class="header">
-<h4 class="title">Liste des votes</h4>
-<p class="category">proposée l'assemblée générale du xx/xx/xx</p>
-<hr style="border:1px solid #e75c21 ">
-</div>
-<div class="content table-responsive table-full-width">
-<table class="table table-hover">
-<thead>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/logout">
+                                    <p>Déconnexion</p>
+                                </a>
+                            </li>
+                            <li class="separator hidden-lg hidden-md"></li>
+                        </ul>
 
-<th>Statut</th>
-<th>Intitulé</th>
-<th class="type">Type</th>
-<th class="action"> Action </th>
-<th>Supprimer</th>
-
-</thead>
-<tbody>
-    <% for(var i=0; i<vote.length; i++) {%>
-    
-
-    <tr>
-
-<td>
-    <% if (vote[i].statut === false) { %>
-    <i class="fa fa-circle" aria-hidden="true"  style="color:red"></i>
-    <% } %>
-    <% if (vote[i].statut === true) { %>
-    <i class="fa fa-circle" aria-hidden="true"  style="color:#87CB16"></i>
-    <% } %>
-</td>
-<td>
-    <%= vote[i].intitule %>
-</td>
-<td>
-    <%= vote[i].type %>
-                                                    
-</td>
+                    </div>
+                </div>
+            </nav>
 
 
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
 
 
-<td>
-<% if (vote[i].statut === false) { %>
-<a class="btn btn-success"  href="status/<%= vote[i]._id %>" role="button">ACTIVER</a>
-<% } %>
+                        <div class="col-md-12">
+                            <div class="card card-plain">
+                                <div class="header">
+                                    <h4 class="title">Liste des votes</h4>
+                                    <p class="category">proposée l'assemblée générale du xx/xx/xx</p>
+                                    <hr style="border:1px solid #e75c21 ">
+                                </div>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover">
+                                        <thead>
+
+                                            <th>Statut</th>
+                                            <th>Intitulé</th>
+                                            <th class="type">Type</th>
+                                            <th class="action"> Action </th>
+                                            <th>Supprimer</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <% for(var i=0; i<vote.length; i++) {%>
 
 
-<% if (vote[i].statut === true) { %>
-<a class="btn btn-danger" class="reversible" href="status/<%= vote[i]._id %>" role="button">DESACTIVER</a>
-<% } %>
-</td>
+                                                <tr>
 
+                                                    <td>
+                                                        <% if (vote[i].statut === false) { %>
+                                                            <i class="fa fa-circle" aria-hidden="true" style="color:red"></i>
+                                                            <% } %>
+                                                                <% if (vote[i].statut === true) { %>
+                                                                    <i class="fa fa-circle" aria-hidden="true" style="color:#87CB16"></i>
+                                                                    <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <%= vote[i].intitule %>
+                                                    </td>
+                                                    <td>
+                                                        <%= vote[i].type %>
 
-<td>
-<a href="/supprimer/<%= vote[i]._id %>">
-<span class="fa-stack "><i class="fa fa-square-o fa-stack-2x"></i>
-<i class="fa fa-trash-o fa-stack-1x" aria-hidden="true"></i>
-</span>
-</a>
-</td>
-        
+                                                    </td>
 
 
 
 
+                                                    <td>
+                                                        <% if (vote[i].statut === false) { %>
+                                                            <a class="btn btn-success" href="status/<%= vote[i]._id %>" role="button">ACTIVER</a>
+                                                            <% } %>
+
+
+                                                                <% if (vote[i].statut === true) { %>
+                                                                    <a class="btn btn-danger" class="reversible" href="status/<%= vote[i]._id %>" role="button">DESACTIVER</a>
+                                                                    <% } %>
+                                                    </td>
+
+
+                                                    <td>
+                                                        <a href="/supprimer/<%= vote[i]._id %>">
+                                                            <span class="fa-stack ">
+                                                                <i class="fa fa-square-o fa-stack-2x"></i>
+                                                                <i class="fa fa-trash-o fa-stack-1x" aria-hidden="true"></i>
+                                                            </span>
+                                                        </a>
+                                                    </td>
 
 
 
 
-</tr>
-                        <% } %>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-
-
-</div>
-
-<a href="#demo" class="btn btn-info" data-toggle="collapse">Voir la liste des votants du vote éléctoral</a>
-<div id="demo" class="collapse">
-<div class="content table-responsive table-full-width">
-<table class="table table-hover">
-<thead>
-<th>ID </th>
-<th>Prénom et Nom</th>
-
-</thead>
-<tbody>        
-       <!-- <% for(var i=0; i<vote.length; i++)  {%>
-            <% if (vote[i].type == 'electoral') { %>
-                <% for(var j=0; j<vote[i].choix.length; j++)  {%>
-                <tr>
-                <td> <%= j  + 1  %> </td>
-                <td> <%= vote[i].choix[j] %> </td>
-                </tr>
-                <% } %>
-            <% } %>
-        <% } %> -->
-
-        <% for(var i=0; i<vote[4].choix[i].length; i++)  {%>
-            <tr>
-            <td> <%= i  %></td>
-            <td> <%= vote[4].choix[i] %> </td>
-            </tr>
-        <% } %>
-
-</tbody>
-
-
-</table>
-
-</div>
-</div>
-
-
-</div>
-</div>
 
 
 
-</div>
 
-</div>
+
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <a href="#demo" class="btn btn-info" data-toggle="collapse">Voir la liste des votants du vote éléctoral</a>
+                    <div id="demo" class="collapse">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover">
+                                <thead>
+                                    <th>ID </th>
+                                    <th>Prénom et Nom</th>
+
+                                </thead>
+                                <tbody>
+
+                                    <% for(var i=0; i<vote[4].choix.length; i++)  {%>
+                                        <tr>
+                                            <td>
+                                                <%= i %>
+                                            </td>
+                                            <td>
+                                                <%= vote[4].choix[i] %>
+                                            </td>
+                                        </tr>
+                                        <% } %>
+
+                                </tbody>
+
+
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
 
 
 </body>
@@ -241,7 +242,7 @@
 <!--   Core JS Files   -->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script src="js/dynamicInput.js"></script>

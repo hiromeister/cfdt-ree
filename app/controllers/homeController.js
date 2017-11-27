@@ -16,26 +16,41 @@ class homeController{
 		else { res.redirect('/login'); }
 	}
 	
-	home(req, res){
-		/*request('http://localhost:5000/api/stats', function(error, response, body){
-			if(!error && response.statusCode == 200){
-				var stats = JSON.parse(body);
-				res.render('admin/dashboard.ejs', {yo: stats});
-			}
-		})*/
-		/** Get all votes for stats */
-		//User.find({statut:true},function(err,stat){
+	// home(req, res){
 		
-		
-		let sortVote = User.find({statut:true}).select('vote');
+	// 	let sortVote = User.find({statut:true}).select('vote');
 
-		sortVote.exec(function(err, users){
-			if(err){throw err}
-			else{ 
-				res.render('admin/dashboard.ejs', {yo: users})
-			}
-		});
-		//});
+	// 	sortVote.exec(function(err, users){
+	// 		if(err){throw err}
+	// 		else{ 
+	// 			res.render('admin/dashboard.ejs', {yo: users, vote: vote})
+	// 		}
+	// 	});
+	// }
+
+	home(req,res){
+		let sortTerLa = Vote.find({}).select('choix');
+		sortTerLa.exec(function (err, vote){
+			
+			let sortVote = User.find({statut: true}).select('vote');
+			sortVote.exec(function (err, users){
+				res.render('admin/dashboard.ejs',{
+					vote: vote,
+					yo:users,
+				})
+			})
+	})
+	
+
+	
+
+
+	}
+
+	test(req, res){
+		User.find({}, function(err, vote){
+			res.render({vote: vote});
+		})
 	}
 
 	signup(req, res){
@@ -63,22 +78,23 @@ class homeController{
 		res.redirect('/');
 	}
 
-	localApi(req, res){
+	VoterApi(req, res){
 		let sortVote = User.find({}).select('vote');
 		sortVote.exec(function(err, users){
 			if(err){throw err}
 			else{ return res.json(users) }
 		});
 	}
-	
-	test(req, res){
-		request('http://localhost:5000/api/stats', function(error, response, body){
-			if(!error && response.statusCode == 200){
-				var info = JSON.parse(body);
-				res.send(info[15].vote[0]);
-			}
+
+	vote5Api(req, res){
+		let vote5 = Vote.find({}).select('choix');
+		vote5.exec(function(err, votez){
+			if(err) {throw err}
+			else{return res.json(votez)}
 		})
 	}
+	
+
 
 }
 

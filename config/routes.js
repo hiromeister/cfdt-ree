@@ -17,7 +17,8 @@ module.exports = function (app, passport) {
     app.get('/home',permissions.can('access admin page'), homeController.loggedIn, homeController.home);
 
     //LOCAL API
-    app.get('/api/stats', homeController.localApi);
+    app.get('/api/stats', homeController.VoterApi);
+    app.get('/api/vote5', homeController.vote5Api);
     
     /* ********** ADMIN ********** */
     
@@ -40,7 +41,7 @@ module.exports = function (app, passport) {
     app.get('/status/:id',permissions.can('access admin page'),voteController.loggedIn,voteController.on);
 
 
-    
+
     /* ********** VOTANT ********** */
 
     // VOTANT routes acceuil
