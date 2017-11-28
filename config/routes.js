@@ -8,7 +8,6 @@ const request = require('request');
 
 var User = require('../app/models/user.js')
 
-
 module.exports = function (app, passport) {
 
     app.get('/login', homeController.login);
@@ -61,7 +60,7 @@ module.exports = function (app, passport) {
     app.post('/avoter/vote/:id', voterController.loggedIn, voterController.avoter);
     app.post('/avoterE/vote/:id', voterController.loggedIn, voterController.avoterE);
     app.get('/effacer/:id', permissions.can('access admin page'), voterController.loggedIn, voterController.delete);
-    app.get('/presence/:id',permissions.can('access admin page'),voterController.loggedIn,voterController.on);
+    app.get('/presence/:id',permissions.can('access admin page'),voterController.loggedIn,voterController.presence);
 
 
     app.post('/signup', passport.authenticate('local-signup', {

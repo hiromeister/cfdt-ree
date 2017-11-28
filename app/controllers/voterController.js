@@ -56,15 +56,16 @@ class voterController {
         });         
     }
 
+
     choiceE(req,res){
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
-            
-                res.render('voter/choixE', {
-                    user: req.user,
-                    vote: votefiltered
-                });
-                
+                if(votefiltered._id == req.params.id){
+                    res.render('voter/choixE', {
+                        user: req.user,
+                        vote: votefiltered
+                    });
+                }                
             });
         });         
     }    
@@ -74,78 +75,124 @@ class voterController {
             if(dejavoter.length == 0){
                 Vote.find({}, function (err, votes){
                     votes.filter((votefiltered) => {
-                        if(votefiltered._id == req.params.id){
-                            console.log(votefiltered);
-                                res.render('voter/confirmation', {
-                                    user: req.user,
-                                    vote: votefiltered,
-                                    pour: req.body.pour,
-                                    contre: req.body.contre
-                                });
+                        if(votefiltered._id == req.params.id){                    
+                            res.render('voter/confirmation', {
+                                user: req.user,
+                                vote: votefiltered,
+                                pour: req.body.pour,
+                                contre: req.body.contre
+                            });
                         }
                     });
                 }); 
-            } else { res.redirect("/homeVoter");}
-        });   
+            } else {
+                res.redirect("/homeVoter");
+            }
+        });
     } 
 
-
     confirmationE(req,res){
-        console.log(req.body.choix);
-        Vote.find({}, function (err, votes){
-            votes.filter((votefiltered) => {
-                if(votefiltered._id == req.params.id){
-                    res.render('voter/confirmationE', {
-                        user: req.user,
-                        vote: votefiltered,
-                        choix: req.body.choix,
+        User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
+            if(dejavoter.length == 0){            
+                Vote.find({}, function (err, votes){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+                            res.render('voter/confirmationE', {
+                                user: req.user,
+                                vote: votefiltered,
+                                choix: req.body.choix,  
+                            });
+                        }
                     });
-                }
-            });
-        });         
-    }     
+                }); 
+            } else {
+                res.redirect("/homeVoter");
+            }
+        });
+    }    
 
     avoter(req,res){
-            //Récupérer tous les votes
-            User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
-        
+        //Récupérer tous les votes
+        User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
+       
             if(dejavoter.length == 0){
-            Vote.find({}, function (err, votes){
+                Vote.find({}, function (err, votes){
 
-                votes.filter((votefiltered) => {
-                    if(votefiltered._id == req.params.id){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
 
-                        //récupérer l'utilisateur connecté
-                        let userLogged = req.user;
-                        let date = Date();
-                        
-                        
-                        //Récupérer les votes de l'utilisateur connecté
-                        User.findOne({_id:userLogged._id}, function(err, currentVotant){
-
-                            let currentUserVotes = currentVotant.vote;
-                            //Ajouter le nouveau vote aux votes précédemment enregistré 
-                            currentUserVotes.push({idVote:req.params.id, pour: req.body.pour, contre: req.body.contre, createdAt: date});
+                            //récupérer l'utilisateur connecté
+                            let userLogged = req.user;
+                            let date = Date();
                             
-                            //Sauvegarder le vote en écrasannt le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
-                            User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                                if (err) return handleError(err);
-                                
-                            });
-                        });
+                            //Récupérer les votes de l'utilisateur connecté
+                            User.findOne({_id:userLogged._id}, function(err, currentVotant){
 
-                        res.render('voter/avoter', {
-                            user: req.user,
-                            vote: votefiltered,
-                            pour: req.body.pour,
-                            contre: req.body.contre
-                        });
-                    }
-                });
-            }); 
-            } else  res.redirect("/homeVoter"); });       
+                                let currentUserVotes = currentVotant.vote;
+                                //Ajouter le nouveau vote aux votes précédemment enregistré 
+                                currentUserVotes.push({idVote:req.params.id, pour: req.body.pour, contre: req.body.contre, createdAt: date});
+                                
+                                //Sauvegarder le vote en écrasannt le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                                User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                                    if (err) return handleError(err);
+                                    
+                                });
+                            });
+
+                            res.render('voter/avoter', {
+                                user: req.user,
+                                vote: votefiltered,
+                                pour: req.body.pour,
+                                contre: req.body.contre
+                            });
+                        }
+                    });
+                }); 
+            } else res.redirect("/homeVoter"); 
+        });       
     }
 
+    avoterE(req,res){   
+        //Récupérer tous les votes
+        User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
+       
+            if(dejavoter.length == 0){
+                //Récupérer tous les votes
+                Vote.find({}, function (err, votes){
+
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+
+                            //récupérer l'utilisateur connecté
+                            let userLogged = req.user;
+                            let date = Date();                    
+                            
+                            //Récupérer les votes de l'utilisateur connecté
+                            User.findOne({_id:userLogged._id}, function(err, currentVotant){
+
+                                let currentUserVotes = currentVotant.vote;
+                                //Ajouter le nouveau vote aux votes précédemment enregistré 
+                                currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
+                                
+                                //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
+                                User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
+                                    if (err) return handleError(err);
+                                    
+                                });
+                            });
+
+                            res.render('voter/avoter', {
+                                user: req.user,
+                                vote: votefiltered,
+                                choix: req.body.choix,
+                            });
+                        }
+                    });
+                });         
+            } else res.redirect("/homeVoter"); 
+        });       
+    }
+    
     delete(req, res){
         User.find({}, function (err, users){
             users.filter((userfiltered) => {
@@ -161,69 +208,30 @@ class voterController {
         });
     }
 
-    avoterE(req,res){
-
-        //Récupérer tous les votes
-        Vote.find({}, function (err, votes){
-
-            votes.filter((votefiltered) => {
-                if(votefiltered._id == req.params.id){
-
-                    //récupérer l'utilisateur connecté
-                    let userLogged = req.user;
-                    let date = Date();                    
-                    
-                    //Récupérer les votes de l'utilisateur connecté
-                    User.findOne({_id:userLogged._id}, function(err, currentVotant){
-
-                        let currentUserVotes = currentVotant.vote;
-                        //Ajouter le nouveau vote aux votes précédemment enregistré 
-                        currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
-                        
-                        //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
-                        User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                            if (err) return handleError(err);
-                            
-                        });
-                    });
-
-                    res.render('voter/avoter', {
-                        user: req.user,
-                        vote: votefiltered,
-                        choix: req.body.choix,
-                    });
-                }
-            });
-        });         
-    } 
-
-    on(req,res){
+    presence(req,res){        
         User.find({}, function (err, users){
+
             users.filter((userfiltered) => {
+
                 if(userfiltered._id == req.params.id){
                     //récupérer l'utilisateur connecté
                     if( userfiltered.statut === false){
                         User.findByIdAndUpdate(userfiltered._id, { $set: { statut: true}}, { new: true }, function (err) {
                             if (err) return handleError(err);
                         });
-                    }
-                    else{
+                    } else {
                         User.findByIdAndUpdate(userfiltered._id, { $set: { statut: false}}, { new: true }, function (err) {
                             if (err) return handleError(err);
+
                         });
                     } 
+
                     res.redirect("/liste-votants");
+
                 }
             });
         });
     }   
-    
 }
-    
+      
 module.exports = new voterController();
-
-
-
-
-
-
