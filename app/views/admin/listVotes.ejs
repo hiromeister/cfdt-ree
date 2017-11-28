@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,6 +28,7 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
+
             <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
             <div class="sidebar-wrapper">
@@ -157,6 +158,7 @@
                             </div>
                         </div>
                     </div>
+
                     <a href="#demo" class="btn btn-info" data-toggle="collapse">Voir la liste des votants du vote éléctoral</a>
                     <div id="demo" class="collapse">
                         <div class="content table-responsive table-full-width">
@@ -166,10 +168,10 @@
                                     <th>Prénom et Nom</th>
                                 </thead>
                                 <tbody>        
-                                    <% for(var i=0; i<vote[4].length; i++)  {%>
+                                    <% for(var i=0; i<vote[4].choix.length; i++)  {%>
                                         <tr>
                                             <td> <%= i+1%> </td>
-                                            <td> <%= vote[4].choix[i].nom%> </td>
+                                            <td> <%= vote[4].choix[i]%> </td>
                                         </tr>
                                     <% } %> 
                                 </tbody>

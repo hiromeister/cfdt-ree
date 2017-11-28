@@ -27,191 +27,226 @@
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
+    <div class="wrapper">
+        <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
 
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    CFDT Vote
-                </a>
-            </div>
-
-            <ul class="nav">
-             <li class="active">
-                    <a href="/home">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>
-                        <p>Tableau de bord</p>
+        	<div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="http://www.creative-tim.com" class="simple-text">
+                        CFDT Vote
                     </a>
-                </li>
-
-                <li>
-                    <a href="/ajouter-votants">
-                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        <p>Ajouter un votant</p>
-                    </a>
-                </li>
-                <li>
-                     <a href="/liste-votants">
-                       <i class="fa fa-users" aria-hidden="true"></i>
-                        <p>Liste des votants</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/creer-vote">
-                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        <p>Crée un vote</p>
-                    </a>
-                </li>
-                <li>
-                 <a href="/liste-votes">
-                         <i class="fa fa-list" aria-hidden="true"></i>
-                        <p>Liste des votes</p>
-                    </a>
-                </li>
-                
-               
-            </ul>
-    	</div>
-    </div>
-
-    <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Tableau de bord</a>
-                </div>
-                <div class="collapse navbar-collapse">
-
-
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <li>
-                            <a href="/logout">
-                                <p>Déconnexion</p>
-                            </a>
-                        </li>
-                        <li class="separator hidden-lg hidden-md"></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-
-                            <div class="header">
-                                <h4 class="title">Vote 1</h4>
-                                <p class="category">STATUTAIRE</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartVote1" class="ct-chart "></div>
-
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-success"></i> Pour
-                                        <i class="fa fa-circle text-danger"></i> Contre
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Vote 2</h4>
-                                <p class="category">RAPPORT ORIENTATION</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartVote2" class="ct-chart "></div>
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-success"></i> Pour
-                                        <i class="fa fa-circle text-danger"></i> Contre
-                                    </div>
-                                  
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
+                <ul class="nav">
+                 <li class="active">
+                        <a href="/home">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            <p>Tableau de bord</p>
+                        </a>
+                    </li>
 
-                            <div class="header">
-                                <h4 class="title">Vote 3</h4>
-                                <p class="category">RAPPORT D'ACTIVITE</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartVote3" class="ct-chart"></div>
+                    <li>
+                        <a href="/ajouter-votants">
+                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <p>Ajouter un votant</p>
+                        </a>
+                    </li>
+                    <li>
+                         <a href="/liste-votants">
+                           <i class="fa fa-users" aria-hidden="true"></i>
+                            <p>Liste des votants</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/creer-vote">
+                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <p>Crée un vote</p>
+                        </a>
+                    </li>
+                    <li>
+                     <a href="/liste-votes">
+                             <i class="fa fa-list" aria-hidden="true"></i>
+                            <p>Liste des votes</p>
+                        </a>
+                    </li>
+                    
+                   
+                </ul>
+        	</div>
+        </div>
 
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-success"></i> Pour
-                                        <i class="fa fa-circle text-danger"></i> Contre
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Tableau de bord</a>
                     </div>
+                    <div class="collapse navbar-collapse">
 
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title"> Vote 4</h4>
-                                <p class="category">RAPPORT FINANCIER</p>
-                            </div>
-                            <div class="content">
-                                <div id="chartVote4" class="ct-chart"></div>
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-success"></i> Pour
-                                        <i class="fa fa-circle text-danger"></i> Contre
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li>
+                                <a href="/logout">
+                                    <p>Déconnexion</p>
+                                </a>
+                            </li>
+                            <li class="separator hidden-lg hidden-md"></li>
+                        </ul>
                     </div>
                 </div>
+            </nav>
 
+
+            <div class="content">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="card">
+
                                 <div class="header">
-                                    <h4 class="title">Vote 5 </h4>
-                                    <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
+                                    <h4 class="title">Vote 1</h4>
+                                    <p class="category">STATUTAIRE</p>
                                 </div>
                                 <div class="content">
+                                    <div id="chartVote1" class="ct-chart "></div>
+
                                     <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-success"></i> Pour
+                                            <i class="fa fa-circle text-danger"></i> Contre
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div> 
+
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Vote 2</h4>
+                                    <p class="category">RAPPORT ORIENTATION</p>
+                                </div>
+                                <div class="content">
+                                    <div id="chartVote2" class="ct-chart "></div>
+                                    <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-success"></i> Pour
+                                            <i class="fa fa-circle text-danger"></i> Contre
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+
+                                <div class="header">
+                                    <h4 class="title">Vote 3</h4>
+                                    <p class="category">RAPPORT D'ACTIVITE</p>
+                                </div>
+                                <div class="content">
+                                    <div id="chartVote3" class="ct-chart"></div>
+
+                                    <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-success"></i> Pour
+                                            <i class="fa fa-circle text-danger"></i> Contre
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title"> Vote 4</h4>
+                                    <p class="category">RAPPORT FINANCIER</p>
+                                </div>
+                                <div class="content">
+                                    <div id="chartVote4" class="ct-chart"></div>
+                                    <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-success"></i> Pour
+                                            <i class="fa fa-circle text-danger"></i> Contre
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h4 class="title">Vote 5 </h4>
+                                        <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
+                                    </div>
+                                    <div class="content">
+                                        <div class="content table-responsive table-full-width">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <th>ID </th>
+                                                    <th>Prénom et Nom</th>
+                                                    <th>Total vote</th>
+                                                    <th>Total Mandats</th>
+                                                    <th>Resultat % </th>
+                
+                                                </thead>
+                                                <tbody>
+                
+                                                    <% for(var i=0; i<38; i++)  {%>
+                                                        <tr>
+                                                            <td class="rang">
+                                                                <%= i + 1 %>
+                                                            </td>
+                                                            <td class="candidats">
+                                                                <%= vote[4].choix[i] %>
+                                                            </td>
+                                                            <td class="total-vote">
+                                                            </td>
+                                                            <td class="total-mandats">
+                                                                <%= 1600%>
+                                                            </td>
+                                                            <td class="resultat-pourcentage">
+                                                                <%= '20' %>
+                                                            </td>
+                                                        </tr>
+
+                                                    <% } %>
+                
+                                                </tbody>                
+                    
+                                            </table>
+                
+                                        </div>
+                                                                              
+                                        <div class="footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-</body>
 
     <!--   Core JS Files   -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -223,6 +258,14 @@
         console.log(test);
 
         // ***** STATISTIQUE VOTE 5 *****
+
+        let rang = document.querySelectorAll(".rang");
+        let candidats = document.querySelectorAll(".candidats");
+        let totalVote = document.querySelectorAll(".total-vote");
+        let totalMandats = document.querySelectorAll(".total-mandats");
+        let resultatPourcentage = document.querySelectorAll(".resultat-pourcentage");
+
+        let nbMandatTotal = 0;
 
         let listeCandidats = {
             "BELDA Rémy": 0, 
@@ -263,10 +306,9 @@
             "SMITH Johan": 0, 
             "TRECASSE Georges": 0, 
             "VELIA Jean Marc": 0
-        }
+        };
 
-        console.log("listeCandidats 1 ", listeCandidats);
-
+        // console.log("listeCandidats 1 ", listeCandidats);
 
         //User.vote = {} Récupérer le liste de chaque personne
         // Réccupérer la liste des utilisateurs
@@ -274,19 +316,28 @@
         for(let i=0; i<test.length; i++){
             // yo[i].vote.find(){
                 for(let j=0; j<test[i].vote[4].choix.length; j++){
-                    console.log("listeCandidats2 ", listeCandidats);
+                    // console.log("listeCandidats2 ", listeCandidats);
 
-                    listeCandidats[test[i].vote[4].choix[j]] += test[i].nbMandat;
-                    console.log("listeCandidats3 ", listeCandidats);
+                    listeCandidats[test[i].vote[4].choix[j]] += parseInt(test[i].nbMandat);
+                    // console.log("listeCandidats3 ", listeCandidats)                    
 
                 }
             // }
-
+           
         }
-        //Pour chacun d'eux
-        //Le vote 5
-        // Pour chacun de sa liste
-        // 
+        candidats.forEach(function(element) {
+            // console.log("element.innerText " + element.innerText)                    
+
+            for (let prop in listeCandidats) {
+            // console.log("prop ", prop)                    
+            // console.log("listeCandidats[prop] ", listeCandidats[prop])                    
+
+                if(element.innerText == prop){
+                    $(element).next().text(listeCandidats[prop]);
+                }
+            }
+        });
+
 
 
         // ***** STATISTIQUE VOTE 1, 2, 3 et 4 ***** 
@@ -399,5 +450,5 @@
         });
 
 	</script>
-
+</body>
 </html>
