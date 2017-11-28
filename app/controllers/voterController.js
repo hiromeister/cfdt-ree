@@ -56,6 +56,7 @@ class voterController {
         });         
     }
 
+
     choiceE(req,res){
         Vote.find({}, function (err, votes){
             votes.filter((votefiltered) => {
@@ -108,7 +109,7 @@ class voterController {
                             res.render('voter/confirmationE', {
                                 user: req.user,
                                 vote: votefiltered,
-                                choix: req.body.choix,
+                                choix: req.body.choix,  
                             });
                         }
                     });
@@ -168,7 +169,7 @@ class voterController {
         });       
     }
 
-    avoterE(req,res){
+    avoterE(req,res){   
         //Récupérer tous les votes
         User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
 
