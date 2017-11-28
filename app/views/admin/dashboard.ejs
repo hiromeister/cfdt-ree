@@ -148,7 +148,7 @@
                     </div>
                 </div>
 
-                 <div class="row">
+                <div class="row">
                     <div class="col-md-6">
                         <div class="card">
 
@@ -198,7 +198,7 @@
                                     <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
                                 </div>
                                 <div class="content">
-                                 <div class="footer">
+                                    <div class="footer">
                                     </div>
                                 </div>
                             </div>
@@ -214,129 +214,190 @@
 </body>
 
     <!--   Core JS Files   -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        var test = <%- JSON.stringify(yo) %>;
+        console.log(test);
+
+        // ***** STATISTIQUE VOTE 5 *****
+
+        let listeCandidats = {
+            "BELDA Rémy": 0, 
+            "BEYRONNEAU Christophe": 0, 
+            "CORBEAU Mario": 0, 
+            "CRESENCE Cédric": 0, 
+            "DESPRAIRIES J Marie": 0, 
+            "DIALLO Thierno": 0, 
+            "DRULA Jessica": 0, 
+            "ETALE Gérard": 0, 
+            "EUPHRASIE Sully": 0, 
+            "GALLAIS Yannick": 0, 
+            "GALIMEDE Béatrice": 0, 
+            "GANGAMA William": 0, 
+            "GRONDIN Patrick": 0, 
+            "GUEZELOT David": 0, 
+            "HOARAU Barthélémy": 0, 
+            "HOARAU Gilbert": 0, 
+            "HOARAU Louise": 0, 
+            "IGOUFE Claudine": 0, 
+            "LAGARRIGUE Johnny": 0, 
+            "LAURENCE Adrien": 0, 
+            "LAURET Janick": 0, 
+            "LAYEMAR Gina": 0, 
+            "LEGROS Mickael": 0, 
+            "LEPERLIER Patrick": 0, 
+            "MAILLOT Karl": 0, 
+            "MANI Alain": 0, 
+            "MARMILLOD Claude": 0,
+            "MICHEL Béatrice": 0, 
+            "MOREL Stéphanie": 0, 
+            "MOULAN Thierry": 0, 
+            "PAYET Jacques Henri": 0, 
+            "PEYROUSET Corine": 0, 
+            "RIVIERE Jean Pierre": 0, 
+            "ROBERT Nadège": 0, 
+            "SELLIER Jean François": 0, 
+            "SMITH Johan": 0, 
+            "TRECASSE Georges": 0, 
+            "VELIA Jean Marc": 0
+        }
+
+        console.log("listeCandidats 1 ", listeCandidats);
 
 
-<script type="text/javascript">
+        //User.vote = {} Récupérer le liste de chaque personne
+        // Réccupérer la liste des utilisateurs
 
-var test = <%- JSON.stringify(yo) %>;
-console.log(test);
+        for(let i=0; i<test.length; i++){
+            // yo[i].vote.find(){
+                for(let j=0; j<test[i].vote[4].choix.length; j++){
+                    console.log("listeCandidats2 ", listeCandidats);
 
-    
-var dataPreferences = {
-	series: [
-		[25, 30, 20, 25]
-	]
-};
+                    listeCandidats[test[i].vote[4].choix[j]] += test[i].nbMandat;
+                    console.log("listeCandidats3 ", listeCandidats);
 
-var optionsPreferences = {
-	donut: true,
-	donutWidth: 40,
-	startAngle: 0,
-	total: 100,
-	showLabel: false,
-	axisX: {
-		showGrid: false
-	}
-};
+                }
+            // }
+
+        }
+        //Pour chacun d'eux
+        //Le vote 5
+        // Pour chacun de sa liste
+        // 
 
 
-var Vote1PourResult = 0;
-var Vote1ContreResult = 0;
-var Vote1Total = 0;
-var Vote1PourPourcentage = 0
-var Vote1ContrePourcentage = 0;
+        // ***** STATISTIQUE VOTE 1, 2, 3 et 4 ***** 
 
-var Vote2PourResult = 0;
-var Vote2ContreResult = 0;
-var Vote2Total = 0;
-var Vote2PourPourcentage = 0
-var Vote2ContrePourcentage = 0;
+            
+        var dataPreferences = {
+        	series: [
+        		[25, 30, 20, 25]
+        	]
+        };
 
-var Vote3PourResult = 0;
-var Vote3ContreResult = 0;
-var Vote3Total = 0;
-var Vote3PourPourcentage = 0
-var Vote3ContrePourcentage = 0;
+        var optionsPreferences = {
+        	donut: true,
+        	donutWidth: 40,
+        	startAngle: 0,
+        	total: 100,
+        	showLabel: false,
+        	axisX: {
+        		showGrid: false
+        	}
+        };
 
-var Vote4PourResult = 0;
-var Vote4ContreResult = 0;
-var Vote4Total = 0;
-var Vote4PourPourcentage = 0
-var Vote4ContrePourcentage = 0;
+        var Vote1PourResult = 0;
+        var Vote1ContreResult = 0;
+        var Vote1Total = 0;
+        var Vote1PourPourcentage = 0
+        var Vote1ContrePourcentage = 0;
 
+        var Vote2PourResult = 0;
+        var Vote2ContreResult = 0;
+        var Vote2Total = 0;
+        var Vote2PourPourcentage = 0
+        var Vote2ContrePourcentage = 0;
 
-for (let i = 0; i < test.length; i++){
+        var Vote3PourResult = 0;
+        var Vote3ContreResult = 0;
+        var Vote3Total = 0;
+        var Vote3PourPourcentage = 0
+        var Vote3ContrePourcentage = 0;
 
-    //VOTE 1 RESULTS
-        Vote1PourResult =  Vote1PourResult + Number(test[i].vote[0].pour);
-        Vote1ContreResult =  Vote1ContreResult + Number(test[i].vote[0].contre);
-        Vote1Total = Vote1PourResult + Vote1ContreResult;
-        Vote1PourPourcentage =  Vote1PourResult * 100 / Vote1Total;
-        Vote1ContrePourcentage =  Vote1ContreResult * 100 / Vote1Total;
-
-
-    //VOTE 2 RESULTS
-        Vote2PourResult =  Vote2PourResult + Number(test[i].vote[1].pour);
-        Vote2ContreResult =  Vote2ContreResult + Number(test[i].vote[1].contre);
-        Vote2Total = Vote2PourResult + Vote2ContreResult;
-        Vote2PourPourcentage =  Vote2PourResult * 100 / Vote2Total;
-        Vote2ContrePourcentage =  Vote2ContreResult * 100 / Vote2Total;
-
-    //VOTE 3 RESULTS
-        Vote3PourResult =  Vote3PourResult + Number(test[i].vote[2].pour);
-        Vote3ContreResult =  Vote3ContreResult + Number(test[i].vote[2].contre);
-        Vote3Total = Vote3PourResult + Vote3ContreResult;
-        Vote3PourPourcentage =  Vote3PourResult * 100 / Vote3Total;
-        Vote3ContrePourcentage =  Vote3ContreResult * 100 / Vote3Total;
+        var Vote4PourResult = 0;
+        var Vote4ContreResult = 0;
+        var Vote4Total = 0;
+        var Vote4PourPourcentage = 0
+        var Vote4ContrePourcentage = 0;
 
 
-    //VOTE 4 RESULTS
-        Vote4PourResult =  Vote4PourResult + Number(test[i].vote[3].pour);
-        Vote4ContreResult =  Vote4ContreResult + Number(test[i].vote[3].contre);
-        Vote4Total = Vote4PourResult + Vote4ContreResult;
-        Vote4PourPourcentage =  Vote4PourResult * 100 / Vote4Total;
-        Vote4ContrePourcentage =  Vote4ContreResult * 100 / Vote4Total;
+        for (let i = 0; i < test.length; i++){
+
+            //VOTE 1 RESULTS
+                Vote1PourResult =  Vote1PourResult + Number(test[i].vote[0].pour);
+                Vote1ContreResult =  Vote1ContreResult + Number(test[i].vote[0].contre);
+                Vote1Total = Vote1PourResult + Vote1ContreResult;
+                Vote1PourPourcentage =  Vote1PourResult * 100 / Vote1Total;
+                Vote1ContrePourcentage =  Vote1ContreResult * 100 / Vote1Total;
 
 
-}
+            //VOTE 2 RESULTS
+                Vote2PourResult =  Vote2PourResult + Number(test[i].vote[1].pour);
+                Vote2ContreResult =  Vote2ContreResult + Number(test[i].vote[1].contre);
+                Vote2Total = Vote2PourResult + Vote2ContreResult;
+                Vote2PourPourcentage =  Vote2PourResult * 100 / Vote2Total;
+                Vote2ContrePourcentage =  Vote2ContreResult * 100 / Vote2Total;
 
-// Vote 1 statistics 
-Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
-Chartist.Pie('#chartVote1', {
-  labels: [Math.round(Vote1PourPourcentage)+ "%",Math.round(Vote1ContrePourcentage)+ "%"],
-  series: [Vote1PourPourcentage, Vote1ContrePourcentage ]
-});
-
-
-// Vote 2 statistics 
-Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
-Chartist.Pie('#chartVote2', {
-  labels: [Math.round(Vote2PourPourcentage) + "%" ,Math.round(Vote2ContrePourcentage) + "%"],
-  series: [Vote2PourPourcentage, Vote2ContrePourcentage ]
-});
-
-// Vote 3 statistics 
-Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
-Chartist.Pie('#chartVote3', {
-  labels: [Math.round(Vote3PourPourcentage) + "%" ,Math.round(Vote3ContrePourcentage) + "%"],
-  series: [Vote3PourPourcentage, Vote3ContrePourcentage ]
-});
-
-// Vote 4 statistics 
-Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
-Chartist.Pie('#chartVote4', {
-  labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
-  series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
-});
+            //VOTE 3 RESULTS
+                Vote3PourResult =  Vote3PourResult + Number(test[i].vote[2].pour);
+                Vote3ContreResult =  Vote3ContreResult + Number(test[i].vote[2].contre);
+                Vote3Total = Vote3PourResult + Vote3ContreResult;
+                Vote3PourPourcentage =  Vote3PourResult * 100 / Vote3Total;
+                Vote3ContrePourcentage =  Vote3ContreResult * 100 / Vote3Total;
 
 
+            //VOTE 4 RESULTS
+                Vote4PourResult =  Vote4PourResult + Number(test[i].vote[3].pour);
+                Vote4ContreResult =  Vote4ContreResult + Number(test[i].vote[3].contre);
+                Vote4Total = Vote4PourResult + Vote4ContreResult;
+                Vote4PourPourcentage =  Vote4PourResult * 100 / Vote4Total;
+                Vote4ContrePourcentage =  Vote4ContreResult * 100 / Vote4Total;
+
+
+        }
+
+        // Vote 1 statistics 
+        Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
+        Chartist.Pie('#chartVote1', {
+          labels: [Math.round(Vote1PourPourcentage)+ "%",Math.round(Vote1ContrePourcentage)+ "%"],
+          series: [Vote1PourPourcentage, Vote1ContrePourcentage ]
+        });
+
+
+        // Vote 2 statistics 
+        Chartist.Pie('#chartVote2', dataPreferences, optionsPreferences);
+        Chartist.Pie('#chartVote2', {
+          labels: [Math.round(Vote2PourPourcentage) + "%" ,Math.round(Vote2ContrePourcentage) + "%"],
+          series: [Vote2PourPourcentage, Vote2ContrePourcentage ]
+        });
+
+        // Vote 3 statistics 
+        Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
+        Chartist.Pie('#chartVote3', {
+          labels: [Math.round(Vote3PourPourcentage) + "%" ,Math.round(Vote3ContrePourcentage) + "%"],
+          series: [Vote3PourPourcentage, Vote3ContrePourcentage ]
+        });
+
+        // Vote 4 statistics 
+        Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
+        Chartist.Pie('#chartVote4', {
+          labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
+          series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
+        });
 
 	</script>
 
 </html>
-    
-   
-   
-
