@@ -71,24 +71,33 @@ class voterController {
     }    
 
     confirmation(req,res){
+
         User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
             if(dejavoter.length == 0){
                 Vote.find({}, function (err, votes){
                     votes.filter((votefiltered) => {
-                        if(votefiltered._id == req.params.id){                    
+                        if(votefiltered._id == req.params.id){
+
                             res.render('voter/confirmation', {
                                 user: req.user,
                                 vote: votefiltered,
                                 pour: req.body.pour,
                                 contre: req.body.contre
                             });
+                            
                         }
                     });
-                }); 
-            } else {
-                res.redirect("/homeVoter");
-            }
-        });
+                }); req.flash("success", "Merci d'avoir voté.");
+            } else { Vote.find({}, function (err, votes){
+                votes.filter((votefiltered) => {
+                    if(votefiltered._id == req.params.id){
+                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé");
+                       res.redirect("/homeVoter");
+                   }
+               });
+            });
+        }
+    });
     } 
 
     confirmationE(req,res){
@@ -114,7 +123,7 @@ class voterController {
     avoter(req,res){
         //Récupérer tous les votes
         User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
-       
+
             if(dejavoter.length == 0){
                 Vote.find({}, function (err, votes){
 
@@ -148,14 +157,22 @@ class voterController {
                         }
                     });
                 }); 
-            } else res.redirect("/homeVoter"); 
+            } else { Vote.find({}, function (err, votes){
+                votes.filter((votefiltered) => {
+                    if(votefiltered._id == req.params.id){
+                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé");
+                       res.redirect("/homeVoter");
+                   }
+               });
+            });
+        }
         });       
     }
 
     avoterE(req,res){   
         //Récupérer tous les votes
         User.find({_id:req.user._id,'vote.idVote':req.params.id},function(err,dejavoter){
-       
+
             if(dejavoter.length == 0){
                 //Récupérer tous les votes
                 Vote.find({}, function (err, votes){
@@ -233,5 +250,5 @@ class voterController {
         });
     }   
 }
-      
+
 module.exports = new voterController();

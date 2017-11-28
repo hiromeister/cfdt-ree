@@ -57,6 +57,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+app.use(function(req, res, next) {
+    res.locals.messages = req.flash();
+    next();
+});
+
 // routes ======================================================================
 require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
@@ -66,10 +71,11 @@ app.listen(port);
 console.log('The magic happens on port ' + port);
 
 app.use(function (req, res, next) {
-    res.status(404).render('404', {title: "Sorry, page not found", session: req.sessionbo});
+    res.status(404).render('404', {title: "Sorry, page not found", session: req.session});
 });
 
 app.use(function (req, res, next) {
     res.status(500).render('404', {title: "Sorry, page not found"});
 });
+
 exports = module.exports = app;
