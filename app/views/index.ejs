@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>DEMANDE DE MOT DE PASSE PERDU</h1>
-    <input type="text" name="demande" action="demande" placeholder="Entrez votre adresse email !">
-  </body>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Redirection Password</title>
+	<link rel="shortcut icon" href="./../../images/logo.gif" type="image/x-icon">
+	<link rel="icon" href="../../images/logo.gif" type="image/x-icon">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="../../../css/voter/custom.css">
+
+
+	
+</head>
+<body>
+	<header>
+		<div class="container-fluid inner-header">
+			<div class="row row-inner-header">
+				<div class="col-xs-4 col-inner-header">
+					<a href="#"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
+				</div>
+
+				<div class="col-xs-4 col-inner-header">
+					<h1>XVIIème CONGRES
+						<br/>
+					UIR-CFDT</h1>    				
+				</div>
+
+				<div class="col-xs-4 col-inner-header">
+					<a href="#"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="col-xs-4 col-inner-header">
+		<h1>Premiere connexion</h1>
+	</div>
+	<form role="form" action="/firstConnect" role="form" method="post" class="login-form col-md-12" align="center">
+		<label>Entrez votre adresse email </label>
+		<input type="email" required name="email" placeholder=" email !">
+		<button class="btn1 btn-lg" type="submit">Envoyer</button>
+		<% if (messages.success) { %>
+		<% for (let i = 0; i < messages.success.length; i++ ) { %>
+		<div class="alert alert-danger"><%= messages.success[i]  %></div>
+		<% } %>
+		<%}%>
+	</form>
+</body>
 </html>

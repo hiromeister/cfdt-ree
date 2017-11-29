@@ -1,7 +1,9 @@
 let homeController = require('../app/controllers/homeController');
 let voteController = require('../app/controllers/voteController');
 let voterController= require('../app/controllers/voterController');
-
+const async = require('async');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 const permissions = require('./permissions')
 
 const request = require('request');
@@ -46,10 +48,9 @@ module.exports = function (app, passport) {
     // VOTANT routes acceuil
     app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter);
     app.get('/logout', function(req, res){
-
       req.logout();
       res.redirect('/login');
-    });
+  });
 
     app.get('/choix/vote/:id', voterController.loggedIn, voterController.choice);
     app.get('/choixE/vote/:id', voterController.loggedIn, voterController.choiceE);
@@ -70,10 +71,15 @@ module.exports = function (app, passport) {
     }));
 
     app.post('/login', passport.authenticate('local-login', {
-         successFlash: 'Welcome!',
-        successRedirect: '/home',
-        failureRedirect: '/login', 
-        failureFlash: true 
-    }));
+       successRedirect: '/home',
+       failureRedirect: '/login', 
+       failureFlash: true 
+   }));
+    // mot de passe perdu
+    app.get('/firstStep',homeController.firstStep);
+    app.post('/firstConnect',homeController.firstConnect);
+    // renouvellemetn/confirmation mot de passe
+    app.get('/reset/:token',homeController.resetToken);
+    app.post('/reset/:token',homeController.postResetToken);
 
 }
