@@ -1473,8 +1473,14 @@ div.toggle.btn.btn-xs.btn-primary{
     color: #e75c21;
 }
 
+.winners{
+    color: #e75c21;
+    background: #eaeaea;
+}
 
-
+.winners:hover{
+    background: #eaeaea;
+}
 
 
 
@@ -3893,5 +3899,3 @@ div.toggle.btn.btn-xs.btn-primary{
         -webkit-overflow-scrolling: touch;
     }
 }
-
-

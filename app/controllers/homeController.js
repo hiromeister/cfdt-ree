@@ -31,14 +31,17 @@ class homeController{
 	// }
 
 	home(req,res){
-		let sortTerLa = Vote.find({}).select('choix _id');
+
+
+		let sortTerLa = Vote.find({}).select('choix intitule');
+
 		sortTerLa.exec(function (err, vote){
 			
 			let sortVote = User.find({statut: true}).select('vote nbMandat statut');
 			sortVote.exec(function (err, users){
 				res.render('admin/dashboard.ejs',{
 					vote: vote,
-					yo:users,
+					users: users,
 				})
 			})
 		})
