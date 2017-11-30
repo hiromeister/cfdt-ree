@@ -12,56 +12,73 @@
 
 	<link rel="stylesheet" type="text/css" href="./../../css/voter/custom.css">
 </head>
-  <body>
-    <div class="container text-center">
+<body>
+	<div class="container text-center">
 		<div class="row">
 			<div class="col-xs-6">
 				<p style="text-align: left;">Connecté(e) : <span class="color-orange"><%= user.nom.toUpperCase() %> <%= user.prenom.toUpperCase() %></span></p>
-		    </div>
-		    <div class="col-xs-6">
-		    	<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
-	    	</div>
-	    </div>
-    	<header>
-    		<div class="container-fluid inner-header">
-    			<div class="row row-inner-header">
-	    			<div class="col-xs-4 col-inner-header">
-	    			    <a href="/homeVoter"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
-	    			</div>
 
-	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>XVIIème CONGRES
-		    				<br/>
-		    				UIR-CFDT</h1>    				
-	    			</div>
+			</div>
+			<div class="col-xs-6">
+				<p style="text-align: right;"><a href="/logout">Déconnexion</a></p>
+			</div>
+		</div>
+		<header>
+			<div class="container-fluid inner-header">
+				<div class="row row-inner-header">
+					<div class="col-xs-4 col-inner-header">
+						<a href="#"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
+					</div>
 
-	    			<div class="col-xs-4 col-inner-header">
-		    			<a href="/homeVoter"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
-	    			</div>
-    			</div>
-    		</div>
-    	</header>
-    	<nav>
-    		<div class="row">
-    			<div class="col-xs-12">
-					<div class="progress">
-						<div class="circle done">
-					    	<span class="label done">1</span>
-					    	<span class="nav-title">CHOIX</span>
-					  	</div>
-						<span class="bar done"></span>
-						<div class="circle done">
-					    	<span class="label done">2</span>
-					    	<span class="nav-title" id="nav-title-confirmation">CONFIRMATION</span>
-					  	</div>
-					  	<span class="bar done"></span>
-					  	<div class="circle done">
-					    	<span class="label done">3</span>
-					    	<span class="nav-title">FIN</span>
-					  	</div>
+
+					<div class="col-xs-4 col-inner-header">
+						<h1>XVIIème CONGRES
+							<br/>
+						UIR-CFDT</h1>    				
+					</div>
+
+
+					<div class="col-xs-4 col-inner-header">
+						<a href="#"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
 					</div>
 				</div>
 			</div>
+		</header>
+		<nav>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="progress">
+						<div class="circle done">
+							<span class="label done">1</span>
+							<span class="nav-title">CHOIX</span>
+						</div>
+						<span class="bar done"></span>
+						<div class="circle done">
+							<span class="label done">2</span>
+							<span class="nav-title" id="nav-title-confirmation">CONFIRMATION</span>
+						</div>
+						<span class="bar done"></span>
+						<div class="circle done">
+							<span class="label done">3</span>
+							<span class="nav-title">FIN</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</nav>
+		<% if (messages.success) { %>
+		<% for (let i = 0; i < messages.success.length; i++ ) { %>
+		<div class="alert alert-danger "><%= messages.success[i]  %></div>
+		<% } %>
+		<%}%>
+		<section>
+			<div class="row title">
+				<h4>VOTE : 
+					<%= vote.intitule.toUpperCase() %>
+				</h4>
+			</div>
+
 			<div>
 	    		<a href="/homeVoter"><img id="uir-logo" src="./../../images/home.png" alt="UIR logo" style="width: 30px; margin: 0;"></a>
     			<p style="font-size: 10px;">Accueil</p>
@@ -73,34 +90,31 @@
 		        	<%= vote.intitule.toUpperCase() %>
 		    	</h4>
 		    </div>
+
 			<div class="fond-blanc">
 				<img class="avote" src="./../../images/avote.png" alt="A voté !">
 				<p>Nous vous remercions !</p>
 				<p>Votre choix a bien été pris en compte pour ce vote.</p>
 
-			    <div class="row">
-			     	<div class="col-lg-12">
-			        	<a href="/homeVoter">					
-			         		<button type="button">
-					         	<h4>Accueil</h4>
+				<div class="row">
+					<div class="col-lg-12">
+						<a href="/homeVoter">					
+							<button type="button">
+								<h4>Accueil</h4>
 							</button>
 						</a>
-			     	</div>
-			    </div>
-			    <% if (messages.success) { %>
-	    		<% for (let i = 0; i < messages.success.length; i++ ) { %>
-                          <div class="alert alert-danger"><%= messages.success[i]  %></div>
-                          <% } %>
-            <%}%>
+					</div>
+				</div>
+
 			</div>		    		
-       	</section>
-    </div>
+		</section>
+	</div>
 
 	<footer class="text-center">
 		<p>DW2 Simplon Réunion | 2017</p>
 	</footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  </body>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
 </html>

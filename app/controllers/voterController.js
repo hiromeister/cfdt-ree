@@ -35,12 +35,22 @@ class voterController {
     }
 
     homeVoter(req,res){
-        Vote.find({}, function (err, vote){
-            res.render('voter/vote', {
-                user: req.user,
-                vote: vote
-            });
-        });           
+        User.find({_id:req.user.id}, function(err, user){
+            user.filter((userfiltered) => {
+                if(userfiltered.firstLogin == false){
+
+
+                    Vote.find({}, function (err, vote){
+                        res.render('voter/vote', {
+                            user: req.user,
+                            vote: vote
+
+                        }); 
+                    });
+                } else res.redirect('/firstStep');
+            }); 
+        });  
+
     }
 
     choice(req,res){
@@ -91,7 +101,7 @@ class voterController {
             } else { Vote.find({}, function (err, votes){
                 votes.filter((votefiltered) => {
                     if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé");
+                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
                        res.redirect("/homeVoter");
                    }
                });
@@ -160,13 +170,13 @@ class voterController {
             } else { Vote.find({}, function (err, votes){
                 votes.filter((votefiltered) => {
                     if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé");
+                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
                        res.redirect("/homeVoter");
                    }
                });
             });
         }
-        });       
+    });       
     }
 
     avoterE(req,res){   
@@ -193,8 +203,8 @@ class voterController {
                                 
                                 //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
                                 User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                                        if (err) return handleError(err);
-                                    }
+                                    if (err) return handleError(err);
+                                }
                                 );
 
                             });

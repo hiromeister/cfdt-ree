@@ -314,6 +314,7 @@
         console.log("nb de vote 2", presentVote2)
         console.log("nb de vote 3", presentVote3)
         console.log("nb de vote 4", presentVote4)
+>>>>>>> 5e29b1c1fae8a295d3dad360e7a496f3a0737672
             
         var dataPreferences = {
         	series: [
@@ -426,6 +427,76 @@
           labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
           series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
         });
+         /*let listeCandidats = {
+            "BELDA Rémy": 0, 
+            "BEYRONNEAU Christophe": 0, 
+            "CORBEAU Mario": 0, 
+            "CRESENCE Cédric": 0, 
+            "DESPRAIRIES J Marie": 0, 
+            "DIALLO Thierno": 0, 
+            "DRULA Jessica": 0, 
+            "ETALE Gérard": 0, 
+            "EUPHRASIE Sully": 0, 
+            "GALLAIS Yannick": 0, 
+            "GALIMEDE Béatrice": 0, 
+            "GANGAMA William": 0, 
+            "GRONDIN Patrick": 0, 
+            "GUEZELOT David": 0, 
+            "HOARAU Barthélémy": 0, 
+            "HOARAU Gilbert": 0, 
+            "HOARAU Louise": 0, 
+            "IGOUFE Claudine": 0, 
+            "LAGARRIGUE Johnny": 0, 
+            "LAURENCE Adrien": 0, 
+            "LAURET Janick": 0, 
+            "LAYEMAR Gina": 0, 
+            "LEGROS Mickael": 0, 
+            "LEPERLIER Patrick": 0, 
+            "MAILLOT Karl": 0, 
+            "MANI Alain": 0, 
+            "MARMILLOD Claude": 0,
+            "MICHEL Béatrice": 0, 
+            "MOREL Stéphanie": 0, 
+            "MOULAN Thierry": 0, 
+            "PAYET Jacques Henri": 0, 
+            "PEYROUSET Corine": 0, 
+            "RIVIERE Jean Pierre": 0, 
+            "ROBERT Nadège": 0, 
+            "SELLIER Jean François": 0, 
+            "SMITH Johan": 0, 
+            "TRECASSE Georges": 0, 
+            "VELIA Jean Marc": 0
+        };
+
+        // console.log("listeCandidats 1 ", listeCandidats);
+
+        //User.vote = {} Récupérer le liste de chaque personne
+        // Réccupérer la liste des utilisateurs
+
+        for(let i=0; i<test.length; i++){
+            // yo[i].vote.find(){
+                for(let j=0; j<test[i].vote[4].choix.length; j++){
+                    // console.log("listeCandidats2 ", listeCandidats);
+
+                    listeCandidats[test[i].vote[4].choix[j]] += parseInt(test[i].nbMandat);
+                    // console.log("listeCandidats3 ", listeCandidats)                    
+
+                }
+            // }
+           
+        }
+        candidats.forEach(function(element) {
+            // console.log("element.innerText " + element.innerText)                    
+
+            for (let prop in listeCandidats) {
+            // console.log("prop ", prop)                    
+            // console.log("listeCandidats[prop] ", listeCandidats[prop])                    
+
+                if(element.innerText == prop){
+                    $(element).next().text(listeCandidats[prop]);
+                }
+            }
+        });*/
 
         // ***** STATISTIQUE VOTE 5 *****
 

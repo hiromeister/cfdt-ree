@@ -5,15 +5,15 @@ var multer = require('multer')
 var constants = require('constants');
 var constant = require('./config/constants');
 var permissions = require('./config/permissions');
-
+var nodemailer = require('nodemailer');
 var port = process.env.PORT || 8042;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
 var path = require('path');
-
+const crypto = require('crypto');
 var url = process.env.MONGOLAB_URI; // connexion à la db mLab
-
+var async = require('async');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
