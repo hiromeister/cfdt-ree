@@ -332,6 +332,7 @@ td{
 .choice-to-select a{
 	color: #aaa;
 	text-decoration: none;
+	padding: 5px !important;
 }
 
 .choice-to-select:hover{
@@ -341,6 +342,7 @@ td{
 .choice-unable a{
 	color: #e75c21;
 	text-decoration: none;
+	cursor: default;
 }
 
 .choice-unable:hover{
@@ -361,6 +363,7 @@ td{
 	text-align: center;
 	margin: 0px auto;
 	padding: 10px;
+	cursor: pointer;
 }
 
 .rang{

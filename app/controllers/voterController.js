@@ -193,9 +193,10 @@ class voterController {
                                 
                                 //Sauvegarder le vote en écrasant le tableau de vote par celui qu'on a créé au-dessus(juste au-dessus)
                                 User.findByIdAndUpdate(currentVotant._id, { $set: { vote: currentUserVotes}}, { new: true }, function (err) {
-                                    if (err) return handleError(err);
-                                    
-                                });
+                                        if (err) return handleError(err);
+                                    }
+                                );
+
                             });
 
                             res.render('voter/avoter', {
