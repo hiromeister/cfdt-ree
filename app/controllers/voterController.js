@@ -22,7 +22,7 @@ class voterController {
     }
 
     createNewVoter(req,res){        
-        let myData = new User(req.body);
+        var myData = new User(req.body);
 
         myData.save()
         .then(item => {
@@ -97,17 +97,19 @@ class voterController {
                             
                         }
                     });
-                }); req.flash("success", "Merci d'avoir voté.");
-            } else { Vote.find({}, function (err, votes){
-                votes.filter((votefiltered) => {
-                    if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
-                       res.redirect("/homeVoter");
-                   }
-               });
-            });
-        }
-    });
+                });
+                req.flash("success", "Merci d'avoir voté.");
+            } else {
+                Vote.find({}, function (err, votes){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+                           req.flash("error", "Votre contribution au VOTE " + votefiltered.intitule.toUpperCase() + " a déjà été comptabilisé. Veuillez patienter jusqu'à l'ouverture du vote suivant.");
+                           res.redirect("/homeVoter");
+                       }
+                   });
+                });
+            }
+        });
     } 
 
     confirmationE(req,res){
@@ -123,9 +125,17 @@ class voterController {
                             });
                         }
                     });
-                }); 
+                });
+                req.flash("success", "Merci d'avoir voté.");
             } else {
-                res.redirect("/homeVoter");
+                Vote.find({}, function (err, votes){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+                           req.flash("error", "Votre contribution au VOTE " + votefiltered.intitule.toUpperCase() + " a déjà été comptabilisé. Veuillez patienter jusqu'à l'ouverture du vote suivant.");
+                           res.redirect("/homeVoter");
+                       }
+                   });
+                });
             }
         });
     }    
@@ -141,13 +151,13 @@ class voterController {
                         if(votefiltered._id == req.params.id){
 
                             //récupérer l'utilisateur connecté
-                            let userLogged = req.user;
-                            let date = Date();
+                            var userLogged = req.user;
+                            var date = Date();
                             
                             //Récupérer les votes de l'utilisateur connecté
                             User.findOne({_id:userLogged._id}, function(err, currentVotant){
 
-                                let currentUserVotes = currentVotant.vote;
+                                var currentUserVotes = currentVotant.vote;
                                 //Ajouter le nouveau vote aux votes précédemment enregistré 
                                 currentUserVotes.push({idVote:req.params.id, pour: req.body.pour, contre: req.body.contre, createdAt: date});
                                 
@@ -167,16 +177,17 @@ class voterController {
                         }
                     });
                 }); 
-            } else { Vote.find({}, function (err, votes){
-                votes.filter((votefiltered) => {
-                    if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
-                       res.redirect("/homeVoter");
-                   }
-               });
-            });
-        }
-    });       
+            } else { 
+                Vote.find({}, function (err, votes){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+                           req.flash("error", "Votre contribution au VOTE " + votefiltered.intitule.toUpperCase() + " a déjà été comptabilisé. Veuillez patienter jusqu'à l'ouverture du vote suivant.");
+                           res.redirect("/homeVoter");
+                       }
+                   });
+                });
+            }
+        });       
     }
 
     avoterE(req,res){   
@@ -191,13 +202,13 @@ class voterController {
                         if(votefiltered._id == req.params.id){
 
                             //récupérer l'utilisateur connecté
-                            let userLogged = req.user;
-                            let date = Date();                    
+                            var userLogged = req.user;
+                            var date = Date();                    
                             
                             //Récupérer les votes de l'utilisateur connecté
                             User.findOne({_id:userLogged._id}, function(err, currentVotant){
 
-                                let currentUserVotes = currentVotant.vote;
+                                var currentUserVotes = currentVotant.vote;
                                 //Ajouter le nouveau vote aux votes précédemment enregistré 
                                 currentUserVotes.push({idVote:req.params.id, choix: req.body.choix, createdAt: date});
                                 
@@ -217,7 +228,17 @@ class voterController {
                         }
                     });
                 });         
-            } else res.redirect("/homeVoter"); 
+            } else {
+
+                Vote.find({}, function (err, votes){
+                    votes.filter((votefiltered) => {
+                        if(votefiltered._id == req.params.id){
+                           req.flash("error", "Votre contribution au VOTE " + votefiltered.intitule.toUpperCase() + " a déjà été comptabilisé. Veuillez patienter jusqu'à l'ouverture du vote suivant.");
+                           res.redirect("/homeVoter");
+                       }
+                   });
+                });
+            }
         });       
     }
     

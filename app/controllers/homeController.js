@@ -32,7 +32,6 @@ class homeController{
 
 	home(req,res){
 
-
 		let sortTerLa = Vote.find({}).select('choix intitule');
 
 		sortTerLa.exec(function (err, vote){
@@ -45,11 +44,6 @@ class homeController{
 				})
 			})
 		})
-
-
-
-
-
 	}
 
 	test(req, res){

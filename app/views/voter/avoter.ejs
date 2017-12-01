@@ -68,21 +68,14 @@
 
 		</nav>
 		<% if (messages.success) { %>
-		<% for (let i = 0; i < messages.success.length; i++ ) { %>
-		<div class="alert alert-danger "><%= messages.success[i]  %></div>
-		<% } %>
+			<% for (let i = 0; i < messages.success.length; i++ ) { %>
+				<div class="alert alert-success "><%= messages.success[i]  %></div>
+			<% } %>
 		<%}%>
-		<section>
-			<div class="row title">
-				<h4>VOTE : 
-					<%= vote.intitule.toUpperCase() %>
-				</h4>
-			</div>
-
-			<div>
-	    		<a href="/homeVoter"><img id="uir-logo" src="./../../images/home.png" alt="UIR logo" style="width: 30px; margin: 0;"></a>
-    			<p style="font-size: 10px;">Accueil</p>
-			</div>
+		<div>
+    		<a href="/homeVoter"><img id="uir-logo" src="./../../images/home.png" alt="UIR logo" style="width: 30px; margin: 0;"></a>
+			<p style="font-size: 10px;">Accueil</p>
+		</div>
     	</nav>
     	<section>
 		    <div class="row title">
