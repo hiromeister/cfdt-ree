@@ -39,7 +39,8 @@
                            <% if (success.length > 0) { %>
                           <div class="alert alert-success"><%- success %></div>
                           <% } %>
-            <form role="form" action="/login" role="form" method="post" class="login-form col-md-12" align="center">
+                           
+                     <form role="form" action="/login" role="form" method="post" class="login-form col-md-12" align="center">
                 <label>Adresse mèl : </label>
                 <input type="text" name="email" required value=""  placeholder="Email..."  id="email">
                 <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
@@ -49,10 +50,12 @@
                 <input type="password" required name="password" value="" placeholder=" Votre Mot de passe"  id="password">
                 <br>
                 <br>
-                <a class="text-center" href="/newmdp"> J'ai perdu mon mot de passe ?</a>
+                <a class="text-center" href="/firstStep"> J'ai perdu mon mot de passe ?</a>
                 <br>
                 <br>
+                
                 <button class="btn1 btn-lg" type="submit">Se connecter</button>
+
             </form>
         </div>
     </div>

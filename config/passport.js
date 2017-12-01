@@ -139,7 +139,7 @@ module.exports = function(passport) {
             
             if (err)
             return done(null, false, req.flash('error', err)); // req.flash is the way to set flashdata using connect-flash
-
+            
 
             // if no user is found, return the message
             if (!user)
@@ -151,7 +151,7 @@ module.exports = function(passport) {
             if (!user.validPassword(password))
                 return done(null, false, req.flash('error', 'Email or/and Password Does Not Match.')); // create the loginMessage and save it to session as flashdata
 
-            if(user.status === 'inactive')
+            if(user.status === false)
              return done(null, false, req.flash('error', 'Your Account Not Activated ,Please Check Your Email')); // create the loginMessage and save it to session as flashdata
             
             // all is well, return successful user
