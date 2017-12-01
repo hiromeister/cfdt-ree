@@ -16,6 +16,7 @@
     "crypto": "^1.0.1",
     "dateformat": "latest",
     "debug": "~2.2.0",
+    "dotenv": "^4.0.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
     "express-mailer": "^0.3.0",
