@@ -121,8 +121,8 @@ class homeController{
 				var smtpTransport = nodemailer.createTransport({
 					service: 'gmail',
 					auth: {
-						user: 'oinanaphone@gmail.com',
-						pass: 'piyupiyu'
+						user: process.env.SMTPUSER,
+						pass: process.env.SMTPPASSWORD
 					}
 				});
 
@@ -130,10 +130,10 @@ class homeController{
 					to: user.email,
 					from: 'oinanaphone@gmail.com',
 					subject: 'Validation de nouveau mot de passe',
-					text: 'Ceci est un message automatique generé lors de votre premiere connexion sur le site de vote de la CFDT\n\n' +
-					'Veuillez cliquer sur le lien suivant pour aller sur la page de validation de mot de passe:\n\n' +
+					text: 'Ceci est un message automatique généré lors de votre première connexion sur le site de CFDT-UIR, XVIIe congrés.\n\n' +
+					'Veuillez cliquer sur le lien suivant pour aller sur la page de validation de mot de passe :\n\n' +
 					'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-					'Si vous etes deja connecté a votre espace de vote CFDT,ne tenez pas compte de ce message et votre mot de passe restera inchangé.\n'
+					'Si vous vous êtes déjà connecté à votre espace personnel de CFDT-UIR, ne tenez pas compte de ce message et votre mot de passe restera inchangé.\n'
 				};
 
 				smtpTransport.sendMail(mailOptions, function(err) {
@@ -152,7 +152,7 @@ class homeController{
 		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 			if (!user) {
 				req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
-				return res.redirect('/firstStep');
+				return res.redirect('/login');
 			}
 			res.render('reset', {
 				user: req.user
@@ -166,6 +166,10 @@ class homeController{
 				User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 					if (!user) {
 						req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
+						return res.redirect('back');
+					}
+					if(req.body.password.length <8){
+						req.flash('error', 'Le mot de passe doit contenir au moins 8 caractères.');
 						return res.redirect('back');
 					}
 
@@ -184,8 +188,8 @@ class homeController{
 				var smtpTransport = nodemailer.createTransport({
 					service: 'gmail',
 					auth: {
-						user: 'oinanaphone@gmail.com',
-						pass: 'piyupiyu'
+						user: process.env.SMTPUSER,
+						pass: process.env.SMTPPASSWORD
 					}
 				});
 				var mailOptions = {
@@ -193,10 +197,10 @@ class homeController{
 					from: 'oinanaphone@gmail.com',
 					subject: 'Changement de mot de passe',
 					text: 'Bonjour,\n\n' +
-					"Ce message de confirmation a l'attention de  " + user.email + " pour vous avertir du changement de votre mot de passe.\n"
+					"Ce message de confirmation, à l'attention de  " + user.email + ", est pour vous avertir du changement de votre mot de passe.\n"
 				};
 				smtpTransport.sendMail(mailOptions, function(err) {
-					req.flash('success', 'Felicitation votre mot de passe a bien été changé.Vous pouvez vous connecter!');
+					req.flash('success', 'Félicitation votre mot de passe a bien été changé. Vous pouvez vous connecter.');
 					done(err);
 				});
 			}
