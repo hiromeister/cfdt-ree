@@ -76,7 +76,7 @@ module.exports = function(passport) {
            	 
            	  var active_code=bcrypt.hashSync(Math.floor((Math.random() * 99999999) *54), null, null);
            	 
-                    role:req.body.role;
+                   
                     newUser.role = ['admin'];
                     newUser.role = ['user'];
                     newUser.email    = email;
@@ -96,7 +96,7 @@ module.exports = function(passport) {
                     email.activate_email(req.body.username,req.body.email,active_code);
                                         return done(null, newUser,req.flash('success', 'Account Created Successfully,Please Check Your Email For Account Confirmation.'));
                     */
-                    return done(null, newUser,req.flash('success', 'Account Created Successfully'));
+                    return done(null, newUser,req.flash('success', 'Le compte a été créé avec succès!'));
                     
                     req.session.destroy();
                 
@@ -135,7 +135,7 @@ module.exports = function(passport) {
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'email' :  email }, function(err, user) {
-            // if there are any errors, return the error before anything else
+                        // if there are any errors, return the error before anything else
             
             if (err)
             return done(null, false, req.flash('error', err)); // req.flash is the way to set flashdata using connect-flash
@@ -143,16 +143,16 @@ module.exports = function(passport) {
 
             // if no user is found, return the message
             if (!user)
-                return done(null, false, req.flash('error', 'Sorry Your Account Not Exits ,Please Create Account.')); // req.flash is the way to set flashdata using connect-flash
+                return done(null, false, req.flash('error', "Desolé,ce compte  n'existe pas.")); // req.flash is the way to set flashdata using connect-flash
 
             
             
             // if the user is found but the password is wrong
             if (!user.validPassword(password))
-                return done(null, false, req.flash('error', 'Email or/and Password Does Not Match.')); // create the loginMessage and save it to session as flashdata
+                return done(null, false, req.flash('error', 'Votre mot de passe est incorrect')); // create the loginMessage and save it to session as flashdata
 
             if(user.status === false)
-             return done(null, false, req.flash('error', 'Your Account Not Activated ,Please Check Your Email')); // create the loginMessage and save it to session as flashdata
+             return done(null, false, req.flash('error', "Votre compte n'est pas actif, veuillez contacter l'administrateur!")); // create the loginMessage and save it to session as flashdata
             
             // all is well, return successful user
             req.session.user = user;
