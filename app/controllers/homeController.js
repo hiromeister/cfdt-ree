@@ -105,7 +105,7 @@ class homeController{
 		res.render('index');
 	}
 	firstConnect(req,res,next){
-		console.log('user',req.user.email);
+		
 		async.waterfall([
 			function(done) {
 				crypto.randomBytes(20, function(err, buf) {
@@ -134,8 +134,8 @@ class homeController{
 					service: 'gmail',
 
 					auth: {
-						user: 'oinanaphone@gmail.com',
-						pass: 'piyupiyu'
+						user: process.env.SMTPUSER,
+						pass: process.env.SMTPPASSWORD
 					}
 				});
 				var mailOptions = {
@@ -164,7 +164,7 @@ class homeController{
 		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 			if (!user) {
 				req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
-				return res.redirect('/firstStep');
+				return res.redirect('/login');
 			}
 			res.render('reset', {
 				user: req.user
@@ -179,6 +179,10 @@ class homeController{
 				User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 					if (!user) {
 						req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
+						return res.redirect('back');
+					}
+					if(req.body.password.length <8){
+						req.flash('error', 'Le mot de passe doit contenir au moins 8 caractères!');
 						return res.redirect('back');
 					}
 
@@ -198,8 +202,8 @@ class homeController{
 					service: 'gmail',
 
 					auth: {
-						user: 'oinanaphone@gmail.com',
-						pass: 'piyupiyu'
+						user: process.env.SMTPUSER,
+						pass: process.env.SMTPPASSWORD
 					}
 				});
 				var mailOptions = {
