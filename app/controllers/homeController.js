@@ -17,18 +17,6 @@ class homeController{
 		if(req.session.user){next(); }
 		else { res.redirect('/login'); }
 	}
-	
-	// home(req, res){
-		
-	// 	let sortVote = User.find({statut:true}).select('vote');
-
-	// 	sortVote.exec(function(err, users){
-	// 		if(err){throw err}
-	// 		else{ 
-	// 			res.render('admin/dashboard.ejs', {yo: users, vote: vote})
-	// 		}
-	// 	});
-	// }
 
 	home(req,res){
 
@@ -65,8 +53,6 @@ class homeController{
 
 
 	login(req, res){
-		
-
 		res.render('login', {
 			error : req.flash("error"),
 			success: req.flash("success"),
@@ -83,21 +69,29 @@ class homeController{
 	VoterApi(req, res){
 		let sortVote = User.find({}).select('vote');
 		sortVote.exec(function(err, users){
-			if(err){throw err}
-				else{ return res.json(users) }
-			});
+			if(err){
+				throw err
+			} else {
+				return res.json(users)
+			}
+		});
 	}
 
 	vote5Api(req, res){
 		let vote5 = Vote.find({}).select('choix');
 		vote5.exec(function(err, votez){
-			if(err) {throw err}
-				else{return res.json(votez)}
-			});
+			if(err) {
+				throw err
+			} else {
+				return res.json(votez)
+			}
+		});
 	}
+
 	firstStep(req,res){
 		res.render('index');
 	}
+
 	firstConnect(req,res,next){
 		async.waterfall([
 			function(done) {
@@ -106,71 +100,72 @@ class homeController{
 					done(err, token);
 				});
 			},
+
 			function(token, done) {
-				User.findOne({ email: req.body.email }, function(err, user) {
-					if (!user) {
+				User.findOne({ email: req.user.email }, function(err, user) {
+					if (!user) { 
 						req.flash('error', 'No account with that email address exists.');
-						return res.redirect('/firstStep');
+						return res.redirect('/login');
 					}
 
 					user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+        			user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
-        user.save(function(err) {
-        	done(err, token, user);
-        });
-    });
+        			user.save(function(err) {
+        				done(err, token, user);
+        			});
+    			});
 			},
+
 			function(token, user, done) {
 				var smtpTransport = nodemailer.createTransport({
 					service: 'gmail',
-
 					auth: {
 						user: 'oinanaphone@gmail.com',
 						pass: 'piyupiyu'
 					}
 				});
+
 				var mailOptions = {
 					to: user.email,
 					from: 'oinanaphone@gmail.com',
-					subject: 'Node.js Password Reset',
-					text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-					'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+					subject: 'Validation de nouveau mot de passe',
+					text: 'Ceci est un message automatique generé lors de votre premiere connexion sur le site de vote de la CFDT\n\n' +
+					'Veuillez cliquer sur le lien suivant pour aller sur la page de validation de mot de passe:\n\n' +
 					'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-					'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+					'Si vous etes deja connecté a votre espace de vote CFDT,ne tenez pas compte de ce message et votre mot de passe restera inchangé.\n'
 				};
+
 				smtpTransport.sendMail(mailOptions, function(err) {
-					req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+					req.flash("success", "Un mail vous a été envoyé.Veuillez consulter vos mails! ");
 					done(err, 'done');
-				});
-				req.flash("success", "Veuillez consulter vos mails. Vous pouvez fermer cette page! ");
+				});		
 			}
-			], function(err) {
-				if (err) return next(err);
-				res.redirect('/firstStep');
-			});
-
+		],
+		function(err) {
+			if (err) return next(err);
+			res.redirect('/login');
+		});
 	}
-	resetToken(req,res){
 
+	resetToken(req,res){
 		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 			if (!user) {
-				req.flash('error', 'Password reset token is invalid or has expired.');
+				req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
 				return res.redirect('/firstStep');
 			}
 			res.render('reset', {
 				user: req.user
 			});
-
 		});
 	}
-	postResetToken(req,res){
 
+	postResetToken(req,res){
 		async.waterfall([
 			function(done) {
 				User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 					if (!user) {
-						req.flash('error', 'Password reset token is invalid or has expired.');
+						req.flash('error', 'Jeton de réinitialisation de mot de passe expiré ou inactif.');
 						return res.redirect('back');
 					}
 
@@ -188,7 +183,6 @@ class homeController{
 			function(user, done) {
 				var smtpTransport = nodemailer.createTransport({
 					service: 'gmail',
-
 					auth: {
 						user: 'oinanaphone@gmail.com',
 						pass: 'piyupiyu'
@@ -197,27 +191,21 @@ class homeController{
 				var mailOptions = {
 					to: user.email,
 					from: 'oinanaphone@gmail.com',
-					subject: 'Your password has been changed',
-					text: 'Hello,\n\n' +
-					'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+					subject: 'Changement de mot de passe',
+					text: 'Bonjour,\n\n' +
+					"Ce message de confirmation a l'attention de  " + user.email + " pour vous avertir du changement de votre mot de passe.\n"
 				};
 				smtpTransport.sendMail(mailOptions, function(err) {
-					req.flash('success', 'Success! Your password has been changed.');
+					req.flash('success', 'Felicitation votre mot de passe a bien été changé.Vous pouvez vous connecter!');
 					done(err);
 				});
 			}
-			], function(err) {
-
-
+		],
+		function(err) {
 				res.redirect('/login');
-			});
+		});
 	}
 	
-
-
 }
 
 module.exports = new homeController();
-
-
-

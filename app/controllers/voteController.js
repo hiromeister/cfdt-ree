@@ -6,7 +6,6 @@ const User = require('../models/user');
 
 class voteController {
 
-
     loggedIn(req, res , next){
 
         if(req.session.user){next(); }
@@ -18,15 +17,14 @@ class voteController {
     };
 
     list(req, res){
-
         Vote.find({}, function(err, vote){
             res.render('admin/listVotes', {vote: vote });
-
         })
     }
 
     post(req, res){
         let myData = new Vote(req.body);
+        
         myData.save()
         .then(item => {
             res.redirect("/liste-votes"); 
@@ -34,8 +32,7 @@ class voteController {
         .catch(err => {
             res.status(400).send("Impossible de sauvegarder dans la db");
         });  
-    }
-    
+    }  
 
     delete(req, res){
         Vote.find({}, function (err, votes){
@@ -56,30 +53,24 @@ class voteController {
     
             votes.filter((votefiltered) => {
                 if(votefiltered._id == req.params.id){
-                        //récupérer l'utilisateur connecté
-                        if( votefiltered.statut === false){
-    
-    
-                         Vote.findByIdAndUpdate(votefiltered._id, { $set: { statut: true}}, { new: true }, function (err) {
+                    //récupérer l'utilisateur connecté
+                    if( votefiltered.statut === false){
+
+                        Vote.findByIdAndUpdate(votefiltered._id, { $set: { statut: true}}, { new: true }, function (err) {
                             if (err) return handleError(err);
-    
                         });
-                     }
-                     else{
+                    } else {
                         Vote.findByIdAndUpdate(votefiltered._id, { $set: { statut: false}}, { new: true }, function (err) {
                             if (err) return handleError(err);
-    
                         });
                     } 
-    
+
                     res.redirect("/liste-votes");
-    
                 }
             });
         });
     }
     
 }
-
 
 module.exports = new voteController();

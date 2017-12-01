@@ -73,10 +73,16 @@
 		        	<div>
 						<% if(vote[0].statut === true){ %>
 							<% let vote1visited = user.vote.filter( function(element){ %>
+
+
 								<% if(element.idVote == vote[0]._id){ %>
 									<% return element%>
 								<% } %>
 							<% }) %>
+
+
+
+							<% console.log('houssen'+userfiltered)%>
 							<% if(vote1visited == 0){ %>
 								<a href="/choix/vote/<%= vote[0]._id %>">
 				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
@@ -113,8 +119,8 @@
 								<a href="/choix/vote/<%= vote[1]._id %>">
 				         		<button class="acces-vote" id="<%= vote[1]._id %>" type="button">
 							<% } else {%>
-								<a href="/homeVoter">
-				         		<button class="unable-vote" id="<%= vote[1]._id %>" type="button">
+								
+				         		<button class="unable-vote" id="<%= vote[1]._id %>" type="button" disabled>
 								<% console.log("Vous avez déjà voté.")%>								
 							<% } %>
 						<% } else {%>
@@ -148,8 +154,8 @@
 								<a href="/choix/vote/<%= vote[2]._id %>">
 				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
 							<% } else {%>
-								<a href="/homeVoter">
-				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button">
+								
+				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button" disabled>
 								<% console.log("Vous avez déjà voté.")%>								
 							<% } %>
 						<% } else {%>
@@ -181,8 +187,8 @@
 								<a href="/choix/vote/<%= vote[3]._id %>">
 				         		<button class="acces-vote" id="<%= vote[0]._id %>" type="button">
 							<% } else {%>
-								<a href="/homeVoter">
-				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button">
+								
+				         		<button class="unable-vote" id="<%= vote[0]._id %>" type="button" disabled>
 								<% console.log("Vous avez déjà voté.")%>								
 							<% } %>
 						<% } else {%>
