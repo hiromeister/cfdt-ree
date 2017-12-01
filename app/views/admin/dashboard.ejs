@@ -7,16 +7,16 @@
 
 	<title>CFDT - Tableau de bord</title>
     <meta name="viewport" content="width=device-width , initial-scale=1" />
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
- 
-     
+
+
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <!-- Bootstrap core CSS     -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/default.css" />
+    
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
 
 
     <!--     Fonts and icons     -->
@@ -39,236 +39,240 @@
 
                 <ul class="nav">
                  <li class="active">
-                        <a href="/home">
-                            <i class="fa fa-tachometer" aria-hidden="true"></i>
-                            <p>Tableau de bord</p>
-                        </a>
-                    </li>
+                    <a href="/home">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                        <p>Tableau de bord</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ajouter-votants">
+                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                     <p>Ajouter un votant</p>
+                 </a>
+             </li>
+             <li>
+                 <a href="/liste-votants">
+                   <i class="fa fa-users" aria-hidden="true"></i>
+                   <p>Liste des votants</p>
+               </a>
+           </li>
+           <li>
+            <a href="/creer-vote">
+             <i class="fa fa-plus-circle" aria-hidden="true"></i>
+             <p>Crée un vote</p>
+         </a>
+     </li>
+     <li>
+         <a href="/liste-votes">
+             <i class="fa fa-list" aria-hidden="true"></i>
+             <p>Liste des votes</p>
+         </a>
+     </li>
+
+
+ </ul>
+</div>
+</div>
+
+<div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Tableau de bord</a>
+            </div>
+            <div class="collapse navbar-collapse">
+
+
+                <ul class="nav navbar-nav navbar-right">
 
                     <li>
-                        <a href="/ajouter-votants">
-                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <p>Ajouter un votant</p>
+                        <a href="/logout">
+                            <p>Déconnexion</p>
                         </a>
                     </li>
-                    <li>
-                         <a href="/liste-votants">
-                           <i class="fa fa-users" aria-hidden="true"></i>
-                            <p>Liste des votants</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/creer-vote">
-                             <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <p>Crée un vote</p>
-                        </a>
-                    </li>
-                    <li>
-                     <a href="/liste-votes">
-                             <i class="fa fa-list" aria-hidden="true"></i>
-                            <p>Liste des votes</p>
-                        </a>
-                    </li>
-                    
-                   
+                    <li class="separator hidden-lg hidden-md"></li>
                 </ul>
-        	</div>
+            </div>
         </div>
+    </nav>
 
-        <div class="main-panel">
-            <nav class="navbar navbar-default navbar-fixed">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bob">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Tableau de bord</a>
-                    </div>
-                    <div class="collapse navbar-collapse">
+    
 
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
 
-                        <ul class="nav navbar-nav navbar-right">
+                        <div class="header">
+                            <h4 class="title">Vote 1</h4>
+                            <p class="category" ><%= vote[0].intitule.toUpperCase()%></p>
+                            <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
+                        </div>
+                        <div class="content">
+                            <div id="chartVote1" class="ct-chart "></div>
 
-                            <li>
-                                <a href="/logout">
-                                    <p>Déconnexion</p>
-                                </a>
-                            </li>
-                            <li class="separator hidden-lg hidden-md"></li>
-                        </ul>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
+                                    <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
+                                </div>
+                                <div></div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </nav>
 
-
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-
-                                <div class="header">
-                                    <h4 class="title">Vote 1</h4>
-                                    <p class="category" ><%= vote[0].intitule.toUpperCase()%></p>
-                                    <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Vote 2</h4>
+                            <p class="category"><%= vote[1].intitule.toUpperCase()%></p>
+                            <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
+                        </div>
+                        <div class="content">
+                            <div id="chartVote2" class="ct-chart "></div>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
+                                    <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
                                 </div>
-                                <div class="content">
-                                    <div id="chartVote1" class="ct-chart "></div>
 
-                                    <div class="footer">
-                                        <div class="legend">
-                                            <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
-                                            <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
-                                        </div>
-                                        <div></div>
-                                        
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="header">
-                                    <h4 class="title">Vote 2</h4>
-                                    <p class="category"><%= vote[1].intitule.toUpperCase()%></p>
-                                    <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
-                                </div>
-                                <div class="content">
-                                    <div id="chartVote2" class="ct-chart "></div>
-                                    <div class="footer">
-                                        <div class="legend">
-                                            <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
-                                            <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
-                                        </div>
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-
-                                <div class="header">
-                                    <h4 class="title">Vote 3</h4>
-                                    <p class="category"><%= vote[2].intitule.toUpperCase()%></p>
-                                    <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
-                                </div>
-                                <div class="content">
-                                    <div id="chartVote3" class="ct-chart"></div>
-
-                                    <div class="footer">
-                                        <div class="legend">
-                                            <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
-                                            <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="header">
-                                    <h4 class="title"> Vote 4</h4>
-                                    <p class="category"><%= vote[3].intitule.toUpperCase()%></p>
-                                    <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
-                                </div>
-                                <div class="content">
-                                    <div id="chartVote4" class="ct-chart"></div>
-                                    <div class="footer">
-                                        <div class="legend">
-                                            <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
-                                            <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="header">
-                                        <h4 class="title">Vote 5 </h4>
-                                        <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
-                                        <p style="text-align:right">  0 /<span id="TotalPerson"></span></p>
-                                    </div>
-                                    <div class="content">
-                                        <div class="content table-responsive table-full-width">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <th>ID </th>
-                                                    <th>Prénom et Nom</th>
-                                                    <th>Total vote</th>
-                                                    <th>Total Mandats</th>
-                                                    <th>Resultat % </th>
-                
-                                                </thead>
-                                                <tbody>
-                
-                                                    <% for(var i=0; i<38; i++)  {%>
-                                                        <tr class="tr-list">
-                                                            <td class="rang">
-                                                                <%= i + 1 %>
-                                                            </td>
-                                                            
-                                                                <td class="candidats">
-                                                                 <% if (vote[4]) { %>
-                                                                    <%= vote[4].choix[i] %>
-                                                                <% } %>
-                                                                Vide
-                                                                </td>
-                                                          
-                                                            <td class="total-vote">
-                                                            </td>
-                                                            <td class="total-mandats">
-                                                                <%= 0%>
-                                                            </td>
-                                                            <td class="resultat-pourcentage">
-                                                                <%= 0 %>
-                                                            </td>
-                                                        </tr>
-
-                                                    <% } %>
-                
-                                                </tbody>                
-                                           </table>
-                
-                                        </div>
-                                                                              
-                                        <div class="footer">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <div class="header">
+                            <h4 class="title">Vote 3</h4>
+                            <p class="category"><%= vote[2].intitule.toUpperCase()%></p>
+                            <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
+                        </div>
+                        <div class="content">
+                            <div id="chartVote3" class="ct-chart"></div>
+
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
+                                    <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title"> Vote 4</h4>
+                            <p class="category"><%= vote[3].intitule.toUpperCase()%></p>
+                            <h5 class="vote-in-progress" style="text-align: right">0/0</h5>
+                        </div>
+                        <div class="content">
+                            <div id="chartVote4" class="ct-chart"></div>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
+                                    <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Vote 5 </h4>
+                            <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
+                            <p style="text-align:right">  0 /<span id="TotalPerson"></span></p>
+                        </div>
+                        <div class="content">
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <th>ID </th>
+                                        <th>Prénom et Nom</th>
+                                        <th>Total vote</th>
+                                        <th>Total Mandats</th>
+                                        <th>Resultat % </th>
+                                        
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <% for(var i=0; i<38; i++)  {%>
+                                        <tr class="tr-list">
+                                            <td class="rang">
+                                                <%= i + 1 %>
+                                            </td>
+                                            
+                                            <td class="candidats">
+                                               <% if (vote[4]) { %>
+                                               <%= vote[4].choix[i] %>
+                                               <% } %>
+                                               Vide
+                                           </td>
+                                           
+                                           <td class="total-vote">
+                                           </td>
+                                           <td class="total-mandats">
+                                            <%= 0%>
+                                        </td>
+                                        <td class="resultat-pourcentage">
+                                            <%= 0 %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    
+                                </tbody>                
+                            </table>
+                            
+                        </div>
+
+                        <div class="footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </div>
+</div>
+</div>
+</div>
+</div>
 
-    <!--   Core JS Files   -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!--   Core JS Files   -->
 
-    <script type="text/javascript">
 
-        var usersJSON = <%- JSON.stringify(users) %>;
-        console.log(usersJSON);
+<script src="js/jquery.3.2.1.min.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<script src="js/lightboot.js"></script>
 
-        var voteJSON = <%- JSON.stringify(vote) %>;
-        console.log("vote json", voteJSON);
+<script type="text/javascript">
+
+    var usersJSON = <%- JSON.stringify(users) %>;
+    console.log(usersJSON);
+
+    var voteJSON = <%- JSON.stringify(vote) %>;
+    console.log("vote json", voteJSON);
     
         // ***** STATISTIQUE VOTE 1, 2, 3 et 4 ***** 
 
@@ -316,52 +320,76 @@
         console.log("nb de vote 3", presentVote3)
         console.log("nb de vote 4", presentVote4)
 
-            
+        
         var dataPreferences = {
         	series: [
-        		[25, 30, 20, 25]
-        	]
-        };
+          [25, 30, 20, 25]
+          ]
+      };
 
-        var optionsPreferences = {
-        	donut: true,
-        	donutWidth: 40,
-        	startAngle: 0,
-        	total: 100,
-        	showLabel: false,
-        	axisX: {
-        		showGrid: false
-        	}
-        };
+      var optionsPreferences = {
+       donut: true,
+       donutWidth: 40,
+       startAngle: 0,
+       total: 100,
+       showLabel: false,
+       axisX: {
+          showGrid: false
+      }
+  };
 
-        var Vote1PourResult = 0;
-        var Vote1ContreResult = 0;
-        var Vote1Total = 0;
-        var Vote1PourPourcentage = 0;
-        var Vote1ContrePourcentage = 0;
-
-        var Vote2PourResult = 0;
-        var Vote2ContreResult = 0;
-        var Vote2Total = 0;
-        var Vote2PourPourcentage = 0;
-        var Vote2ContrePourcentage = 0;
-
-        var Vote3PourResult = 0;
-        var Vote3ContreResult = 0;
-        var Vote3Total = 0;
-        var Vote3PourPourcentage = 0
-        var Vote3ContrePourcentage = 0;
-
-        var Vote4PourResult = 0;
-        var Vote4ContreResult = 0;
-        var Vote4Total = 0;
-        var Vote4PourPourcentage = 0;
-        var Vote4ContrePourcentage = 0;
+  var Vote1PourResult = 0;
+  var Vote1ContreResult = 0;
+  var Vote1Total = 0;
+  var Vote1PourPourcentage = 0;
+  var Vote1ContrePourcentage = 0;
 
 
-        for (let i = 0; i < usersJSON.length; i++){
-            (usersJSON[i].vote).forEach(function (element){
-                if(element.idVote == idVote1){
+  var dataPreferences = {
+   series: [
+   [25, 30, 20, 25]
+   ]
+};
+
+var optionsPreferences = {
+ donut: true,
+ donutWidth: 40,
+ startAngle: 0,
+ total: 100,
+ showLabel: false,
+ axisX: {
+  showGrid: false
+}
+};
+
+var Vote1PourResult = 0;
+var Vote1ContreResult = 0;
+var Vote1Total = 0;
+var Vote1PourPourcentage = 0;
+var Vote1ContrePourcentage = 0;
+
+var Vote2PourResult = 0;
+var Vote2ContreResult = 0;
+var Vote2Total = 0;
+var Vote2PourPourcentage = 0;
+var Vote2ContrePourcentage = 0;
+
+var Vote3PourResult = 0;
+var Vote3ContreResult = 0;
+var Vote3Total = 0;
+var Vote3PourPourcentage = 0
+var Vote3ContrePourcentage = 0;
+
+var Vote4PourResult = 0;
+var Vote4ContreResult = 0;
+var Vote4Total = 0;
+var Vote4PourPourcentage = 0;
+var Vote4ContrePourcentage = 0;
+
+
+for (let i = 0; i < usersJSON.length; i++){
+    (usersJSON[i].vote).forEach(function (element){
+        if(element.idVote == idVote1){
 
                     //VOTE 1 RESULTS
                     Vote1PourResult =  Vote1PourResult + Number(element.pour);
@@ -398,14 +426,14 @@
                     Vote4ContrePourcentage =  Vote4ContreResult * 100 / Vote4Total;
                 }
             })
-        }
+}
 
         // Vote 1 statistics 
         Chartist.Pie('#chartVote1', dataPreferences, optionsPreferences);
         Chartist.Pie('#chartVote1', {
           labels: [Math.round(Vote1PourPourcentage)+ "%",Math.round(Vote1ContrePourcentage)+ "%"],
           series: [Vote1PourPourcentage, Vote1ContrePourcentage ]
-        });
+      });
 
 
         // Vote 2 statistics 
@@ -413,21 +441,21 @@
         Chartist.Pie('#chartVote2', {
           labels: [Math.round(Vote2PourPourcentage) + "%" ,Math.round(Vote2ContrePourcentage) + "%"],
           series: [Vote2PourPourcentage, Vote2ContrePourcentage ]
-        });
+      });
 
         // Vote 3 statistics 
         Chartist.Pie('#chartVote3', dataPreferences, optionsPreferences);
         Chartist.Pie('#chartVote3', {
           labels: [Math.round(Vote3PourPourcentage) + "%" ,Math.round(Vote3ContrePourcentage) + "%"],
           series: [Vote3PourPourcentage, Vote3ContrePourcentage ]
-        });
+      });
 
         // Vote 4 statistics 
         Chartist.Pie('#chartVote4', dataPreferences, optionsPreferences);
         Chartist.Pie('#chartVote4', {
           labels: [Math.round(Vote4PourPourcentage) + "%" ,Math.round(Vote4ContrePourcentage) + "%"],
           series: [Vote4PourPourcentage, Vote4ContrePourcentage ]
-        });
+      });
          /*let listeCandidats = {
             "BELDA Rémy": 0, 
             "BEYRONNEAU Christophe": 0, 
@@ -608,6 +636,8 @@
             $(trList[i]).addClass("winners");
         }
 
-	</script>
+
+
+    </script>
 </body>
 </html>

@@ -27,6 +27,7 @@ class voteController {
 
     post(req, res){
         let myData = new Vote(req.body);
+        
         myData.save()
         .then(item => {
             res.redirect("/liste-votes"); 
