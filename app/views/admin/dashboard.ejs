@@ -28,7 +28,7 @@
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar" id="bob" data-color="black" data-image="assets/img/sidebar-5.jpg">
 
         	<div class="sidebar-wrapper">
                 <div class="logo">
@@ -104,6 +104,7 @@
     </nav>
 
 
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -174,6 +175,7 @@
                     </div>
                 </div>
 
+
                 <div class="col-md-6">
                     <div class="card">
                         <div class="header">
@@ -187,6 +189,62 @@
                                 <div class="legend">
                                     <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
                                     <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h4 class="title">Vote 5 </h4>
+                                        <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
+                                        <p style="text-align:right">  0 /<span id="TotalPerson"></span></p>
+                                    </div>
+                                    <div class="content">
+                                        <div class="content table-responsive table-full-width">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <th>ID </th>
+                                                    <th>Prénom et Nom</th>
+                                                    <th>Total vote</th>
+                                                    <th>Total Mandats</th>
+                                                    <th>Resultat % </th>
+                
+                                                </thead>
+                                                <tbody>
+                
+                                                    <% for(var i=0; i<38; i++)  {%>
+                                                        <tr class="tr-list">
+                                                            <td class="rang">
+                                                                <%= i + 1 %>
+                                                            </td>
+                                                            
+                                                                <td class="candidats">
+                                                                 <% if (vote[4]) { %>
+                                                                    <%= vote[4].choix[i] %>
+                                                                <% } %>
+                                                                Vide
+                                                                </td>
+                                                          
+                                                            <td class="total-vote">
+                                                            </td>
+                                                            <td class="total-mandats">
+                                                                <%= 0%>
+                                                            </td>
+                                                            <td class="resultat-pourcentage">
+                                                                <%= 0 %>
+                                                            </td>
+                                                        </tr>
+
+                                                    <% } %>
+                
+                                                </tbody>                
+                                           </table>
+                
+                                        </div>
+                                                                              
+                                        <div class="footer">
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -311,6 +369,33 @@
         console.log("nb de vote 2", presentVote2)
         console.log("nb de vote 3", presentVote3)
         console.log("nb de vote 4", presentVote4)
+<<<<<<< HEAD
+=======
+
+            
+        var dataPreferences = {
+        	series: [
+        		[25, 30, 20, 25]
+        	]
+        };
+
+        var optionsPreferences = {
+        	donut: true,
+        	donutWidth: 40,
+        	startAngle: 0,
+        	total: 100,
+        	showLabel: false,
+        	axisX: {
+        		showGrid: false
+        	}
+        };
+
+        var Vote1PourResult = 0;
+        var Vote1ContreResult = 0;
+        var Vote1Total = 0;
+        var Vote1PourPourcentage = 0;
+        var Vote1ContrePourcentage = 0;
+>>>>>>> 30eab6d9c7da1eae2b7cc76bb80c5cd7272dba87
 
 
         var dataPreferences = {
