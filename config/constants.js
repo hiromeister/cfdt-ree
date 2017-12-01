@@ -1,3 +1,5 @@
+const dotenv = require('dotenv').load() 
+
 module.exports = {
         'project_name':'express-mvc-generator',
 	'adminname': 'Rajaram',
