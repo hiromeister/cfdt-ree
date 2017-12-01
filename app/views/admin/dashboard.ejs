@@ -38,7 +38,7 @@
                 </div>
 
                 <ul class="nav">
-                   <li class="active">
+                 <li class="active">
                     <a href="/home">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <p>Tableau de bord</p>
@@ -47,32 +47,32 @@
 
                 <li>
                     <a href="/ajouter-votants">
-                       <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                       <p>Ajouter un votant</p>
-                   </a>
-               </li>
-               <li>
-                   <a href="/liste-votants">
-                     <i class="fa fa-users" aria-hidden="true"></i>
-                     <p>Liste des votants</p>
+                     <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                     <p>Ajouter un votant</p>
                  </a>
              </li>
              <li>
-                <a href="/creer-vote">
-                   <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                   <p>Crée un vote</p>
+                 <a href="/liste-votants">
+                   <i class="fa fa-users" aria-hidden="true"></i>
+                   <p>Liste des votants</p>
                </a>
            </li>
            <li>
-               <a href="/liste-votes">
-                   <i class="fa fa-list" aria-hidden="true"></i>
-                   <p>Liste des votes</p>
-               </a>
-           </li>
+            <a href="/creer-vote">
+             <i class="fa fa-plus-circle" aria-hidden="true"></i>
+             <p>Crée un vote</p>
+         </a>
+     </li>
+     <li>
+         <a href="/liste-votes">
+             <i class="fa fa-list" aria-hidden="true"></i>
+             <p>Liste des votes</p>
+         </a>
+     </li>
 
 
-       </ul>
-   </div>
+ </ul>
+</div>
 </div>
 
 <div class="main-panel">
@@ -103,7 +103,7 @@
         </div>
     </nav>
 
-
+    
 
     <div class="content">
         <div class="container-fluid">
@@ -189,64 +189,8 @@
                                 <div class="legend">
                                     <i class="fa fa-circle text-success"></i> <%= vote[0].choix[0]%>
                                     <i class="fa fa-circle text-danger"></i> <%= vote[0].choix[1]%>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="header">
-                                        <h4 class="title">Vote 5 </h4>
-                                        <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
-                                        <p style="text-align:right">  0 /<span id="TotalPerson"></span></p>
-                                    </div>
-                                    <div class="content">
-                                        <div class="content table-responsive table-full-width">
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <th>ID </th>
-                                                    <th>Prénom et Nom</th>
-                                                    <th>Total vote</th>
-                                                    <th>Total Mandats</th>
-                                                    <th>Resultat % </th>
-                
-                                                </thead>
-                                                <tbody>
-                
-                                                    <% for(var i=0; i<38; i++)  {%>
-                                                        <tr class="tr-list">
-                                                            <td class="rang">
-                                                                <%= i + 1 %>
-                                                            </td>
-                                                            
-                                                                <td class="candidats">
-                                                                 <% if (vote[4]) { %>
-                                                                    <%= vote[4].choix[i] %>
-                                                                <% } %>
-                                                                Vide
-                                                                </td>
-                                                          
-                                                            <td class="total-vote">
-                                                            </td>
-                                                            <td class="total-mandats">
-                                                                <%= 0%>
-                                                            </td>
-                                                            <td class="resultat-pourcentage">
-                                                                <%= 0 %>
-                                                            </td>
-                                                        </tr>
-
-                                                    <% } %>
-                
-                                                </tbody>                
-                                           </table>
-                
-                                        </div>
-                                                                              
-                                        <div class="footer">
-                                        </div>
-                                    </div>
-
                                 </div>
-
+                                
                             </div>
                         </div>
                     </div>
@@ -259,6 +203,7 @@
                         <div class="header">
                             <h4 class="title">Vote 5 </h4>
                             <p class="category">LISTE DES NOUVEAUX REPRESENTANTS</p>
+                            <p style="text-align:right">  0 /<span id="TotalPerson"></span></p>
                         </div>
                         <div class="content">
                             <div class="content table-responsive table-full-width">
@@ -269,42 +214,47 @@
                                         <th>Total vote</th>
                                         <th>Total Mandats</th>
                                         <th>Resultat % </th>
-
+                                        
                                     </thead>
                                     <tbody>
-
+                                        
                                         <% for(var i=0; i<38; i++)  {%>
                                         <tr class="tr-list">
                                             <td class="rang">
                                                 <%= i + 1 %>
                                             </td>
+                                            
                                             <td class="candidats">
-                                            </td>
-                                            <td class="total-vote">
-                                            </td>
-                                            <td class="total-mandats">
-                                                <%= 0%>
-                                            </td>
-                                            <td class="resultat-pourcentage">
-                                                <%= 0 %>
-                                            </td>
-                                        </tr>
+                                               <% if (vote[4]) { %>
+                                               <%= vote[4].choix[i] %>
+                                               <% } %>
+                                               Vide
+                                           </td>
+                                           
+                                           <td class="total-vote">
+                                           </td>
+                                           <td class="total-mandats">
+                                            <%= 0%>
+                                        </td>
+                                        <td class="resultat-pourcentage">
+                                            <%= 0 %>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                    
+                                </tbody>                
+                            </table>
+                            
+                        </div>
 
-                                        <% } %>
-
-                                    </tbody>                
-                                </table>
-
-                            </div>
-
-                            <div class="footer">
-                            </div>
+                        <div class="footer">
                         </div>
                     </div>
                 </div>
-            </div> 
-        </div>
+            </div>
+        </div> 
     </div>
+</div>
 </div>
 </div>
 </div>
@@ -369,35 +319,8 @@
         console.log("nb de vote 2", presentVote2)
         console.log("nb de vote 3", presentVote3)
         console.log("nb de vote 4", presentVote4)
-<<<<<<< HEAD
-=======
 
-            
-        var dataPreferences = {
-        	series: [
-        		[25, 30, 20, 25]
-        	]
-        };
-
-        var optionsPreferences = {
-        	donut: true,
-        	donutWidth: 40,
-        	startAngle: 0,
-        	total: 100,
-        	showLabel: false,
-        	axisX: {
-        		showGrid: false
-        	}
-        };
-
-        var Vote1PourResult = 0;
-        var Vote1ContreResult = 0;
-        var Vote1Total = 0;
-        var Vote1PourPourcentage = 0;
-        var Vote1ContrePourcentage = 0;
->>>>>>> 30eab6d9c7da1eae2b7cc76bb80c5cd7272dba87
-
-
+        
         var dataPreferences = {
         	series: [
           [25, 30, 20, 25]
@@ -421,26 +344,50 @@
   var Vote1PourPourcentage = 0;
   var Vote1ContrePourcentage = 0;
 
-  var Vote2PourResult = 0;
-  var Vote2ContreResult = 0;
-  var Vote2Total = 0;
-  var Vote2PourPourcentage = 0;
-  var Vote2ContrePourcentage = 0;
 
-  var Vote3PourResult = 0;
-  var Vote3ContreResult = 0;
-  var Vote3Total = 0;
-  var Vote3PourPourcentage = 0
-  var Vote3ContrePourcentage = 0;
+  var dataPreferences = {
+   series: [
+   [25, 30, 20, 25]
+   ]
+};
 
-  var Vote4PourResult = 0;
-  var Vote4ContreResult = 0;
-  var Vote4Total = 0;
-  var Vote4PourPourcentage = 0;
-  var Vote4ContrePourcentage = 0;
+var optionsPreferences = {
+ donut: true,
+ donutWidth: 40,
+ startAngle: 0,
+ total: 100,
+ showLabel: false,
+ axisX: {
+  showGrid: false
+}
+};
+
+var Vote1PourResult = 0;
+var Vote1ContreResult = 0;
+var Vote1Total = 0;
+var Vote1PourPourcentage = 0;
+var Vote1ContrePourcentage = 0;
+
+var Vote2PourResult = 0;
+var Vote2ContreResult = 0;
+var Vote2Total = 0;
+var Vote2PourPourcentage = 0;
+var Vote2ContrePourcentage = 0;
+
+var Vote3PourResult = 0;
+var Vote3ContreResult = 0;
+var Vote3Total = 0;
+var Vote3PourPourcentage = 0
+var Vote3ContrePourcentage = 0;
+
+var Vote4PourResult = 0;
+var Vote4ContreResult = 0;
+var Vote4Total = 0;
+var Vote4PourPourcentage = 0;
+var Vote4ContrePourcentage = 0;
 
 
-  for (let i = 0; i < usersJSON.length; i++){
+for (let i = 0; i < usersJSON.length; i++){
     (usersJSON[i].vote).forEach(function (element){
         if(element.idVote == idVote1){
 
