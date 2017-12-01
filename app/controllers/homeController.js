@@ -4,6 +4,7 @@ var dateFormat = require('dateformat');
 const async = require('async');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const dotenv = require('dotenv').load();
 const permissions = require('../../config/permissions');
 
 var User = require('../models/user.js')
