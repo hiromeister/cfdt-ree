@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+    crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/css/default.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
 
     <!-- Bootstrap Toggle -->
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -118,39 +118,39 @@
                                     <tbody>
                                         <% for(var i=0; i<vote.length; i++) {%>
 
-                                            <tr>
+                                        <tr>
 
-                                                <td>
-                                                    <% if (vote[i].statut === false) { %>
-                                                        <i class="fa fa-circle" aria-hidden="true"  style="color:red"></i>
-                                                    <% } %>
-                                                    <% if (vote[i].statut === true) { %>
-                                                        <i class="fa fa-circle" aria-hidden="true"  style="color:#87CB16"></i>
-                                                    <% } %>
-                                                </td>
-                                                <td>
-                                                    <%= vote[i].intitule %>
-                                                </td>
-                                                <td>
-                                                    <%= vote[i].type %>
-                                                </td>
-                                                <td>
-                                                    <% if (vote[i].statut === false) { %>
-                                                        <a class="btn btn-success"  href="status/<%= vote[i]._id %>" role="button">ACTIVER</a>
-                                                    <% } %>
+                                            <td>
+                                                <% if (vote[i].statut === false) { %>
+                                                <i class="fa fa-circle" aria-hidden="true"  style="color:red"></i>
+                                                <% } %>
+                                                <% if (vote[i].statut === true) { %>
+                                                <i class="fa fa-circle" aria-hidden="true"  style="color:#87CB16"></i>
+                                                <% } %>
+                                            </td>
+                                            <td>
+                                                <%= vote[i].intitule %>
+                                            </td>
+                                            <td>
+                                                <%= vote[i].type %>
+                                            </td>
+                                            <td>
+                                                <% if (vote[i].statut === false) { %>
+                                                <a class="btn btn-success"  href="status/<%= vote[i]._id %>" role="button">ACTIVER</a>
+                                                <% } %>
 
-                                                    <% if (vote[i].statut === true) { %>
-                                                        <a class="btn btn-danger" class="reversible" href="status/<%= vote[i]._id %>" role="button">DESACTIVER</a>
-                                                    <% } %>
-                                                </td>
-                                                <td>
-                                                    <a href="/supprimer/<%= vote[i]._id %>">
-                                                        <span class="fa-stack "><i class="fa fa-square-o fa-stack-2x"></i>
-                                                            <i class="fa fa-trash-o fa-stack-1x" aria-hidden="true"></i>
-                                                        </span>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                <% if (vote[i].statut === true) { %>
+                                                <a class="btn btn-danger" class="reversible" href="status/<%= vote[i]._id %>" role="button">DESACTIVER</a>
+                                                <% } %>
+                                            </td>
+                                            <td>
+                                                <a href="/supprimer/<%= vote[i]._id %>">
+                                                    <span class="fa-stack "><i class="fa fa-square-o fa-stack-2x"></i>
+                                                        <i class="fa fa-trash-o fa-stack-1x" aria-hidden="true"></i>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
                                         <% } %>
                                     </tbody>
                                 </table>
@@ -169,10 +169,10 @@
                             </thead>
                             <tbody>        
                                 <% for(var i=0; i<vote[4].choix.length; i++)  {%>
-                                    <tr>
-                                        <td> <%= i+1%> </td>
-                                        <td> <%= vote[4].choix[i]%> </td>
-                                    </tr>
+                                <tr>
+                                    <td> <%= i+1%> </td>
+                                    <td> <%= vote[4].choix[i]%> </td>
+                                </tr>
                                 <% } %> 
                             </tbody>
                         </table>
@@ -186,29 +186,20 @@
 
     <!--   Core JS Files   -->
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/jquery.3.2.1.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="js/lightboot.js"></script>
     <script src="js/dynamicInput.js"></script>
 
-    <!-- Toggle Bootstrap -->
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
     <!--  Charts Plugin -->
     <script src="assets/js/chartist.min.js"></script>
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+    <
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
 
 </body>
 </html>

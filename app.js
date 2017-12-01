@@ -44,6 +44,7 @@ app.use(cookieParser()); // read cookies (needed for auth)
 //view engine setup
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'app/views'));
+app.use('/dist', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.set('view engine', 'ejs');
 //app.set('view engine', 'ejs'); // set up ejs for templating
 

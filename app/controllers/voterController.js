@@ -34,20 +34,24 @@ class voterController {
         });
     }
 
-    homeVoter(req,res){
+    homeVoter(req,res,next){
         User.find({_id:req.user.id}, function(err, user){
             user.filter((userfiltered) => {
-                if(userfiltered.firstLogin == false){
 
 
-                    Vote.find({}, function (err, vote){
-                        res.render('voter/vote', {
-                            user: req.user,
-                            vote: vote
+                Vote.find({}, function (err, vote){
+                    if(userfiltered.firstLogin === true){
+                        next();
+                    } else {
+                    res.render('voter/vote', {
+                        user: req.user,
+                        vote: vote,
+                        userfiltered:userfiltered
 
-                        }); 
                     });
-                } else res.redirect('/firstStep');
+                    } 
+                });
+
             }); 
         });  
 
@@ -101,10 +105,10 @@ class voterController {
             } else { Vote.find({}, function (err, votes){
                 votes.filter((votefiltered) => {
                     if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
-                       res.redirect("/homeVoter");
-                   }
-               });
+                     req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
+                     res.redirect("/homeVoter");
+                 }
+             });
             });
         }
     });
@@ -170,10 +174,10 @@ class voterController {
             } else { Vote.find({}, function (err, votes){
                 votes.filter((votefiltered) => {
                     if(votefiltered._id == req.params.id){
-                       req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
-                       res.redirect("/homeVoter");
-                   }
-               });
+                     req.flash("error", "Votre vote " +votefiltered.intitule+ " a deja été comptabilisé. Veuillez patienter pour le vote suivant");
+                     res.redirect("/homeVoter");
+                 }
+             });
             });
         }
     });       
