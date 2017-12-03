@@ -140,16 +140,16 @@
 
 
 		// DOM : Récupérer l'emplacement du nombre de mandat
-		let nbMandat = document.querySelector(".nbMandat");
+		var nbMandat = document.querySelector(".nbMandat");
 
 		// Sauvegarder le  nombre de mandats de début dans une constante afin de simplifier les manipulations
-		const nbMandatMax = parseInt(nbMandat.value);
+		var nbMandatMax = parseInt(nbMandat.value);
 
 
 		// DOM : Récupérer les emplacement des inputs pour la Réponse 1 et 2 et bouton submit
-		let reponse1 = document.querySelector(".reponse1");
-		let reponse2 = document.querySelector(".reponse2");
-		let toSubmit = document.querySelector(".valider-choix-unable");
+		var reponse1 = document.querySelector(".reponse1");
+		var reponse2 = document.querySelector(".reponse2");
+		var toSubmit = document.querySelector(".valider-choix-unable");
 
 		function repartitionAuto(elementClique, autre){
 			if(parseInt(elementClique.value) <= nbMandatMax){
@@ -169,10 +169,16 @@
 		};
 
 		// Input de gauche : Ajout d'un évènement à chaque changement de valeur 
-		reponse1.addEventListener("change", () => {repartitionAuto(reponse1, reponse2);});
+		reponse1.addEventListener('change', function(){
+			repartitionAuto(reponse1, reponse2);
+		});
+		// reponse1.addEventListener("change", () => {r;});
 
-		// Input de droite : Ajout d'un évènement à chaque changement de valeur 
-		reponse2.addEventListener("change", () => {repartitionAuto(reponse2, reponse1);});
+		// Input de droite : Ajout d'un évènement à chaque changement de valeur
+		reponse2.addEventListener('change', function(){
+			repartitionAuto(reponse2, reponse1);
+		});
+		// reponse2.addEventListener("change", () => {repartitionAuto(reponse2, reponse1);});
 
 
 	</script>

@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./../../images/logo.gif" type="image/x-icon">
+    <link rel="icon" href="./../../images/logo.gif" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Latest compiled and minified CSS -->
@@ -32,34 +34,32 @@
     <div class="container min">
         <div class="row">
 
-            <% if (error.length > 0) { %>
-            <div class="alert alert-danger"><%- error %></div>
-            <% } %>
-
-            <% if (success.length > 0) { %>
-            <div class="alert alert-success"><%- success %></div>
-            <% } %>
-
+            <% if (messages.error) { %>
+                <% for (let i = 0; i < messages.error.length; i++ ) { %>
+                    <div class="alert alert-danger"><%= messages.error[i]  %></div>
+                <% } %>
+            <%}%>
 
             <% if (messages.info) { %>
-            <% for (let i = 0; i < messages.info.length; i++ ) { %>
-            <div class="alert alert-danger"><%= messages.info[i]  %></div>
-            <% } %>
+                <% for (let i = 0; i < messages.info.length; i++ ) { %>
+                    <div class="alert alert-info"><%= messages.info[i]  %></div>
+                <% } %>
             <%}%>
+
             <% if (messages.success) { %>
-            <% for (let i = 0; i < messages.success.length; i++ ) { %>
-            <div class="alert alert-danger"><%= messages.success[i]  %></div>
-            <% } %>
+                <% for (let i = 0; i < messages.success.length; i++ ) { %>
+                    <div class="alert alert-success"><%= messages.success[i]  %></div>
+                <% } %>
             <%}%>
 
             <form role="form" action="/login" role="form" method="post" class="login-form col-md-12" align="center">
-                <label>Adresse mèl : </label>
-                <input type="text" name="email" required value="" onclick= "saveEmail()" placeholder="Email..."  id="email">
-                <!-- <i class="fa fa-info-circle" aria-hidden="true"></i> -->
+                <label>Adresse email : </label>
+                <input type="text" name="email" required value="" placeholder="adresse@email.com"  id="email">
+
                 <br>
                 <br>
                 <label>Mot de passe : </label>
-                <input type="password" required name="password" value="" placeholder=" Votre Mot de passe"  id="password">
+                <input type="password" required name="password" value="" placeholder=" Votre mot de passe"  id="password">
                 <br>
                 <br>
                 <br>
@@ -72,12 +72,7 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript">
      
-
-    
-
-        
     </script>
 </body>
 </html>

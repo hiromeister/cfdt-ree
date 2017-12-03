@@ -96,13 +96,13 @@
 									</table>
 									<div class="list-election">
 										<table class="table table-striped table-responsive tab-list">
-											<% for (let i = 0; i < vote.choix.length; i++){ %>
+											<% for (var i = 0; i < vote.choix.length; i++){ %>
 												<tr>
 													<td class="rang select">
 														<%= i+1 %>
 													</td>
 													<td class="choice-to-select">
-														<a href="#" class="input-list" ><%= vote.choix[i] %></a>
+														<a class="input-list"><%= vote.choix[i] %></a>
 													</td>
 												</tr>
 											<% } %>
@@ -143,17 +143,17 @@
 	<p>DW2 Simplon Réunion | 2017</p>
 	</footer>
 
-												<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
 	<script type="text/javascript">
 
-		let candidat = document.querySelectorAll(".choice-to-select");
-		let tabChoices = document.querySelector(".tab-choices");
-		let compteur = document.querySelector("#compteur");
-		let inputList = document.querySelectorAll(".input-list");
-		let toSubmit = document.querySelector(".valider-choix-unable");
+		var candidat = document.querySelectorAll(".choice-to-select");
+		var tabChoices = document.querySelector(".tab-choices");
+		var compteur = document.querySelector("#compteur");
+		var inputList = document.querySelectorAll(".input-list");
+		var toSubmit = document.querySelector(".valider-choix-unable");
 
 		function addRow(e){
 			e.preventDefault();
@@ -165,38 +165,39 @@
 				disableItemInListElection(this);
 
 				// Ajout du TR et création de l'élément TD
-				let tr = createItemRowForChoices(tabChoices);
+				var tr = createItemRowForChoices(tabChoices);
 				
 				// Ajout INPUT
-				let input = createInputForUserSelectedChoice();
+				var input = createInputForUserSelectedChoice();
 				$('td.choice-selected',tr).append(input);
 				input.value = $(e.currentTarget).html();
 
-				let inputChoice = document.querySelectorAll(".input-choice");
+				var inputChoice = document.querySelectorAll(".input-choice");
 				valideOrNot(inputChoice, 24, toSubmit);
 
 				// Une fois créer il est possible d'enlever de la liste
 
 				// DOM sur les input et le ligne TR à supprimer
 				// let selection = document.querySelectorAll(".input-choice");
-				let trToDelete = document.querySelectorAll('.tr-choice');
-				let unable = document.querySelectorAll(".input-list");
+				var trToDelete = document.querySelectorAll('.tr-choice');
+				var unable = document.querySelectorAll(".input-list");
 				addEventListenerToRemoveChoice(input, unable, inputChoice, toSubmit);
-				compteur.innerText = tabChoices.children.length;
+				compteur.innerText = $(tabChoices).children().children().length;
+
 			}
 			
 			$(currentLink).attr('disabled','disabled');
 		};
 
 		function createItemRowForChoices(tabChoices){
-			let tr = document.createElement("tr");
+			var tr = document.createElement("tr");
 			$(tr).addClass("tr-choice");
-			tabChoices.append(tr);
+			$(tabChoices).append(tr);
 
 			// Ajout de la colonne (qui recevra un input)
-			let tdChoiceSelected = document.createElement("td");
+			var tdChoiceSelected = document.createElement("td");
 			$(tdChoiceSelected).addClass("choice-selected");
-			tr.append(tdChoiceSelected);
+			$(tr).append(tdChoiceSelected);
 
 			return tr;
 		};
@@ -208,7 +209,7 @@
 		};
 
 		function createInputForUserSelectedChoice(){
-			let input = document.createElement("input");
+			var input = document.createElement("input");
 			$(input).addClass("input-choice");
 			$(input).attr("name");
 			input.name = "choix";
@@ -219,22 +220,24 @@
 
 		// SUPPRIMER UN CHOIX
 		// A chaque clique on supprime le TR du Tableau
-		function addEventListenerToRemoveChoice(input, unable,inputChoice,toSubmit){
-			input.addEventListener("click", (e) => {
-				// Comparer avec le liste de gauche pour changer le CSS 
-				unable.forEach( (element) => {
-					if(input.value == $(element).html()){
-						let tdParent =  element.parentNode;
+		function addEventListenerToRemoveChoice(input, unable, inputChoice, toSubmit){
+			input.addEventListener("click", function(e){
+				// Comparer avec le liste de gauche pour changer le CSS
+
+				for(var i=0; i<unable.length; i++){
+					// unable.forEach( function(element){
+					if(input.value == $(unable[i]).html()){
+						var tdParent =  unable[i].parentNode;
 						$(tdParent).removeClass('choice-unable').addClass('choice-to-select');
-						$(element).removeAttr('disabled');
+						$(unable[i]).removeAttr('disabled');
 					}
-				});
+				};
 				
 				// Supprimer la ligne
 				$(e.currentTarget).parents('tr:first').remove();
 				inputChoice = document.querySelectorAll(".input-choice");
 				valideOrNot(inputChoice, 24, toSubmit, 1);
-				compteur.innerText = tabChoices.children.length;
+				compteur.innerText = $(tabChoices).children().children().length;
 			});	
 		};
 
@@ -245,7 +248,6 @@
 		 * @param button
 		 */ 
 		function valideOrNot (tab, lengthMax, button){
-		 	console.log("longueur du tableau ", tab.length,tab);
 
 		 	if((tab.length) === lengthMax){
 		 		$(button).prop('disabled', false);
@@ -259,7 +261,7 @@
 		//Add Eventlistener to the submit button in order to submit the form when
 		//there is 24 names
 		toSubmit.addEventListener("click", function(){
-			let inputChoice = document.querySelectorAll(".input-choice");
+			var inputChoice = document.querySelectorAll(".input-choice");
 			if(inputChoice.length < 24){
 				alert("Vous avez sélectionné moins de 24 noms");
 				// $(toSubmit).prop('disabled', false);
@@ -270,7 +272,7 @@
 		});
 
 		//Add eventlistener to the list of name to choose
-		for(let i = 0; i < inputList.length; i++){
+		for(var i = 0; i < inputList.length; i++){
 			inputList[i].addEventListener("click", addRow);
 		}
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,46 +11,53 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="./../../css/voter/custom.css">
-	
 </head>
 <body>
 	<header>
-    		<div class="container-fluid inner-header">
-    			<div class="row row-inner-header">
-	    			<div class="col-xs-4 col-inner-header">
-	    			    <a href="#"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
-	    			</div>
-
-	    			<div class="col-xs-4 col-inner-header">
-		    			<h1>XVIIème CONGRES
-		    				<br/>
-		    				UIR-CFDT</h1>    				
-	    			</div>
-
-	    			<div class="col-xs-4 col-inner-header">
-		    			<a href="#"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
-	    			</div>
+		<div class="container-fluid inner-header">
+			<div class="row row-inner-header">
+    			<div class="col-xs-4 col-inner-header">
+    			    <a href="#"><img id="uir-logo" src="./../../images/uir.png" alt="UIR logo"></a>
     			</div>
-    		</div>
-    	</header>
-	<h1> VALIDATION DE MOT DE PASSE</h1>
-	 <% if (messages.error) { %>
-            <% for (let i = 0; i < messages.error.length; i++ ) { %>
-            <div class="alert alert-danger"><%= messages.error[i]  %></div>
-            <% } %>
-            <%}%>
 
-	<form   method="post" class="login-form col-md-12" align="center">
-		<div class="form-group" >
-			<label>Nouveau Mot de Passe: </label>
-			<input type="password" required name="password" value='' placeholder=" nouveau mot de passe !">
+    			<div class="col-xs-4 col-inner-header">
+	    			<h1>XVIIème CONGRÈS
+	    				<br/>
+	    				UIR-CFDT</h1>    				
+    			</div>
+
+    			<div class="col-xs-4 col-inner-header">
+	    			<a href="#"><img id="cfdt-logo" src="./../../images/logo.gif" alt="CFDT logo"></a>    			    				
+    			</div>
+			</div>
 		</div>
-		<div class="form-group" >
-			<label> Confirmer Mot de Passe: </label>
-			<input type="password" required name="confirm" value='' placeholder="Validez votre mot de passe!">
+    </header>
+	<section>
+		<div class="fond-blanc text-center">
+			<h1> Générer un nouveau mot de passe</h1>
+			<% if (messages.error) { %>
+		        <% for (let i = 0; i < messages.error.length; i++ ) { %>
+		        	<div class="alert alert-danger"><%= messages.error[i]  %></div>
+		        <% } %>
+		    <%}%>
+
+			<form   method="post" class="login-form" align="center">
+				<div class="form-group" >
+					<label>Nouveau Mot de Passe : </label>
+					<br/>
+					<input type="password" required name="password" value='' placeholder="Nouveau mot de passe" style="width:300px;">
+				</div>
+				<div class="form-group" >
+					<label> Confirmation du Mot de Passe : </label>
+					<br/>
+					<input type="password" required name="confirm" value='' placeholder="Validez votre mot de passe" style="width:300px;">
+				</div>
+				<button class="btn1 btn-lg" type="submit">Valider</button>
+			</form>
 		</div>
-		<button class="btn1 btn-lg" type="submit">confirmer mdp</button>
-		
-	</form>
+	</section>
+	<footer class="text-center">
+		<p>DW2 Simplon Réunion | 2017</p>
+	</footer>
 </body>
 </html>
