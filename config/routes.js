@@ -30,6 +30,8 @@ module.exports = function (app, passport) {
     app.get('/ajouter-votants',permissions.can('access admin page'), voterController.loggedIn, voterController.add);
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
+    app.get('/voter/edit/:id', permissions.can('access admin page'),voterController.showEdit)
+    app.post('/voter/edit', permissions.can('access admin page'),voterController.edit)
 
     app.get('/test', homeController.test);
 

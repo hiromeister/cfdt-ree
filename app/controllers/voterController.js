@@ -34,6 +34,27 @@ class voterController {
         });
     }
 
+    showEdit(req,res){
+        User.findOne({_id: req.params.id}, function(err, user) {
+            res.render('admin/editVoters', {user});
+        }) 
+    }
+
+    edit(req,res){
+        let user = req.body;
+        console.log(user);
+        //edit password only if it matches the confirmPassword field
+        if( user.password === undefined || user.password === ''){
+            delete user.password;
+        }else{
+            user.password = User.schema.methods.generateHash(user.password);
+        }
+        User.findOneAndUpdate({_id: user._id},user, () => {
+            res.redirect('/voter/edit/'+user._id);
+        })
+        
+    }
+
     homeVoter(req,res,next){
         User.find({_id:req.user.id}, function(err, user){
             user.filter((userfiltered) => {
