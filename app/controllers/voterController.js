@@ -40,16 +40,17 @@ class voterController {
 
 
                 Vote.find({}, function (err, vote){
-                    if(userfiltered.firstLogin === true){
+              
+                    /*if(userfiltered.firstLogin === true){
                         next();
-                    } else {
+                    } else {*/
                     res.render('voter/vote', {
                         user: req.user,
                         vote: vote,
                         userfiltered:userfiltered
 
                     });
-                    } 
+                    //} 
                 });
 
             }); 

@@ -106,8 +106,8 @@ class homeController{
 		res.render('index');
 	}
 	firstConnect(req,res,next){
-		
-		async.waterfall([
+		next();
+		/*async.waterfall([
 			function(done) {
 				crypto.randomBytes(20, function(err, buf) {
 					var token = buf.toString('hex');
@@ -157,7 +157,7 @@ class homeController{
 			], function(err) {
 				if (err) return next(err);
 				res.redirect('/login');
-			});
+			});*/
 
 	}
 	resetToken(req,res){

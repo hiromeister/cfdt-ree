@@ -1,4 +1,5 @@
-const dotenv = require('dotenv').load() 
+//const dotenv = require('dotenv').load() 
+console.log(process.env.MONGODATA);
 
 module.exports = {
 

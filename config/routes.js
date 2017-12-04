@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
     /* ********** VOTANT ********** */
 
     // VOTANT routes acceuil
-    app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter,homeController.firstConnect);
+    app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter);
     app.get('/logout', function(req, res){
       req.logout();
       res.redirect('/login');
@@ -77,7 +77,7 @@ module.exports = function (app, passport) {
    }));
     // mot de passe perdu
     app.get('/firstStep',homeController.firstStep);
-    app.post('/firstConnect',homeController.firstConnect);
+    //app.post('/firstConnect',homeController.firstConnect);
     // renouvellemetn/confirmation mot de passe
     app.get('/reset/:token',homeController.resetToken);
     app.post('/reset/:token',homeController.postResetToken);
