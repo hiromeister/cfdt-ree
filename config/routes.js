@@ -28,6 +28,7 @@ module.exports = function (app, passport) {
 
     // ADMIN Routes votants
     app.get('/ajouter-votants',permissions.can('access admin page'), voterController.loggedIn, voterController.add);
+    app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.countMandat);
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
     app.get('/voter/edit/:id', permissions.can('access admin page'),voterController.showEdit)

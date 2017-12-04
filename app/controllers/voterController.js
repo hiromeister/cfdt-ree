@@ -17,7 +17,18 @@ class voterController {
 
     list(req, res){
         User.find({}, function(err, profile){
-            res.render('admin/listVoters', {profile: profile});
+            const nbMandat = req.nbMandat ? req.nbMandat: "";
+            console.log('mandat',nbMandat);
+            res.render('admin/listVoters', {profile: profile, nbMandat});
+        });
+    }
+
+    countMandat(req,res, next){
+        User.find({nbMandat:{$gt:0}},(err, users) => {
+            req.nbMandat = users.reduce(function(sum, user){
+                return sum += parseInt(user.nbMandat);
+            },0);
+            next();
         });
     }
 
