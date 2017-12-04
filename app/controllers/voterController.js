@@ -17,7 +17,18 @@ class voterController {
 
     list(req, res){
         User.find({}, function(err, profile){
-            res.render('admin/listVoters', {profile: profile});
+            const nbMandat = req.nbMandat ? req.nbMandat: "";
+            console.log('mandat',nbMandat);
+            res.render('admin/listVoters', {profile: profile, nbMandat});
+        });
+    }
+
+    countMandat(req,res, next){
+        User.find({nbMandat:{$gt:0}},(err, users) => {
+            req.nbMandat = users.reduce(function(sum, user){
+                return sum += parseInt(user.nbMandat);
+            },0);
+            next();
         });
     }
 
@@ -34,22 +45,44 @@ class voterController {
         });
     }
 
+    showEdit(req,res){
+        User.findOne({_id: req.params.id}, function(err, user) {
+            res.render('admin/editVoters', {user});
+        }) 
+    }
+
+    edit(req,res){
+        let user = req.body;
+        console.log(user);
+        //edit password only if it matches the confirmPassword field
+        if( user.password === undefined || user.password === ''){
+            delete user.password;
+        }else{
+            user.password = User.schema.methods.generateHash(user.password);
+        }
+        User.findOneAndUpdate({_id: user._id},user, () => {
+            res.redirect('/voter/edit/'+user._id);
+        })
+        
+    }
+
     homeVoter(req,res,next){
         User.find({_id:req.user.id}, function(err, user){
             user.filter((userfiltered) => {
 
 
                 Vote.find({}, function (err, vote){
-                    if(userfiltered.firstLogin === true){
+              
+                    /*if(userfiltered.firstLogin === true){
                         next();
-                    } else {
+                    } else {*/
                     res.render('voter/vote', {
                         user: req.user,
                         vote: vote,
                         userfiltered:userfiltered
 
                     });
-                    } 
+                    //} 
                 });
 
             }); 

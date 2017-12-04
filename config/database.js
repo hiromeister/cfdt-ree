@@ -1,4 +1,5 @@
-const dotenv = require('dotenv').load() 
+//const dotenv = require('dotenv').load() 
+console.log(process.env.MONGODATA);
 
 module.exports = {
     /* 'url' : 'mongodb://localhost:27017/cfdtvote' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot */

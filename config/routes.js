@@ -28,8 +28,11 @@ module.exports = function (app, passport) {
 
     // ADMIN Routes votants
     app.get('/ajouter-votants',permissions.can('access admin page'), voterController.loggedIn, voterController.add);
+    app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.countMandat);
     app.get('/liste-votants', permissions.can('access admin page'),voterController.loggedIn, voterController.list);
     app.post('/voter/new', permissions.can('access admin page'),voterController.createNewVoter);
+    app.get('/voter/edit/:id', permissions.can('access admin page'),voterController.showEdit)
+    app.post('/voter/edit', permissions.can('access admin page'),voterController.edit)
 
     app.get('/test', homeController.test);
 
@@ -46,7 +49,7 @@ module.exports = function (app, passport) {
     /* ********** VOTANT ********** */
 
     // VOTANT routes acceuil
-    app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter,homeController.firstConnect);
+    app.get('/homeVoter', voterController.loggedIn, voterController.homeVoter);
     app.get('/logout', function(req, res){
       req.logout();
       res.redirect('/login');
@@ -77,7 +80,7 @@ module.exports = function (app, passport) {
    }));
     // mot de passe perdu
     app.get('/firstStep',homeController.firstStep);
-    app.post('/firstConnect',homeController.firstConnect);
+    //app.post('/firstConnect',homeController.firstConnect);
     // renouvellemetn/confirmation mot de passe
     app.get('/reset/:token',homeController.resetToken);
     app.post('/reset/:token',homeController.postResetToken);

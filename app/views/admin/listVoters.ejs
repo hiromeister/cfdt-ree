@@ -87,6 +87,8 @@
                                 <div class="header">
                                     <h4 class="title">Liste des porteurs de mandat</h4>
                                     <p class="category">Assemblée générale du jeudi 7 et vendredi 8 décembre 2017</p>
+                                    <p class="category">Liste de tout les porteurs de mandant de chaque Syndicat de l'assemblée générale du xx/xx/xx</p>
+                                    <p>Nombre total de mandats : <%= nbMandat %> </p>
                                     <hr style="border:1px solid #e75c21 ">
                                 </div>
 
@@ -134,6 +136,9 @@
                                                                 <i class="fa fa-square-o fa-stack-2x"></i>
                                                                 <i class="fa fa-trash-o fa-stack-1x" aria-hidden="true"></i>
                                                             </span>
+                                                        </a>
+                                                         <a href="/voter/edit/<%= profile[i]._id %>">
+                                                            <i class="fa fa-pencil"></i>
                                                         </a>
                                                     </td>
                                                 </tr>                      
