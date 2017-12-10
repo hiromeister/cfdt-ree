@@ -7,4 +7,4 @@ let VoteSchema = new mongoose.Schema({
     choix: [String]
 });
 let Vote = mongoose.model("vote", VoteSchema);
-module.exports = Vote;
+module.exports = Vote;	
